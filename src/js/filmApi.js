@@ -1,15 +1,23 @@
 import axios from 'axios';
 
 // FIRST METHOD
-axios.defaults.baseURL = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/movie/popular';
 axios.defaults.params = {
   api_key: '95f474a01cc4252905d63c7d958d5749',
+  language: 'en-US',
+  page: 1,
 };
 
-export const responseAxios = axios
-  .get()
-  .then(responseA => console.log(responseA.data.results))
-  .catch(error => console.log(error));
+// FIRST METHOD
+export const axiosFirstFetchFn = async () => {
+  try {
+    const response = await axios.get();
+    // Here I implemented response async/await fn, check what we gonna recive and then work with it
+    return console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // SECOND METHOD
 const options = {
@@ -21,11 +29,12 @@ const options = {
   },
 };
 
-axios
-  .request(options)
-  .then(function (response) {
-    console.log(response.data);
-  })
-  .catch(function (error) {
-    console.error(error);
-  });
+export const axiosSecondFetchFn = async () => {
+  try {
+    const response = await axios.request(options);
+    const data = await response.data;
+    return console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
