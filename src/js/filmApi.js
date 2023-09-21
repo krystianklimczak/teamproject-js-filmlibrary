@@ -12,7 +12,7 @@ export const responseAxios = axios
   .catch(error => console.log(error));
 
 // SECOND METHOD
-const options = {
+export const options = {
   method: 'GET',
   url: 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1',
   headers: {
