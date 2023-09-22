@@ -1,0 +1,40 @@
+$font-primary: 'Roboto', sans-serif;
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+
+//text colors
+$text-color-light: rgb(255, 255, 255);
+$text-color-dark: rgb(0, 0, 0);
+$text-color-additional-primary: rgb(255, 107, 8);
+$text-color-additional-secondary: rgb(84, 84, 84);
+
+//font sizes
+
+//descriptions, header menu, buttons text etc
+$font-size-small: 12px;
+//h2
+$font-size-medium: 20px;
+//h1
+$font-size-large: 30px;
+//*others
+$font-size-header-search: 14px;
+$font-size-footer: 16px;
+
+//footer
+$background-color-footer: #f7f7f7;
+
+//hover and focus colors
+$hover-color-primary: rgb(255, 107, 8);
+$hover-color-secondary: rgb(160, 0, 0);
+$hover-color-sec-darker: rgb(107, 0, 0);
+
+//color for underlines and error message in header
+$additional-color: rgb(255, 0, 27);
+
+//*header sticky (if we want to do it like it's done in an example)
+$background-image-sticky: linear-gradient(#ff001bb3, #000000b3);
+
+//breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1280px;
