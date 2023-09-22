@@ -3,10 +3,10 @@ $font-weight-medium: 500;
 $font-weight-regular: 400;
 
 //text colors
-$text-color-light: #ffffff;
-$text-color-dark: #000000;
-$additional-text-color-1: #ff6b08;
-$additional-text-color-2: #545454;
+$text-color-light: rgb(255, 255, 255);
+$text-color-dark: rgb(0, 0, 0);
+$additional-text-color-primary: rgb(255, 107, 8);
+$additional-text-color-secondary: rgb(84, 84, 84);
 
 //font sizes
 
@@ -15,7 +15,7 @@ $font-size-small: 12px;
 //h2
 $font-size-medium: 20px;
 //h1
-$font-size-big: 30px;
+$font-size-large: 30px;
 //*others
 $font-size-header-search: 14px;
 $font-size-footer: 16px;
@@ -24,12 +24,12 @@ $font-size-footer: 16px;
 $background-color-footer: #f7f7f7;
 
 //hover and focus colors
-$hover-color-primary: #ff6b08;
-$hover-color-secondary: #a00000;
-$hover-color-sec-darker: #6b0000;
+$hover-color-primary: rgb(255, 107, 8);
+$hover-color-secondary: rgb(160, 0, 0);
+$hover-color-sec-darker: rgb(107, 0, 0);
 
 //color for underlines and error message in header
-$additional-color: #ff001b;
+$additional-color: rgb(255, 0, 27);
 
 //*header sticky (if we want to do it like it's done in an example)
 $background-image-sticky: linear-gradient(#ff001bb3, #000000b3);
