@@ -1,12 +1,9 @@
 .button {
-  width: 130px;
-  height: 44px;
-
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
 
-  padding: 6px 13px;
+  padding: 13px 36px;
 
   background-color: transparent;
   color: white; //placeholders
@@ -14,26 +11,16 @@
   border-radius: 5px;
 
   @media screen and (min-width: 768px) {
-    width: 152px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    width: 148px;
-    height: 42px;
+    padding: 13px 46px;
   }
 
   &--modal {
-    width: 110px;
-    height: 44px;
     color: black;
     border-color: black;
+    padding: 13px;
 
     @media screen and (min-width: 768px) {
-      width: 125px;
-    }
-
-    @media screen and (min-width: 1280px) {
-      width: 136px;
+      padding: 13px 10px;
     }
   }
 
