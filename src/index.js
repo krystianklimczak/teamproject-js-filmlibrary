@@ -1,2 +1,7 @@
 import './sass/main.scss';
-import { responseAxios } from './js/filmApi';
+import { axiosFirstFetchFn, axiosSecondFetchFn } from './js/filmApi';
+
+axiosFirstFetchFn();
+axiosSecondFetchFn();
+
+console.log(123);
