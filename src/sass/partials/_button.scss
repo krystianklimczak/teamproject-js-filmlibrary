@@ -22,24 +22,24 @@
     height: 42px;
   }
 
+  &--modal {
+    width: 110px;
+    height: 44px;
+    color: black;
+    border-color: black;
+
+    @media screen and (min-width: 768px) {
+      width: 125px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      width: 136px;
+    }
+  }
+
   &:hover,
   &:focus {
     background-color: #ff6b01;
     border-color: #ff6b01;
-  }
-}
-
-.modal__button {
-  width: 110px;
-  height: 44px;
-  color: black;
-  border-color: black;
-
-  @media screen and (min-width: 768px) {
-    width: 125px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    width: 136px;
   }
 }
