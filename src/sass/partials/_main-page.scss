@@ -50,11 +50,23 @@
     & > p {
       display: inline;
     }
-    & > .film-poster__title {
-      text-transform: uppercase;
-    }
   }
-
+  &__title {
+    text-transform: uppercase;
+  }
+  &__button {
+    position: relative;
+    margin-right: 3px;
+    float: right;
+    font-size: $font-size-large;
+    line-height: 0;
+    padding-left: 5px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border-color: $text-color-additional-primary;
+    background-color: $text-color-light;
+  }
   &__genre,
   &__year {
     color: $text-color-additional-primary;
