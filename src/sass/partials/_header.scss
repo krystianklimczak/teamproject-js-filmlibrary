@@ -1,0 +1,15 @@
+.header {
+  padding-top: 40px;
+  padding-bottom: 92px;
+  background-image: url(../images/main-background-mobile@x3.jpg);
+  @media screen and (min-width: 768px) {
+    background-image: url(../images/main-background-tablet@x3.jpg);
+  }
+  @media screen and (min-width: 1280px) {
+    background-image: url(../images/main-background-desktop@x3.jpg);
+  }
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: $website-main-color;
+}
