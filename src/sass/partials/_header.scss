@@ -1,0 +1,19 @@
+.top-things {
+  display: inline-flex;
+}
+
+.nav {
+  justify-content: space-between;
+}
+
+.home {
+  font-style: $font-primary;
+  font-size: $font-size-small;
+  color: $text-color-light;
+}
+
+.my-library {
+  font-style: $font-primary;
+  font-size: $font-size-small;
+  color: $text-color-light;
+}
