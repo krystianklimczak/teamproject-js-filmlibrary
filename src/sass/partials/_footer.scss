@@ -1,10 +1,15 @@
 .footer {
-  background-color: rgba(247, 247, 247, 0.95); //lite green
-  color: rgb(84, 84, 84); //dark green
+  background-color: rgba(247, 247, 247, 1); //lite grey
+  color: rgb(84, 84, 84); //dark grey
   text-align: center;
-  padding: 10px;
-  position: sticky;
-  bottom: 0;
+  padding: 30px;
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    background-color: rgba(247, 247, 247, 0.95); //lite grey
+    padding: 10px;
+    position: sticky;
+    bottom: 0;
+  }
 }
 
 .footer__container {
@@ -25,7 +30,8 @@
 }
 
 .heart-icon {
-  color: rgb(255, 107, 8); //orange
+  color: $text-color-additional-primary; //orange
+  fill: $text-color-additional-primary; //orange for svg
 }
 
 .students {
