@@ -4,7 +4,7 @@ const mainContainer = document.querySelector('.main-section');
 let allGenres = [];
 
 fetchGenres()
-  .then(data => allGenres.push(data))
+  .then(data => allGenres.push(...data))
   .catch(error => console.log(error));
 
 //Function for drawing first 20 popular films
@@ -13,19 +13,18 @@ export async function makeFilmsBox() {
   const data = await axiosSecondFetchFn()
     .then(data => {
       drawFilmBox(data.results);
-      console.log(data.results);
     })
     .catch(error => console.log(error.message));
 }
 
-function drawFilmBox(films) {
+export function drawFilmBox(films) {
   films.forEach(film => {
     //We need to add link that brings us to modal window if we press .main__photo-card
 
     let genreList = [];
 
     for (const id of film.genre_ids) {
-      allGenres[0].map(element => {
+      allGenres.map(element => {
         if (element.id === id) {
           genreList.push(element.name);
         }
