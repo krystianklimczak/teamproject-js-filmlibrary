@@ -32,18 +32,18 @@ function drawFilmBox(films) {
       });
     }
 
-    const filmBox = `<div class="main__photo-card data-id="${film.id}">
-          <img class="main__photo-image" src="https://image.tmdb.org/t/p/original${
+    const filmBox = `<div class="film-poster data-id="${film.id}">
+          <img class="film-poster__photo" src="https://image.tmdb.org/t/p/original${
             film.poster_path
           }" alt="${film.title}" loading="lazy"/>
-          <div class="main__photo-description">
-            <p class="main__photo-title">
+          <div class="film-poster__description">
+            <p class="film-poster__title">
               <b>${film.title}</b>
-            </p><button class="main__button-trailer" type="button">Trailer</button><br />
-            <p class="main__photo-genre">
+            </p><button class="film-poster__button" type="button">Trailer</button><br />
+            <p class="film-poster__genre">
               <b>${genreList.join(', ')} | </b>
             </p>
-            <p class="main__photo-year">
+            <p class="film-poster__year">
               <b>${film.release_date.substring(0, 4)}</b>
             </p>
           </div>
