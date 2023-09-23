@@ -1,12 +1,21 @@
-<section class="header" id="header">
-  <div class="container">
-    <div class="top-things">
-      <div class="logo"></div>
-      <div class="nav"></div>
-    </div>
+<section class="header container" id="header">
+  <div class="top-things">
+    <span>
+      <a class="logo" href="./index.html">
+        <svg width="24" height="24" class="logo__svg">
+          <use href="./images/svg/symbol-defs.svg#icon-film"></use>
+        </svg>
+        <p>FILMOTEKA</p>
+      </a>
+    </span>
+    <ul class="navbar">
+      <li><a class="home" href="./index.html">HOME</a></li>
+      <li><a class="my-library active" href="./my_library.html">MY LIBRARY</a></li>
+    </ul>
+  </div>
     <div class="videos">
-      <div class="videos_watched"></div>
-      <div class="videos_queue"></div>
+      <button class="videos_watched"></button>
+      <button class="videos_queue"></button>
     </div>
   </div>
 </section>

@@ -1,12 +1,24 @@
-<section class="header" id="header">
-  <div class="container">
-    <div class="top-things">
-      <div class="logo"><a class="" href=""></a></div>
-      <ul class="nav">
-        <li><a class="home" href="./header_home.html">HOME</a></li>
-        <li><a class="my-library" href="./header_library.html">MY LIBRARY</a></li>
-      </ul>
-    </div>
+<section class="header container" id="header">
+  <div class="top-things">
+    <span>
+      <a class="logo" href="./index.html">
+        <svg width="24" height="24" class="logo__svg">
+          <use href="./images/svg/symbol-defs.svg#icon-film"></use>
+        </svg>
+        <p>FILMOTEKA</p>
+      </a>
+    </span>
+    <ul class="navbar">
+      <li><a class="home active" href="./index.html">HOME</a></li>
+      <li><a class="my-library" href="./my_library.html">MY LIBRARY</a></li>
+    </ul>
   </div>
-  <div class="search"></div>
+  <form name="search" class="search">
+    <label class="search__label">
+      <input type="text" placeholder="Search Your Movie" name="movie" class="search__input" />
+      <svg width="12" height="12" class="search__svg">
+        <use href="./images/svg/symbol-defs.svg#icon-search-2"></use>
+      </svg>
+    </label>
+  </form>
 </section>
