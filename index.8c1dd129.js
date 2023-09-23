@@ -486,16 +486,17 @@ const{Axios:el,AxiosError:ec,CanceledError:eh,isCancel:ep,CancelToken:ed,VERSION
 let e=[];for(let r of t.genre_ids)ex.map(t=>{t.id===r&&e.push(t.name)});let r=`<div class="film-poster" data-id="${t.id}">
           <img class="film-poster__photo" src="https://image.tmdb.org/t/p/original${t.poster_path}" alt="${t.title}" loading="lazy"/>
           <div class="film-poster__description">
+          <button class="film-poster__button" type="button">▶</button>
             <p class="film-poster__title">
-              <b>${t.title}</b>
-            </p><button class="film-poster__button" type="button">Trailer</button><br />
+              ${t.title}
+            </p><br />
             <p class="film-poster__genre">
-              <b>${e.join(", ")} | </b>
+              ${e.join(", ")} |
             </p>
             <p class="film-poster__year">
-              <b>${t.release_date.substring(0,4)}</b>
+              ${t.release_date.substring(0,4)}
             </p>
           </div>
-        </div>`;eC.insertAdjacentHTML("beforeend",r)})}(t.results)}).catch(t=>console.log(t.message))}eB().then(t=>ex.push(...t)).catch(t=>console.log(t)),ej();//# sourceMappingURL=index.0e3c8ef5.js.map
+        </div>`;eC.insertAdjacentHTML("beforeend",r)})}(t.results)}).catch(t=>console.log(t.message))}eB().then(t=>ex.push(...t)).catch(t=>console.log(t)),ej();//# sourceMappingURL=index.8c1dd129.js.map
 
-//# sourceMappingURL=index.0e3c8ef5.js.map
+//# sourceMappingURL=index.8c1dd129.js.map
