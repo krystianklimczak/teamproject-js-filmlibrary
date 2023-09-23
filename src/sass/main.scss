@@ -1,10 +1,5 @@
-/*
- * Główny plik dla stylów.
- * Wszystkie partials podłączamy tutaj.
- */
-
-// Style dla pliku z przykładem HTML fragmentu
 @use './partials/variables' as *;
 @import './partials/commons';
 @import './partials/container';
 @import './partials/header';
+@import './partials/library';
