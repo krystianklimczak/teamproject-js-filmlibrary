@@ -1,0 +1,65 @@
+.main-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  @media screen and (min-width: $breakpoint-tablet) {
+    justify-content: space-between;
+    gap: 32px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    gap: 16px;
+  }
+}
+
+.film-poster {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    flex-basis: calc((100% - 32px) / 2);
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    max-width: 395px;
+    flex-basis: calc((100% - 32px) / 3);
+    padding-bottom: 16px;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+  }
+}
+
+.film-poster__photo {
+  border-radius: 5px;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+
+  @media screen and (min-width: $breakpoint-desktop) {
+    width: 395px;
+  }
+}
+
+.film-poster__description {
+  font-size: $font-size-small;
+  line-height: 1.4;
+  margin-top: 10px;
+  @media screen and (min-width: $breakpoint-desktop) {
+    font-size: $font-size-medium;
+  }
+  & > p {
+    display: inline-block;
+  }
+  & > .film-poster__title {
+    text-transform: uppercase;
+    padding-bottom: 5px;
+  }
+}
+
+.film-poster__genre,
+.film-poster__year {
+  color: $text-color-additional-primary;
+}
