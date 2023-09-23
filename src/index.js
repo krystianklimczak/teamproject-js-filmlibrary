@@ -1,2 +1,4 @@
 import './sass/main.scss';
-import { responseAxios } from './js/filmApi';
+import { makeFilmsBox } from './js/main';
+
+makeFilmsBox();
