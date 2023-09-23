@@ -50,7 +50,7 @@ export const fetchGenres = async () => {
         api_key: API_KEY,
       },
     });
-    const genres = response.data.genres;
+    const genres = await response.data.genres;
     return genres;
   } catch (error) {
     console.error(error.message);

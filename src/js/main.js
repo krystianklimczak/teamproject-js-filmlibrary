@@ -1,6 +1,6 @@
 import { axiosSecondFetchFn, fetchGenres } from './filmApi';
 
-const mainContainer = document.querySelector('.main__section');
+const mainContainer = document.querySelector('.main-section');
 let allGenres = [];
 
 fetchGenres()
@@ -32,7 +32,7 @@ function drawFilmBox(films) {
       });
     }
 
-    const filmBox = `<div class="film-poster data-id="${film.id}">
+    const filmBox = `<div class="film-poster" data-id="${film.id}">
           <img class="film-poster__photo" src="https://image.tmdb.org/t/p/original${
             film.poster_path
           }" alt="${film.title}" loading="lazy"/>
