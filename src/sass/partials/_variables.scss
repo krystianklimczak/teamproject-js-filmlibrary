@@ -38,3 +38,11 @@ $background-image-sticky: linear-gradient(#ff001bb3, #000000b3);
 $breakpoint-mobile: 480px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1280px;
+
+//transition
+@mixin transition-properties($transition-property) {
+  transition-property: $transition-property;
+  transition-duration: 400ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0s;
+}
