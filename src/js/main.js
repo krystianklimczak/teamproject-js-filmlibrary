@@ -36,14 +36,15 @@ export function drawFilmBox(films) {
             film.poster_path
           }" alt="${film.title}" loading="lazy"/>
           <div class="film-poster__description">
+          <button class="film-poster__button" type="button">▶</button>
             <p class="film-poster__title">
-              <b>${film.title}</b>
-            </p><button class="film-poster__button" type="button">Trailer</button><br />
+              ${film.title}
+            </p><br />
             <p class="film-poster__genre">
-              <b>${genreList.join(', ')} | </b>
+              ${genreList.join(', ')} |
             </p>
             <p class="film-poster__year">
-              <b>${film.release_date.substring(0, 4)}</b>
+              ${film.release_date.substring(0, 4)}
             </p>
           </div>
         </div>`;
