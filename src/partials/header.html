@@ -1,16 +1,24 @@
 <header class="header container">
-  <a href="#" class="logo">
-    <svg width="24" height="24">
-      <use href="./images/symbol-defs.svg#icon-film"></use>
-    </svg>
-  </a>
-  <nav>
-    <ul>
-      <li><a href="#">home</a></li>
-      <li><a href="">my library</a></li>
-    </ul>
-  </nav>
-  <form name="search">
-    <input type="text" placeholder="Movie search" name="movie" />
+  <div>
+    <a href="#" class="logo">
+      <svg width="24" height="24" class="logo__svg">
+        <use href="./images/symbol-defs.svg#icon-film"></use>
+      </svg>
+      <p>Filmoteka</p>
+    </a>
+    <nav class="navigation">
+      <ul class="navigation__list">
+        <li class="navigation__item is-active"><a href="#">home</a></li>
+        <li class="navigation__item"><a href="#">my library</a></li>
+      </ul>
+    </nav>
+  </div>
+  <form name="search" class="search-form">
+    <label class="search-form__label">
+      <input type="text" placeholder="Movie search" name="movie" class="search-form__input" />
+      <svg width="12" height="12" class="search-form__svg">
+        <use href="./images/symbol-defs.svg#icon-search"></use>
+      </svg>
+    </label>
   </form>
 </header>

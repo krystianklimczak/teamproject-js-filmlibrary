@@ -12,4 +12,105 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: $website-main-color;
+  & div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  display: flex;
+  flex-direction: column;
+  gap: 54px;
+}
+
+.logo {
+  fill: $text-color-light;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  & p {
+    color: #fff;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    display: none;
+
+    @media screen and (min-width: 768px) {
+      display: block;
+    }
+  }
+  &:hover,
+  :focus {
+    fill: $website-main-color;
+    & p {
+      color: $website-main-color;
+    }
+  }
+}
+
+.navigation {
+  &__list {
+    display: flex;
+    gap: 40px;
+    text-transform: uppercase;
+    color: $text-color-light;
+    font-family: Roboto;
+    font-size: $font-size-small;
+    font-weight: $font-weight-medium;
+    & a {
+      color: $text-color-light;
+      &:hover,
+      :focus {
+        color: $website-main-color;
+      }
+    }
+  }
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  &__label {
+    max-width: 336px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $text-color-light;
+  }
+  &__svg {
+    fill: $text-color-light;
+    cursor: pointer;
+  }
+  &__input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    padding-bottom: 1px;
+    padding-left: 1px;
+    color: $text-color-light;
+    &::placeholder {
+      color: $text-color-light;
+    }
+    &:focus,
+    :active {
+      outline: none;
+    }
+  }
+}
+
+.is-active {
+  position: relative;
+  &::after {
+    content: '';
+    background-color: red;
+    width: 100%;
+    height: 3px;
+    display: inline-block;
+    position: absolute;
+    bottom: -2;
+    left: 0;
+  }
 }
