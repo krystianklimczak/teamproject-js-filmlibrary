@@ -7,13 +7,21 @@
   @media screen and (min-width: 1280px) {
     background-image: url(/src/images/background/Background_desktop@3x.jpg);
   }
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding-top: 40px;
   padding-bottom: 92px;
 }
 
 .top-things {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding-left: 32px;
   padding-right: 32px;
   padding-top: 40px;
@@ -36,8 +44,10 @@
     color: #fff;
   }
 }
-.nav {
+.navbar {
   justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .home {
