@@ -1,6 +1,13 @@
 .header {
   background-color: black;
-
+  background-image: url(/src/images/background/Background_mobile@3x.jpg);
+  @media screen and (min-width: 768px) {
+    background-image: url(/src/images/background/Background_tablet@3x.jpg);
+  }
+  @media screen and (min-width: 1280px) {
+    background-image: url(/src/images/background/Background_desktop@3x.jpg);
+  }
+  display: flex;
   padding-top: 40px;
   padding-bottom: 92px;
 }
@@ -41,4 +48,11 @@
 .my-library {
   font-size: $font-size-small;
   color: white;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
