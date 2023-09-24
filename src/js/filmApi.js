@@ -56,3 +56,18 @@ export const fetchGenres = async () => {
     console.error(error.message);
   }
 };
+
+export const fetchTrailers = async id => {
+  try {
+    const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos`, {
+      params: {
+        api_key: API_KEY,
+      },
+    });
+    const trailer = response.data.results[0].key;
+    // console.log(trailer);
+    return trailer;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
