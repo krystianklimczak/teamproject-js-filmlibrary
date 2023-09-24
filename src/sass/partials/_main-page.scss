@@ -1,0 +1,78 @@
+.main-section {
+  font-family: $font-primary;
+  font-weight: $font-weight-medium;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  @media screen and (min-width: $breakpoint-tablet) {
+    justify-content: left;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    gap: 16px;
+  }
+}
+
+.film-poster {
+  display: flex;
+  flex-direction: column;
+  @include transition-properties(transform);
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    flex-basis: calc((100% - 32px) / 2);
+  }
+
+  @media screen and (min-width: $breakpoint-desktop) {
+    flex-basis: calc((100% - 32px) / 3);
+    padding-bottom: 16px;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.016);
+    }
+  }
+
+  &__photo {
+    border-radius: 5px;
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+  }
+
+  &__description {
+    font-size: $font-size-small;
+    margin-top: 10px;
+    @media screen and (min-width: $breakpoint-desktop) {
+      font-size: $font-size-medium;
+    }
+    & > p {
+      display: inline;
+    }
+  }
+  &__title {
+    text-transform: uppercase;
+  }
+  &__button {
+    top: -4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-right: 3px;
+    float: right;
+    font-size: $font-size-large;
+    line-height: 0;
+    padding-left: 6px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border-color: $text-color-additional-primary;
+    background-color: $text-color-light;
+  }
+  &__genre,
+  &__year {
+    color: $text-color-additional-primary;
+  }
+}
