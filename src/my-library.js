@@ -22,11 +22,14 @@ form.classList.add('is-hidden');
 
 for (const btn of libraryBtns) {
   btn.classList.toggle('is-hidden');
-}
-
-for (const btn of libraryBtns) {
   btn.addEventListener('click', e => {
-    const classArray = e.target.classList;
-    btn.classList.toggle('library__button--current');
+    const arrayL = [...e.target.classList];
+    const check = arrayL.some(el => el === 'library__button--current');
+    if (check) {
+      return;
+    } else {
+      watched.classList.toggle('library__button--current');
+      queue.classList.toggle('library__button--current');
+    }
   });
 }
