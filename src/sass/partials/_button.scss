@@ -1,32 +1,32 @@
 .button {
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 16px;
+  font-size: $font-size-small;
+  font-weight: $font-weight-medium;
+  line-height: 1.5;
 
   padding: 13px 36px;
 
   background-color: transparent;
-  color: white; //placeholders
-  border: 1px solid white;
+  color: $text-color-light;
+  border: 1px solid $text-color-light;
   border-radius: 5px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $breakpoint-tablet) {
     padding: 13px 46px;
   }
 
   &--modal {
-    color: black;
-    border-color: black;
+    color: $text-color-dark;
+    border-color: $text-color-dark;
     padding: 13px;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: $breakpoint-tablet) {
       padding: 13px 10px;
     }
   }
 
   &:hover,
   &:focus {
-    background-color: #ff6b01;
-    border-color: #ff6b01;
+    background-color: $hover-color-primary;
+    border-color: $hover-color-primary;
   }
 }
