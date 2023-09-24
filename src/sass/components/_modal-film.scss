@@ -9,11 +9,11 @@
   visibility: hidden;
   transition: 0.3s all;
   z-index: 99;
-}
 
-.backdrop-modal-film:active {
-  opacity: 1;
-  visibility: visible;
+  &:active {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .modal-film {
@@ -29,81 +29,80 @@
   background-color: #fafafa;
   font-weight: 500;
   line-height: 1.33;
-  /* opacity: 0; */
-  /* visibility: hidden; */
+  opacity: 0;
+  visibility: hidden;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   transform: translate(-50%, -50%);
   z-index: 100;
-}
 
-.modal-film:active {
-  opacity: 1;
-  visibility: visible;
-}
-
-@media screen and (min-width: 768px) {
-  .modal-film {
-    width: 704px;
-    padding: 40px 36px;
+  &:active {
+    opacity: 1;
+    visibility: visible;
   }
-}
 
-@media screen and (min-width: 1280px) {
-  .modal-film {
-    width: 806px;
-    padding: 40px 12px;
+  @media screen and (min-width: 768px) {
+    .modal-film {
+      width: 704px;
+      padding: 40px 36px;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .modal-film {
+      width: 806px;
+      padding: 40px 12px;
+    }
   }
 }
 
 .modal-film__btn-close {
-  /* make it a mixin? */
+  // make it a mixin?
   display: flex;
   align-items: center;
   justify-content: center;
-  /* end "mixin" */
+  // end "mixin"
   position: absolute;
   top: 0;
   right: 0;
   padding: 8px;
-  /* margin-left: auto; */
+  // margin-left: auto;
   margin: 8px;
-  /* border: none; */
+  // border: none;
   background-color: transparent;
 }
 
 .modal-film__btn-close-icon {
   fill: #000;
-  /* transform: translateY(4px) scale(0.98); */
+  // transform: translateY(4px) scale(0.98);
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.modal-film__btn-close-icon:hover,
-.modal-film__btn-close-icon:focus {
-  fill: #ff6b01;
+  &:hover,
+  &:focus {
+    fill: #ff6b01;
+  }
 }
 
 .modal-film__btns {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
 
-@media screen and (min-width: 768px) {
-  .modal-film__btns {
-    justify-content: center;
-    gap: 20px;
-    position: absolute;
-    right: 0;
-    width: 337px;
-    transform: translateY(-100%);
+  @media screen and (min-width: 768px) {
+    .modal-film__btns {
+      justify-content: center;
+      gap: 20px;
+      position: absolute;
+      right: 0;
+      width: 337px;
+      transform: translateY(-100%);
+    }
   }
-}
 
-@media screen and (min-width: 1280px) {
-  .modal-film__btns {
-    gap: 15px;
-    width: 397px;
+  @media screen and (min-width: 1280px) {
+    .modal-film__btns {
+      gap: 15px;
+      width: 397px;
+    }
   }
 }
 
