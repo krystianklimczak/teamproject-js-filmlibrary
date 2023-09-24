@@ -122,27 +122,25 @@
   background-color: inherit;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1),
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-@media screen and (min-width: 768) {
-  .modal-film__btns-addToWatched,
-  .modal-film__btns-addToQueue {
-    width: 125px;
+  &:hover,
+  &:focus {
+    color: #fff;
+    border: none;
+    background-color: #ff6b01;
   }
-}
 
-@media screen and (min-width: 1280px) {
-  .modal-film__btns-addToWatched,
-  .modal-film__btns-addToQueue {
-    width: 136px;
+  @media screen and (min-width: 768) {
+    .modal-film__btns-addToWatched,
+    .modal-film__btns-addToQueue {
+      width: 125px;
+    }
   }
-}
 
-.modal-film__btns-addToWatched:hover,
-.modal-film__btns-addToQueue:hover,
-.modal-film__btns-addToWatched:focus,
-.modal-film__btns-addToQueue:focus {
-  color: #fff;
-  border: none;
-  background-color: #ff6b01;
+  @media screen and (min-width: 1280px) {
+    .modal-film__btns-addToWatched,
+    .modal-film__btns-addToQueue {
+      width: 136px;
+    }
+  }
 }
