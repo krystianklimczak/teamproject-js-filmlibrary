@@ -15,3 +15,6 @@ if (library.innerHTML === '') {
 const header = document.querySelector('.header');
 
 header.classList.toggle('header-library');
+
+const form = document.querySelector('.search-form');
+form.classList.add('is-hidden');
