@@ -2,6 +2,7 @@ import { mainContainer, drawFilmBox } from './main';
 import axios from 'axios';
 
 let currentPage = document.querySelector('.current-page');
+
 const twoPagesBack = document.querySelector('.two-pages--back');
 const pageBack = document.querySelector('.page--back');
 const pageNext = document.querySelector('.page--next');
@@ -16,28 +17,33 @@ currentPage.innerHTML = chosenPage;
 
 pageNext.addEventListener('click', () => {
   chosenPage++;
+  // console.log(chosenPage);
   currentPage = chosenPage;
-  makeFilmsBoxByPage();
+  makeFilmsBoxByPage(chosenPage);
 });
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/movie/popular';
 axios.defaults.params = {
   api_key: '95f474a01cc4252905d63c7d958d5749',
   language: 'en-US',
-  page: chosenPage,
 };
 
-const axiosFirstFetchFn = async () => {
+const axiosFirstFetchFn = async (page = '1') => {
+  const searchParams = new URLSearchParams({
+    page,
+  });
   try {
-    const response = await axios.get();
-    return response.data;
+    const response = await axios.get(`?${searchParams}`);
+    const data = await response.data;
+    console.log(data);
+    return data;
   } catch (error) {
     console.log(error);
   }
 };
 
-async function makeFilmsBoxByPage() {
-  const data = await axiosFirstFetchFn()
+async function makeFilmsBoxByPage(currentPage) {
+  const data = await axiosFirstFetchFn(currentPage)
     .then(data => {
       drawFilmBox(data.results);
     })
