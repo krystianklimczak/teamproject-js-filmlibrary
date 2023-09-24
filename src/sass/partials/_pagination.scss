@@ -1,0 +1,35 @@
+.pagination-section {
+  //display: none;
+  display: flex;
+  justify-content: center;
+  @media screen and (min-width: $breakpoint-desktop) {
+    display: flex;
+  }
+  & > button {
+    padding-left: 2px;
+    padding-right: 2px;
+    border: none;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: $text-color-light;
+    &:hover {
+      background-color: $text-color-additional-primary;
+    }
+    &:first-child,
+    &:last-child {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding-top: 3px;
+      background-color: $background-color-footer;
+    }
+    &:hover {
+      background-color: $text-color-additional-primary;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
