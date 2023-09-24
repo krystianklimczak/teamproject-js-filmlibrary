@@ -1,0 +1,28 @@
+.trailer-btn {
+  position: fixed;
+  top: 25%;
+  left: 42%;
+  cursor: pointer;
+}
+
+.trailer-btn__play {
+  width: 60px;
+  height: 60px;
+  fill: #fff;
+  opacity: 0.4;
+  transition: 0.3s linear;
+}
+
+.trailer-btn__play:hover,
+.trailer-btn__play:focus {
+  opacity: 0.8;
+}
+
+@media screen and (min-width: 768px) {
+  .trailer-btn {
+    top: 40%;
+    left: 19%;
+    width: 70px;
+    height: 70px;
+  }
+}
