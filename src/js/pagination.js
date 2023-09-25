@@ -81,6 +81,7 @@ export function pushPagination() {
     pageBack.classList.add('hidden');
     pageNext.classList.add('hidden');
     twoPagesNext.classList.add('hidden');
+    arrowLeft.classList.add('hidden');
   }
 
   if (currentPage === 2) {
