@@ -1,37 +1,40 @@
 .footer {
-  background-color: rgba(247, 247, 247, 1); //lite grey
-  color: rgb(84, 84, 84); //dark grey
+  font-family: $font-primary;
+  font-size: $font-size-footer-mobile;
+  font-weight: $font-weight-regular;
+  background-color: $footer-color-background; //#F7F7F7
+  color: $text-color-additional-secondary; //#545454
   text-align: center;
-  padding: 30px;
+  opacity: 0.95;
+  padding: 10px;
+  position: sticky;
+  bottom: 0;
+  display: flex;
 
-  @media screen and (max-width: $breakpoint-mobile) {
-    background-color: rgba(247, 247, 247, 0.95); //lite grey
-    padding: 10px;
-    position: sticky;
-    bottom: 0;
+  @media screen and (min-width: $breakpoint-tablet) {
+    font-size: $font-size-footer;
+    opacity: 1;
+    padding: 30px;
+    position: relative;
+    bottom: auto;
   }
 }
 
-.footer__container {
+.footer > p {
   margin: 0 auto;
   text-align: center;
+  display: inline-block;
+  align-items: center;
 }
 
-.footer__copyright {
-}
-
-.footer__developed {
-}
-
-.developed {
-}
-
-.footer__heart-icon {
+.footer__button {
+  border: 0;
+  border-bottom: 1px solid $text-color-additional-secondary;
+  margin-left: 5px;
 }
 
 .heart-icon {
-  color: $text-color-additional-primary; //orange
-  fill: $text-color-additional-primary; //orange for svg
+  fill: $text-color-additional-primary; // #FF6B08
 }
 
 .students {
