@@ -1,8 +1,8 @@
 import { axiosSecondFetchFn, fetchGenres } from './filmApi';
 import { getTrailerKey, showTrailer } from './trailer';
-//import { pagination, makeFilmsBoxByPage } from './pagination';
+import { pushPagination } from './pagination';
 
-const mainContainer = document.querySelector('.main-section');
+export const mainContainer = document.querySelector('.main-section');
 let allGenres = [];
 
 fetchGenres()
@@ -35,23 +35,6 @@ export function drawFilmBox(films) {
       });
     }
 
-    // const filmBox = `<div class="film-poster" data-id="${film.id}">
-    // <img class="film-poster__photo" src="https://image.tmdb.org/t/p/original${
-    //   film.poster_path
-    // }" alt="${film.title}" loading="lazy"/>
-    //       <div class="film-poster__description">
-    //       <button class="film-poster__button" type="button" value="${film.id}">▶</button>
-    // <p class="film-poster__title">
-    //   ${film.title}
-    // </p><br />
-    // <p class="film-poster__genre">
-    //   ${genreList.join(', ')} |
-    // </p>
-    // <p class="film-poster__year">
-    //   ${film.release_date.substring(0, 4)}
-    // </p>
-    //       </div>
-    //     </div>`;
     const filmPoster = document.createElement('div');
     filmPoster.classList.add('film-poster');
     filmPoster.setAttribute('value', film.id);
@@ -91,5 +74,5 @@ export function drawFilmBox(films) {
     posterArray.push(filmPoster);
   });
   mainContainer.append(...posterArray);
-  //pushPagination();
+  pushPagination();
 }

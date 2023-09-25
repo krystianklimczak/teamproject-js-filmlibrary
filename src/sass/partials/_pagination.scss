@@ -3,9 +3,6 @@
   font-size: $font-size-small;
   line-height: 1.4;
   display: none;
-  & > .page--last {
-    width: fit-content;
-  }
   @media screen and (min-width: $breakpoint-tablet) {
     display: flex;
     justify-content: center;
@@ -28,7 +25,6 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
-      padding-top: 3px;
       background-color: $background-color-footer;
     }
     &:hover,
@@ -48,4 +44,13 @@
 }
 .button--disabled:hover {
   background-color: $background-color-footer;
+}
+
+.arrow--left {
+  font-size: x-large;
+  align-items: center;
+}
+.arrow--right {
+  font-size: x-large;
+  align-items: center;
 }
