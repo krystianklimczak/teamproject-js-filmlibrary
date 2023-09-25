@@ -5,8 +5,8 @@
 }
 
 body {
-  font-family: 'Roboto'; //placeholder
-  color: black; //placeholder
+  font-family: $font-primary;
+  color: $text-color-dark;
 }
 
 a {
