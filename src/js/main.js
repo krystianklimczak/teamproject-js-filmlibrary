@@ -16,7 +16,7 @@ export async function makeFilmsBox() {
     .then(data => {
       drawFilmBox(data.results);
     })
-    .catch(error => console.log(error.message));
+    .catch(error => console.log(error));
 }
 
 export function drawFilmBox(films) {
@@ -87,7 +87,8 @@ export function drawFilmBox(films) {
           </div>
         </div>`,
     );
-    mainContainer.insertAdjacentHTML('beforeend', filmBox);
+    filmPoster.insertAdjacentElement('beforeend', filmPosterDescription);
+    posterArray.push(filmPoster);
   });
   mainContainer.append(...posterArray);
   //pushPagination();
