@@ -1,4 +1,5 @@
 import { axiosSecondFetchFn, fetchGenres } from './filmApi';
+//import { pagination, makeFilmsBoxByPage } from './pagination';
 
 const mainContainer = document.querySelector('.main-section');
 let allGenres = [];
@@ -18,6 +19,7 @@ export async function makeFilmsBox() {
 }
 
 export function drawFilmBox(films) {
+  mainContainer.innerHTML = '';
   films.forEach(film => {
     //We need to add link that brings us to modal window if we press .main__photo-card
 
@@ -30,8 +32,7 @@ export function drawFilmBox(films) {
         }
       });
     }
-
-    const filmBox = `<div class="film-poster" data-id="${film.id}">
+    filmBox = `<div class="film-poster" data-id="${film.id}">
           <img class="film-poster__photo" src="https://image.tmdb.org/t/p/original${
             film.poster_path
           }" alt="${film.title}" loading="lazy"/>
@@ -50,4 +51,8 @@ export function drawFilmBox(films) {
         </div>`;
     mainContainer.insertAdjacentHTML('beforeend', filmBox);
   });
+  //pushPagination();
 }
+// function pushPagination() {
+//   mainContainer.insertAdjacentHTML('beforeend', pagination);
+// }
