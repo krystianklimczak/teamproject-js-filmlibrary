@@ -1,21 +1,31 @@
-.videos {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+// .videos {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+//   &__watched {
+//     background-color: transparent;
+//     border-radius: 5px;
+//     width: 147px;
+//     height: 42px;
+//     padding-right: 8px;
+//     fill: $text-color-light;
+//   }
+//   &__queue {
+//     background-color: transparent;
+//     border-radius: 5px;
+//     width: 147px;
+//     height: 42px;
+//     padding-left: 8px;
+//   }
+// }
+.is-empty {
+  background-image: url(/src/images/others/empty-library.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.videos_watched {
-  background-color: transparent;
-  border-radius: 5px;
-  width: 147px;
-  height: 42px;
-  padding-right: 8px;
-}
-.videos_queue {
-  background-color: transparent;
-  border-radius: 5px;
-  width: 147px;
-  height: 42px;
-  padding-left: 8px;
-  color: black;
+.my-library {
+  width: 100%;
+  height: 100vw;
 }
