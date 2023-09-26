@@ -57,21 +57,21 @@
     text-transform: uppercase;
   }
   &__button {
-    top: -4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    margin-right: 3px;
     float: right;
-    font-size: $font-size-large;
-    line-height: 0;
-    padding-left: 6px;
     width: 35px;
     height: 35px;
-    border-radius: 50%;
-    border-color: $text-color-additional-primary;
     background-color: $text-color-light;
+    border-color: $text-color-additional-primary;
+    border-radius: 50%;
+    margin-right: 3px;
+    padding-left: 6px;
+    font-size: $font-size-large;
+    line-height: 0;
+    top: -4px;
+    position: relative;
   }
   &__genre,
   &__year {
