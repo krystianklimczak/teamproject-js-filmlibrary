@@ -1,3 +1,45 @@
+.hidden {
+  display: none; // please add this class to commons.scss
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  // opacity: 1;
+  z-index: 1000;
+}
+
+.close-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 10px;
+  right: 10px;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  // cursor: pointer;
+  outline: 1px solid green;
+  border: none;
+  background-color: #fff;
+  z-index: 2000;
+}
+
+.close-icon {
+  height: 30px;
+}
+
+.close-icon:focus,
+.close-icon:hover {
+  // color: $hover-color-primary;
+  fill: $hover-color-primary;
+}
+
 .footer {
   font-family: $font-primary;
   font-size: $font-size-footer-mobile;
@@ -33,6 +75,12 @@
   margin-left: 5px;
 }
 
+.footer__button:hover,
+.footer__button:focus {
+  color: $hover-color-primary;
+  border-bottom: 1px solid $hover-color-primary;
+}
+
 .heart-icon {
   fill: $text-color-additional-primary; // #FF6B08
 }
@@ -41,7 +89,4 @@
 }
 
 .footer__button {
-}
-
-.underline {
 }
