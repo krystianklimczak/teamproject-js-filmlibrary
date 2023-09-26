@@ -5,6 +5,8 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding-top: 32px;
+  padding-bottom: 32px;
   @media screen and (min-width: $breakpoint-tablet) {
     justify-content: left;
     flex-direction: row;
