@@ -2,6 +2,26 @@ import { drawFilmBox } from './main';
 import axios from 'axios';
 import { mainContainer } from './main';
 
+// FETCHING DATA FROM API FN
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/movie/popular';
+axios.defaults.params = {
+  api_key: '95f474a01cc4252905d63c7d958d5749',
+  language: 'en-US',
+};
+
+const axiosFirstFetchFn = async (page = '1') => {
+  const searchParams = new URLSearchParams({
+    page,
+  });
+  try {
+    const response = await axios.get(`?${searchParams}`);
+    const data = await response.data;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // PAGINATION STRING
 const pagination = `<div class="container pagination-section">
   <button class="arrow--left">
@@ -68,80 +88,79 @@ export function pushPagination() {
   });
 
   // CONDITIONS
-  if (currentPage === 1) {
-    pageFirst.classList.add('hidden');
-    dotsLeft.classList.add('hidden');
-    twoPagesBack.classList.add('hidden');
-    pageBack.classList.add('hidden');
-    pageNext.classList.add('hidden');
-    twoPagesNext.classList.add('hidden');
-    arrowLeft.classList.add('hidden');
-  }
 
-  if (currentPage === 2) {
-    currentPageBtn.innerHTML = `${currentPage}`;
-    dotsLeft.classList.add('hidden');
-    twoPagesBack.classList.add('hidden');
-    pageBack.classList.add('hidden');
-    pageNext.classList.add('hidden');
-    twoPagesNext.classList.add('hidden');
-    pageSecond.classList.add('hidden');
+  switch (currentPage) {
+    case 1:
+      pageFirst.classList.add('hidden');
+      dotsLeft.classList.add('hidden');
+      twoPagesBack.classList.add('hidden');
+      pageBack.classList.add('hidden');
+      pageNext.classList.add('hidden');
+      twoPagesNext.classList.add('hidden');
+      arrowLeft.classList.add('hidden');
+      break;
+    case 2:
+      currentPageBtn.innerHTML = `${currentPage}`;
+      dotsLeft.classList.add('hidden');
+      twoPagesBack.classList.add('hidden');
+      pageBack.classList.add('hidden');
+      pageNext.classList.add('hidden');
+      twoPagesNext.classList.add('hidden');
+      pageSecond.classList.add('hidden');
+      break;
+    case 3:
+      currentPageBtn.innerHTML = `${currentPage}`;
+      dotsLeft.classList.add('hidden');
+      twoPagesBack.classList.add('hidden');
+      pageBack.innerHTML = currentPage - 1;
+      pageNext.classList.add('hidden');
+      twoPagesNext.classList.add('hidden');
+      pageSecond.classList.add('hidden');
+      pageThird.classList.add('hidden');
+      break;
+    case 4:
+      currentPageBtn.innerHTML = `${currentPage}`;
+      dotsLeft.classList.add('hidden');
+      twoPagesBack.innerHTML = currentPage - 2;
+      pageBack.innerHTML = currentPage - 1;
+      pageNext.classList.add('hidden');
+      twoPagesNext.classList.add('hidden');
+      pageSecond.classList.add('hidden');
+      pageThird.classList.add('hidden');
+      pageFourth.classList.add('hidden');
+      break;
+    default:
+      currentPageBtn.innerHTML = `${currentPage}`;
+      twoPagesBack.innerHTML = currentPage - 2;
+      pageBack.innerHTML = currentPage - 1;
+      pageNext.innerHTML = currentPage + 1;
+      twoPagesNext.innerHTML = currentPage + 2;
+      pageSecond.classList.add('hidden');
+      pageThird.classList.add('hidden');
+      pageFourth.classList.add('hidden');
+      pageFifth.classList.add('hidden');
+      pageSixth.classList.add('hidden');
+      pageSeventh.classList.add('hidden');
   }
-
-  if (currentPage === 3) {
-    currentPageBtn.innerHTML = `${currentPage}`;
-    dotsLeft.classList.add('hidden');
-    twoPagesBack.classList.add('hidden');
-    pageBack.innerHTML = currentPage - 1;
-    pageNext.classList.add('hidden');
-    twoPagesNext.classList.add('hidden');
-    pageSecond.classList.add('hidden');
-    pageThird.classList.add('hidden');
-  }
-
-  if (currentPage === 4) {
-    currentPageBtn.innerHTML = `${currentPage}`;
-    dotsLeft.classList.add('hidden');
-    twoPagesBack.innerHTML = currentPage - 2;
-    pageBack.innerHTML = currentPage - 1;
-    pageNext.classList.add('hidden');
-    twoPagesNext.classList.add('hidden');
-    pageSecond.classList.add('hidden');
-    pageThird.classList.add('hidden');
-    pageFourth.classList.add('hidden');
-  }
-
-  if (currentPage >= 5) {
-    currentPageBtn.innerHTML = `${currentPage}`;
-    twoPagesBack.innerHTML = currentPage - 2;
-    pageBack.innerHTML = currentPage - 1;
-    pageNext.innerHTML = currentPage + 1;
-    twoPagesNext.innerHTML = currentPage + 2;
-    pageSecond.classList.add('hidden');
-    pageThird.classList.add('hidden');
-    pageFourth.classList.add('hidden');
-    pageFifth.classList.add('hidden');
-    pageSixth.classList.add('hidden');
-    pageSeventh.classList.add('hidden');
-  }
-  if (currentPage === 500) {
-    pageNext.classList.add('hidden');
-    twoPagesNext.classList.add('hidden');
-    pageLast.classList.add('hidden');
-    dotsRight.classList.add('hidden');
-    arrowRight.classList.add('hidden');
-  }
-  if (currentPage === 499) {
-    twoPagesNext.classList.add('hidden');
-    pageLast.classList.add('hidden');
-    dotsRight.classList.add('hidden');
-  }
-  if (currentPage === 498) {
-    pageLast.classList.add('hidden');
-    dotsRight.classList.add('hidden');
-  }
-  if (currentPage === 497) {
-    dotsRight.classList.add('hidden');
+  switch (currentPage) {
+    case 500:
+      pageNext.classList.add('hidden');
+      twoPagesNext.classList.add('hidden');
+      pageLast.classList.add('hidden');
+      dotsRight.classList.add('hidden');
+      arrowRight.classList.add('hidden');
+      break;
+    case 499:
+      twoPagesNext.classList.add('hidden');
+      pageLast.classList.add('hidden');
+      dotsRight.classList.add('hidden');
+      break;
+    case 498:
+      pageLast.classList.add('hidden');
+      dotsRight.classList.add('hidden');
+      break;
+    case 497:
+      dotsRight.classList.add('hidden');
   }
 
   // BUTTONS LISTENERS
@@ -202,201 +221,3 @@ export function pushPagination() {
     }
   });
 }
-
-// FETCHING DATA FROM API FN
-axios.defaults.baseURL = 'https://api.themoviedb.org/3/movie/popular';
-axios.defaults.params = {
-  api_key: '95f474a01cc4252905d63c7d958d5749',
-  language: 'en-US',
-};
-
-const axiosFirstFetchFn = async (page = '1') => {
-  const searchParams = new URLSearchParams({
-    page,
-  });
-  try {
-    const response = await axios.get(`?${searchParams}`);
-    const data = await response.data;
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-// export async function makeFilmsBoxByPage(currentPage) {
-//   const data = await axiosFirstFetchFn(currentPage)
-//     .then(data => {
-//       drawFilmBox(data.results);
-//       console.log(data);
-//       pageLast.innerHTML = data.total_pages;
-//     })
-//     .catch(error => console.log(error.message));
-// }
-
-// let chosenPage = 1;
-// let currentPage = document.querySelector('.current-page');
-
-// //pageSecond.classList.add('hidden');
-
-// //Drawing first page
-
-// if (chosenPage === 1) {
-//   makeFilmsBoxByPage(chosenPage);
-//   updatePagesNumber();
-// }
-
-// //Adding event listeners for pages width static numbers
-
-// pageFirst.addEventListener('click', () => {
-//   openByStaticPageNr(1);
-// });
-
-// pageSecond.addEventListener('click', () => {
-//   openByStaticPageNr(2);
-// });
-
-// pageFourth.addEventListener('click', () => {
-//   openByStaticPageNr(4);
-// });
-
-// pageFifth.addEventListener('click', () => {
-//   openByStaticPageNr(5);
-// });
-
-// pageSixth.addEventListener('click', () => {
-//   openByStaticPageNr(6);
-// });
-
-// pageSeventh.addEventListener('click', () => {
-//   openByStaticPageNr(7);
-// });
-
-// //Jumping 1 page back and forth
-
-// pageBack.addEventListener('click', callPrevPage);
-// pageNext.addEventListener('click', callNextPage);
-// arrowRight.addEventListener('click', callNextPage);
-// arrowLeft.addEventListener('click', callPrevPage);
-
-// //Jumping 2 pages back and forth
-
-// twoPagesNext.addEventListener('click', () => {
-//   chosenPage += 2;
-//   currentPage = chosenPage;
-//   updatePagesNumber();
-//   makeFilmsBoxByPage(chosenPage);
-// });
-
-// twoPagesBack.addEventListener('click', () => {
-//   chosenPage -= 2;
-//   currentPage = chosenPage;
-//   updatePagesNumber();
-//   makeFilmsBoxByPage(chosenPage);
-// });
-
-// //Jumping 3 pages back and forth
-
-// dotsLeft.addEventListener('click', () => {
-//   chosenPage -= 3;
-//   currentPage = chosenPage;
-//   updatePagesNumber();
-//   makeFilmsBoxByPage(chosenPage);
-// });
-// dotsRight.addEventListener('click', () => {
-//   chosenPage += 3;
-//   currentPage = chosenPage;
-//   updatePagesNumber();
-//   makeFilmsBoxByPage(chosenPage);
-// });
-
-// //Reusable functions
-
-// function openByStaticPageNr(number) {
-//   chosenPage = number;
-//   currentPage = chosenPage;
-//   makeFilmsBoxByPage(chosenPage);
-//   updatePagesNumber();
-// }
-// function updatePagesNumber() {
-//   dotsLeft.classList.add('hidden');
-//   pageFirst.classList.add('hidden');
-//   currentPageBtn.innerHTML = chosenPage;
-//   pageNext.innerHTML = chosenPage + 1;
-//   twoPagesNext.innerHTML = chosenPage + 2;
-//   pageBack.innerHTML = chosenPage - 1;
-//   twoPagesBack.innerHTML = chosenPage - 2;
-//   checkAndHidePageNr();
-// }
-// function callNextPage() {
-//   chosenPage += 1;
-//   currentPage = chosenPage;
-//   updatePagesNumber();
-//   makeFilmsBoxByPage(chosenPage);
-// }
-// function callPrevPage() {
-//   chosenPage -= 1;
-//   currentPage = chosenPage;
-//   updatePagesNumber();
-//   makeFilmsBoxByPage(chosenPage);
-// }
-// function checkAndHidePageNr() {
-//   if (chosenPage === 1) {
-//     pageSeventh.classList.remove('hidden');
-//     pageSixth.classList.remove('hidden');
-//     arrowLeft.classList.add('button--disabled');
-//     pageSecond.classList.add('hidden');
-//     twoPagesNext.classList.remove('hidden');
-//     pageFifth.classList.remove('hidden');
-//     pageFourth.classList.remove('hidden');
-//     arrowLeft.disabled = true;
-//     pageBack.classList.add('hidden');
-//     twoPagesBack.classList.add('hidden');
-//   } else {
-//     arrowLeft.disabled = false;
-//     pageBack.classList.remove('hidden');
-//   }
-//   if (chosenPage === 2) {
-//     pageSixth.classList.remove('hidden');
-//     pageFifth.classList.remove('hidden');
-//     pageFourth.classList.remove('hidden');
-//     twoPagesNext.classList.add('hidden');
-//     twoPagesBack.classList.add('hidden');
-//   }
-//   if (chosenPage === 3) {
-//     twoPagesNext.classList.remove('hidden');
-//     pageFifth.classList.add('hidden');
-//     pageFourth.classList.add('hidden');
-//     twoPagesBack.classList.remove('hidden');
-//     pageSixth.classList.remove('hidden');
-//   }
-//   if (chosenPage === 4) {
-//     pageSixth.classList.add('hidden');
-//     twoPagesNext.classList.remove('hidden');
-//     pageSeventh.classList.remove('hidden');
-//     pageSecond.classList.add('hidden');
-//     pageFifth.classList.add('hidden');
-//   }
-//   if (chosenPage >= 4) {
-//     pageFourth.classList.add('hidden');
-//     twoPagesBack.classList.remove('hidden');
-//     pageFirst.classList.remove('hidden');
-//   }
-//   if (chosenPage === 5) {
-//     pageFifth.classList.add('hidden');
-//     pageSeventh.classList.remove('hidden');
-//     twoPagesNext.classList.add('hidden');
-//     pageSecond.classList.remove('hidden');
-//     pageSixth.classList.add('hidden');
-//   } else {
-//     pageSecond.classList.add('hidden');
-//   }
-//   if (chosenPage >= 6) {
-//     dotsLeft.classList.remove('hidden');
-//     pageFirst.classList.remove('hidden');
-//     twoPagesNext.classList.remove('hidden');
-//     pageSeventh.classList.add('hidden');
-//     twoPagesBack.classList.remove('hidden');
-//     pageSixth.classList.add('hidden');
-//     pageFifth.classList.add('hidden');
-//   }
-// }
