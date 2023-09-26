@@ -53,7 +53,8 @@ let currentPage = 1;
 // UPDATE PAGES HANDLER
 async function updatePages() {
   const array = await axiosFirstFetchFn(currentPage);
-  drawFilmBox(array.results);
+  const results = await array.results;
+  drawFilmBox(results);
 }
 
 // MAIN PAGINATION FN
