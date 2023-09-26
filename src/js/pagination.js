@@ -129,6 +129,21 @@ export function pushPagination() {
       pageThird.classList.add('hidden');
       pageFourth.classList.add('hidden');
       break;
+    case 500:
+      pageNext.classList.add('hidden');
+      twoPagesNext.classList.add('hidden');
+      pageLast.classList.add('hidden');
+      dotsRight.classList.add('hidden');
+      arrowRight.classList.add('hidden');
+    case 499:
+      twoPagesNext.classList.add('hidden');
+      pageLast.classList.add('hidden');
+      dotsRight.classList.add('hidden');
+    case 498:
+      pageLast.classList.add('hidden');
+      dotsRight.classList.add('hidden');
+    case 497:
+      dotsRight.classList.add('hidden');
     default:
       currentPageBtn.innerHTML = `${currentPage}`;
       twoPagesBack.innerHTML = currentPage - 2;
@@ -141,26 +156,6 @@ export function pushPagination() {
       pageFifth.classList.add('hidden');
       pageSixth.classList.add('hidden');
       pageSeventh.classList.add('hidden');
-  }
-  switch (currentPage) {
-    case 500:
-      pageNext.classList.add('hidden');
-      twoPagesNext.classList.add('hidden');
-      pageLast.classList.add('hidden');
-      dotsRight.classList.add('hidden');
-      arrowRight.classList.add('hidden');
-      break;
-    case 499:
-      twoPagesNext.classList.add('hidden');
-      pageLast.classList.add('hidden');
-      dotsRight.classList.add('hidden');
-      break;
-    case 498:
-      pageLast.classList.add('hidden');
-      dotsRight.classList.add('hidden');
-      break;
-    case 497:
-      dotsRight.classList.add('hidden');
   }
 
   // BUTTONS LISTENERS
