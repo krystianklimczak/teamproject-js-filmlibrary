@@ -1,8 +1,10 @@
-@use './partials/variables' as *;
-@import './partials/commons';
-@import './partials/container';
+@import './partials/_variables';
 @import './partials/_button';
+@import './partials/_commons';
+@import './partials/_container';
 @import './partials/header';
 @import './partials/library';
 @import './partials/_main-page';
+@import './partials/_pagination';
 @import './partials/_modal-trailer';
+@import './partials/_footer';

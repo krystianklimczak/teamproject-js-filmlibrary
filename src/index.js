@@ -1,4 +1,5 @@
 import './sass/main.scss';
-import { makeFilmsBox } from './js/main';
+import { makeFilmsBox, makeFilmsBoxByPage } from './js/main';
 
 makeFilmsBox();
+// makeFilmsBoxByPage();

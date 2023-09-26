@@ -1,26 +1,42 @@
-import { fetchTrailers } from './filmApi';
+import { fetchTrailer } from './filmApi';
 
-const main = document.querySelector('.main-section');
-main.addEventListener('click', e => {
-  if (e.target.type === 'button') {
-    fetchTrailers(e.target.value)
-      .then(key => openModalByKey(key))
-      .catch(error => console.log(error));
+export async function getTrailerKey(id) {
+  try {
+    const response = await fetchTrailer(id);
+    const trailerKey = await response.data.results[0].key;
+
+    return trailerKey;
+  } catch (error) {
+    console.log(error);
   }
-});
-const modalBox = document.querySelector('.modal-trailer');
+}
+const backdrop = document.querySelector('.modal-backdrop');
 
-function openModalByKey(key) {
-  modalBox.innerHTML = '';
-  const text = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
-  modalBox.insertAdjacentHTML('beforeend', text);
-  modalBox.classList.remove('is-hidden');
-  window.addEventListener('keydown', escape);
+export function showTrailer(key) {
+  // `<iframe width="560" height="315" src="https://www.youtube.com/embed/${key}?si=NP4x3PPUZd7lNCFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
+  const trailer = document.createElement('div');
+  trailer.classList.add('modal-trailer');
+  trailer.insertAdjacentHTML(
+    'afterbegin',
+    `<iframe class="modal-trailer__iframe" src="https://www.youtube.com/embed/${key}?si=NP4x3PPUZd7lNCFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
+  );
+  backdrop.innerHTML = '';
+  backdrop.insertAdjacentElement('afterbegin', trailer);
+  backdrop.classList.remove('is-hidden');
+  document.body.style.overflow = 'hidden';
+  backdrop.addEventListener('click', () => {
+    backdrop.classList.add('is-hidden');
+    backdrop.innerHTML = '';
+    document.body.style.overflow = 'auto';
+  });
+  document.addEventListener('keydown', handler);
 }
 
-function escape(e) {
-  if ((e.key = 'Escape')) {
-    modalBox.classList.add('is-hidden');
-    modalBox.innerHTML = '';
+function handler(e) {
+  if (e.key === 'Escape') {
+    backdrop.classList.add('is-hidden');
+    backdrop.innerHTML = '';
+    document.removeEventListener('keydown', handler);
+    document.body.style.overflow = 'auto';
   }
 }

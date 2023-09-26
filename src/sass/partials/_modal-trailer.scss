@@ -1,4 +1,4 @@
-.modal-trailer {
+.modal-backdrop {
   position: fixed;
   display: flex;
   width: 100%;
@@ -12,7 +12,15 @@
   transition-duration: 250ms;
   z-index: 3;
 }
+.modal-trailer {
+  position: absolute;
+}
 
 .is-hidden {
   display: none;
+}
+
+.modal-trailer__iframe {
+  width: 500px;
+  height: 300px;
 }
