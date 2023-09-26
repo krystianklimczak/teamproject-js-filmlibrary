@@ -1,0 +1,47 @@
+.pagination-section {
+  font-family: $font-primary;
+  font-size: $font-size-small;
+  line-height: 1.4;
+  display: none;
+  @media screen and (min-width: $breakpoint-tablet) {
+    display: flex;
+    justify-content: center;
+  }
+  & > .current-page {
+    color: $text-color-light;
+    background-color: $text-color-additional-primary;
+  }
+  & > button {
+    //@include transition-properties($background-color);
+    padding-left: 2px;
+    padding-right: 2px;
+    border: none;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: $text-color-light;
+    font-size: large;
+    font-weight: 500;
+    &:first-child,
+    &:last-child {
+      font-size: x-large;
+      background-color: $background-color-footer;
+    }
+    &:hover,
+    &:active {
+      & > svg {
+        fill: $text-color-light;
+      }
+      color: $text-color-light;
+      //transition-property: background-color;
+      background-color: $text-color-additional-primary;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+.button--disabled:hover {
+  background-color: $background-color-footer;
+}
