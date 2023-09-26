@@ -1,6 +1,7 @@
 import { axiosSecondFetchFn, fetchGenres } from './filmApi';
 import { getTrailerKey, showTrailer } from './trailer';
 import { pushPagination } from './pagination';
+import { fetchApi } from './filmApi';
 
 export const mainContainer = document.querySelector('.main-section');
 let allGenres = [];
@@ -12,11 +13,26 @@ fetchGenres()
 //Function for drawing first 20 popular films
 
 export async function makeFilmsBox() {
-  const data = await axiosSecondFetchFn()
-    .then(data => {
-      drawFilmBox(data.results);
-    })
-    .catch(error => console.log(error));
+  // const data = await axiosSecondFetchFn()
+  //   .then(data => {
+  //     drawFilmBox(data.results);
+  //   })
+  //   .catch(error => console.log(error));
+  const url = `https://api.themoviedb.org/3/movie/popular`;
+  const searchParams = {
+    api_key: '95f474a01cc4252905d63c7d958d5749',
+    language: 'en-US',
+    page: 1,
+  };
+
+  try {
+    const data = await fetchApi(url, searchParams);
+    const results = await data.results;
+
+    return drawFilmBox(results), pushPagination(url, searchParams);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export function drawFilmBox(films) {
@@ -38,6 +54,10 @@ export function drawFilmBox(films) {
     const filmPoster = document.createElement('div');
     filmPoster.classList.add('film-poster');
     filmPoster.setAttribute('value', film.id);
+    // THERE IS UPDATED POSTER CONTDITION
+    if (film.poster_path === null) {
+      film.poster_path = `/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg`;
+    }
     filmPoster.insertAdjacentHTML(
       'afterbegin',
       `<img class="film-poster__photo" src="https://image.tmdb.org/t/p/original${film.poster_path}" alt="${film.title}" loading="lazy"/>`,
@@ -74,5 +94,5 @@ export function drawFilmBox(films) {
     posterArray.push(filmPoster);
   });
   mainContainer.append(...posterArray);
-  pushPagination();
+  console.log(`koniec rysowania filmów`);
 }

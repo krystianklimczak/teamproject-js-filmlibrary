@@ -3,12 +3,12 @@ import axios from 'axios';
 const API_KEY = '95f474a01cc4252905d63c7d958d5749';
 
 // FIRST METHOD
-axios.defaults.baseURL = 'https://api.themoviedb.org/3/movie/popular';
-axios.defaults.params = {
-  api_key: '95f474a01cc4252905d63c7d958d5749',
-  language: 'en-US',
-  page: 1,
-};
+// axios.defaults.baseURL = 'https://api.themoviedb.org/3/movie/popular';
+// axios.defaults.params = {
+//   api_key: '95f474a01cc4252905d63c7d958d5749',
+//   language: 'en-US',
+//   page: 1,
+// };
 
 // FIRST METHOD
 export const axiosFirstFetchFn = async () => {
@@ -69,3 +69,17 @@ export const fetchTrailer = async key => {
     console.log(error);
   }
 };
+
+//FETCHING FUNCTION
+export async function fetchApi(url, searchParameters) {
+  const searchParams = new URLSearchParams(searchParameters);
+  try {
+    const response = await axios.get(`${url}?${searchParams}`);
+    const data = await response.data;
+    console.log(`zwracam data z api`);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
