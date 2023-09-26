@@ -25,7 +25,7 @@
     &:first-child,
     &:last-child {
       font-size: x-large;
-      background-color: $background-color-footer;
+      background-color: $footer-color-background;
     }
     &:hover,
     &:active {
@@ -43,5 +43,5 @@
   display: none;
 }
 .button--disabled:hover {
-  background-color: $background-color-footer;
+  background-color: $footer-color-background;
 }
