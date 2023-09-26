@@ -55,7 +55,7 @@ async function updatePages() {
   try {
     const array = await axiosFirstFetchFn(currentPage);
     const results = await array.results;
-    drawFilmBox(results);
+    return drawFilmBox(results);
   } catch (error) {
     console.log(error);
   }
