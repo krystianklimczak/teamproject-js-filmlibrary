@@ -2,53 +2,45 @@ import { drawFilmBox } from './main';
 import axios from 'axios';
 import { mainContainer } from './main';
 
-//Taking data from API by page number
-
+// PAGINATION STRING
 const pagination = `<div class="container pagination-section">
-<button class="arrow--left">
-  ⬅
-</button>
-
-<button class="page--first">1</button>
-<button class="dots--left">...</button>
-
-<button class="two-pages--back"></button>
-<button class="page--back"></button>
-<button class="current-page">1</button>
-<button class="page--next"></button>
-<button class="two-pages--next"></button>
-<button class="page--second">2</button>
-<button class="page--third">3</button>
-<button class="page--fourth">4</button>
-<button class="page--fifth">5</button>
-<button class="page--sixth">6</button>
-<button class="page--seventh">7</button>
-<button class="dots--right">...</button>
-<button class="page--last"></button>
-<button class="arrow--right">
-
-➡
-</button>
+  <button class="arrow--left">
+    ⬅
+  </button>
+  <button class="page--first">1</button>
+  <button class="dots--left">...</button>
+  <button class="two-pages--back"></button>
+  <button class="page--back"></button>
+  <button class="current-page">1</button>
+  <button class="page--next"></button>
+  <button class="two-pages--next"></button>
+  <button class="page--second">2</button>
+  <button class="page--third">3</button>
+  <button class="page--fourth">4</button>
+  <button class="page--fifth">5</button>
+  <button class="page--sixth">6</button>
+  <button class="page--seventh">7</button>
+  <button class="dots--right">...</button>
+  <button class="page--last"></button>
+  <button class="arrow--right">
+    ➡
+  </button>
 </div>`;
+
+// ACTUAL PAGE NUMBER
 let currentPage = 1;
 
+// UPDATE PAGES HANDLER
 async function updatePages() {
   const array = await axiosFirstFetchFn(currentPage);
   drawFilmBox(array.results);
 }
+
+// MAIN PAGINATION FN
 export function pushPagination() {
+  // DRAW PAGINATION ON MAIN SECTION
   mainContainer.insertAdjacentHTML('beforeend', pagination);
 
-  // LAST PAGE IS 500
-  // async function updateLastPageNumber() {
-  //   const lastPageResponse = await axiosFirstFetchFn(1);
-  //   const lastPage = await lastPageResponse.total_pages;
-  //   pageLast.innerHTML = 500;
-  //   pageLast.addEventListener('click', () => {
-  //     currentPage = 500;
-  //     updatePages();
-  //   });
-  // }
   // QUERY SELECTORS
   const currentPageBtn = document.querySelector('.current-page');
   const arrowLeft = document.querySelector('.arrow--left');
@@ -68,12 +60,14 @@ export function pushPagination() {
   const pageSixth = document.querySelector('.page--sixth');
   const pageSeventh = document.querySelector('.page--seventh');
 
+  // LAST PAGE
   pageLast.innerHTML = 500;
   pageLast.addEventListener('click', () => {
     currentPage = 500;
     updatePages();
   });
 
+  // CONDITIONS
   if (currentPage === 1) {
     pageFirst.classList.add('hidden');
     dotsLeft.classList.add('hidden');
@@ -130,7 +124,27 @@ export function pushPagination() {
     pageSixth.classList.add('hidden');
     pageSeventh.classList.add('hidden');
   }
+  if (currentPage === 500) {
+    pageNext.classList.add('hidden');
+    twoPagesNext.classList.add('hidden');
+    pageLast.classList.add('hidden');
+    dotsRight.classList.add('hidden');
+    arrowRight.classList.add('hidden');
+  }
+  if (currentPage === 499) {
+    twoPagesNext.classList.add('hidden');
+    pageLast.classList.add('hidden');
+    dotsRight.classList.add('hidden');
+  }
+  if (currentPage === 498) {
+    pageLast.classList.add('hidden');
+    dotsRight.classList.add('hidden');
+  }
+  if (currentPage === 497) {
+    dotsRight.classList.add('hidden');
+  }
 
+  // BUTTONS LISTENERS
   pageFirst.addEventListener('click', () => {
     currentPage = 1;
     updatePages();
@@ -187,29 +201,9 @@ export function pushPagination() {
       updatePages();
     }
   });
-
-  if (currentPage === 500) {
-    pageNext.classList.add('hidden');
-    twoPagesNext.classList.add('hidden');
-    pageLast.classList.add('hidden');
-    dotsRight.classList.add('hidden');
-    arrowRight.classList.add('hidden');
-  }
-
-  if (currentPage === 499) {
-    twoPagesNext.classList.add('hidden');
-    pageLast.classList.add('hidden');
-    dotsRight.classList.add('hidden');
-  }
-  if (currentPage === 498) {
-    pageLast.classList.add('hidden');
-    dotsRight.classList.add('hidden');
-  }
-  if (currentPage === 497) {
-    dotsRight.classList.add('hidden');
-  }
 }
 
+// FETCHING DATA FROM API FN
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/movie/popular';
 axios.defaults.params = {
   api_key: '95f474a01cc4252905d63c7d958d5749',
