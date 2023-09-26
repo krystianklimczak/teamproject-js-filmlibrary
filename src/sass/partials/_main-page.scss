@@ -72,6 +72,9 @@
     line-height: 0;
     top: -4px;
     position: relative;
+    &:focus {
+      outline: none;
+    }
   }
   &__genre,
   &__year {
