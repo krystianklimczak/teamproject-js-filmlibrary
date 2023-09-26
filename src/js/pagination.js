@@ -86,11 +86,25 @@ export function pushPagination() {
   const pageSeventh = document.querySelector('.page--seventh');
 
   // LAST PAGE
-  pageLast.innerHTML = 500;
-  pageLast.addEventListener('click', () => {
-    currentPage = 500;
-    updatePages();
-  });
+  let lastPage;
+  async function checkLastPage() {
+    try {
+      const response = await axiosFirstFetchFn(currentPage);
+      const totalPages = await response.total_pages;
+      lastPage = totalPages;
+      if (totalPages >= 500) {
+        lastPage = 500;
+      }
+      pageLast.innerHTML = lastPage;
+      pageLast.addEventListener('click', () => {
+        currentPage = lastPage;
+        updatePages();
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  checkLastPage();
 
   // CONDITIONS
 
