@@ -1,0 +1,47 @@
+.footer {
+  font-family: $font-primary;
+  font-size: $font-size-footer-mobile;
+  font-weight: $font-weight-regular;
+  background-color: $footer-color-background; //#F7F7F7
+  color: $text-color-additional-secondary; //#545454
+  text-align: center;
+  opacity: 0.95;
+  padding: 10px;
+  position: sticky;
+  bottom: 0;
+  display: flex;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    font-size: $font-size-footer;
+    opacity: 1;
+    padding: 30px;
+    position: relative;
+    bottom: auto;
+  }
+}
+
+.footer > p {
+  margin: 0 auto;
+  text-align: center;
+  display: inline-block;
+  align-items: center;
+}
+
+.footer__button {
+  border: 0;
+  border-bottom: 1px solid $text-color-additional-secondary;
+  margin-left: 5px;
+}
+
+.heart-icon {
+  fill: $text-color-additional-primary; // #FF6B08
+}
+
+.students {
+}
+
+.footer__button {
+}
+
+.underline {
+}
