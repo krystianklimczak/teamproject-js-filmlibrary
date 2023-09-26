@@ -1,6 +1,19 @@
+<<<<<<< HEAD
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
 <defs>
 <symbol id="icon-film" viewBox="0 0 32 32"><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.667" d="M26.427 2.667H5.574a2.907 2.907 0 0 0-2.907 2.907v20.853a2.907 2.907 0 0 0 2.907 2.907h20.853a2.907 2.907 0 0 0 2.907-2.907V5.574a2.907 2.907 0 0 0-2.907-2.907zM9.333 2.667v26.667M22.667 2.667v26.667M2.667 16h26.667M2.667 9.333h6.667M2.667 22.667h6.667M22.667 22.667h6.667M22.667 9.333h6.667" style="stroke:var(--color1, #fff)"/></symbol>
 <symbol id="icon-search-2" viewBox="0 0 32 32"><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.667" d="M14.667 25.333c5.891 0 10.667-4.776 10.667-10.667S20.558 3.999 14.667 3.999 4 8.775 4 14.666s4.776 10.667 10.667 10.667zM28 28.001l-5.8-5.8" style="stroke:var(--color1, #fff)"/></symbol>
 </defs>
 </svg>
+=======
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-right-arrow" viewBox="0 0 32 32">
+<path d="M15.057 23.057l1.885 1.885 8.943-8.943-8.943-8.943-1.885 1.885 5.724 5.724h-12.781v2.667h12.781z"></path>
+</symbol>
+<symbol id="icon-left-arrow" viewBox="0 0 32 32">
+<path d="M16.943 23.057l-5.724-5.724h12.781v-2.667h-12.781l5.724-5.724-1.885-1.885-8.943 8.943 8.943 8.943z"></path>
+</symbol>
+</defs>
+</svg>
+>>>>>>> 289e7698c6e2a78a2629dc5af3de84046917bca1
