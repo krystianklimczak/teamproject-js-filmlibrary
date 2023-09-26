@@ -3,7 +3,7 @@ import axios from 'axios';
 import { mainContainer } from './main';
 
 // FETCHING DATA FROM API FN
-axios.defaults.baseURL = 'https://api.themoviedb.org/3/movie/popular';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/movie/popular/';
 axios.defaults.params = {
   api_key: '95f474a01cc4252905d63c7d958d5749',
   language: 'en-US',
