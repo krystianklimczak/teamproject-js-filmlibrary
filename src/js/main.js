@@ -94,5 +94,4 @@ export function drawFilmBox(films) {
     posterArray.push(filmPoster);
   });
   mainContainer.append(...posterArray);
-  console.log(`koniec rysowania filmów`);
 }
