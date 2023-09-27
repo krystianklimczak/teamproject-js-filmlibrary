@@ -1,0 +1,71 @@
+.error-404 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 50px;
+  
+    @media screen and (min-width: 986px) {
+      padding: 100px 50px;
+    }
+  
+    // background
+    background: linear-gradient(
+      -45deg,
+      rgb(245, 238, 203),
+      rgb(247, 245, 229),
+      rgb(246, 245, 234),
+      rgb(247, 245, 216)
+    );
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-size: auto;
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+    height: 100%;
+    max-width: 100%;
+  
+    //   keyframes
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    // h2
+    &__headline {
+      font-size: 96px;
+      line-height: 1.5;
+      color: $website-main-color;
+  
+      span {
+        display: block;
+        color: $text-color-additional-secondary;
+        font-size: 52px;
+        line-height: 1.2;
+  
+        @media screen and (max-width: 480px) {
+          font-size: 32px;
+        }
+      }
+  
+      @media screen and (max-width: 480px) {
+        font-size: 56px;
+      }
+    }
+    // img
+    &__image {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  
