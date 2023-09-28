@@ -5,12 +5,9 @@
     justify-content: center;
     align-items: center;
     gap: 50px;
-    padding: 50px;
+    padding: 5rem;
   
-    @media screen and (min-width: 986px) {
-      padding: 100px 50px;
-    }
-  
+   
     // background
     background: linear-gradient(
       -45deg,
@@ -43,24 +40,31 @@
     }
     // h2
     &__headline {
-      font-size: 96px;
+      font-size: 8vh;
       line-height: 1.5;
       color: $website-main-color;
+
+      @media only screen and (min-width: 30em) {
+        font-size: 10vh;
+      }
+      @media only screen and (min-width: 80em) {
+        font-size: 14vh;
+      }
   
       span {
         display: block;
         color: $text-color-additional-secondary;
-        font-size: 52px;
+        font-size: 4vh;
         line-height: 1.2;
-  
-        @media screen and (max-width: 480px) {
-          font-size: 32px;
+
+        @media only screen and (min-width: 30em) {
+          font-size: 5vh;
+        }
+        @media only screen and (min-width: 80em) {
+          font-size: 8vh;
         }
       }
-  
-      @media screen and (max-width: 480px) {
-        font-size: 56px;
-      }
+
     }
     // img
     &__image {
