@@ -95,7 +95,7 @@
   min-height: 357px;
   margin-bottom: 20px;
   border-radius: 5px;
-  background-color: #999;
+  background-color: #8c8c8c;
 
   @media screen and (min-width: 768px) {
     width: 264px;
@@ -125,6 +125,31 @@
   @media screen and (min-width: 1280px) {
     font-size: 30px;
   }
+}
+
+.film-info__table {
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.film-info__stats {
+  width: 108px;
+  color: #8c8c8c;
+}
+
+.film-info__vote {
+  display: inline-block;
+  text-align: center;
+  min-width: 36px;
+  height: 16px;
+  padding: 1px;
+  border-radius: 5px;
+  color: #fff;
+  background: #ff6b01;
+}
+
+.film-info__origin-title {
+  text-transform: uppercase;
 }
 
 .modal-film__btns {
