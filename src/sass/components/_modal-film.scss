@@ -152,6 +152,29 @@
   text-transform: uppercase;
 }
 
+.film-info__about {
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.film-info__descr {
+  position: relative;
+  max-height: 236px;
+  line-height: 1.67;
+  margin-bottom: 20px;
+  overflow-y: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 280px;
+    max-height: 125px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 385px;
+    max-height: 220px;
+  }
+}
+
 .modal-film__btns {
   display: flex;
   align-items: center;
