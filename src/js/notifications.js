@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 export function addToWatchQueue() {
     Notiflix.Notify.info('The movie has been added to the queue');
   }
