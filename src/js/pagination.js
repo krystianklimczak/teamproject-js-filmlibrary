@@ -312,7 +312,11 @@ async function handler(url, searchParams) {
       console.log(`osiągnięto ostatnią stronę`);
       return;
     }
-    console.log(`rysowana jest kolejna strona ${searchParams.page}`);
+    console.log(
+      `rysowana jest kolejna strona ${searchParams.page} / ${
+        data.total_pages <= 500 ? data.total_pages : 500
+      }`,
+    );
     console.log('kolejna strona została narysowana');
     return drawFilmBox(results, false);
   } catch (error) {
