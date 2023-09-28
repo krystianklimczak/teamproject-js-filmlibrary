@@ -61,19 +61,28 @@
     align-items: center;
     justify-content: center;
     float: right;
-    width: 35px;
+    width: 48px;
     height: 35px;
-    background-color: $text-color-light;
-    border-color: $text-color-additional-primary;
-    border-radius: 50%;
-    margin-right: 3px;
-    padding-left: 6px;
-    font-size: $font-size-large;
+    color: $text-color-light;
+    background-color: $additional-color;
+    //border-color: $text-color-additional-primary;
+    border: none;
+    border-radius: 30%;
+    margin-right: 7px;
+    padding-left: 5px;
+    font-size: 16px;
     line-height: 0;
     top: -4px;
     position: relative;
     &:focus {
       outline: none;
+    }
+    @media screen and (min-width: $breakpoint-desktop) {
+      box-shadow: 2px 1px #888888;
+      &:hover {
+        margin-right: 5px;
+        box-shadow: none;
+      }
     }
   }
   &__genre,
