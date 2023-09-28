@@ -1,0 +1,21 @@
+.arrow {
+  position: fixed;
+  right: 15px;
+  bottom: 80px;
+
+  font-size: 25px;
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: 50%;
+  background-color: rgb(237, 237, 237);
+
+  transform: rotate(-90deg);
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    font-size: 40px;
+    width: 60px;
+    height: 60px;
+  }
+}
