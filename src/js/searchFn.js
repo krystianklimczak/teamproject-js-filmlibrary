@@ -36,6 +36,7 @@ async function searchByQ(url, params) {
   try {
     const data = await fetchApi(url, params);
     const results = await data.results;
+
     return drawFilmBox(results), pushPagination(url, params), checkBrowersWidth(url, params);
   } catch (error) {
     console.log(error);
