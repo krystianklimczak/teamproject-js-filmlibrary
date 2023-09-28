@@ -111,6 +111,22 @@
   }
 }
 
+// .film-info__wrapper {
+//   @media screen and (min-width: 768px) {
+//   }
+// }
+
+.film-info__title {
+  font-size: 20px;
+  line-height: 1.17px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+
+  @media screen and (min-width: 1280px) {
+    font-size: 30px;
+  }
+}
+
 .modal-film__btns {
   display: flex;
   align-items: center;
