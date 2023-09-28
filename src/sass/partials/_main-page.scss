@@ -65,32 +65,31 @@
     text-transform: uppercase;
   }
   &__button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: transparent;
     float: right;
-    width: 35px;
-    height: 35px;
-    background-color: red;
     border: none;
-    // border: 1px solid green;
-    border-radius: 20%;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
-    margin-right: 3px;
-    // padding-left: 6px;
-    padding-left: 28px;
-    padding-right: 28px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-
-    font-size: 22px;
-    // font-size: $font-size-large;
-    // line-height: 0;
-    // top: -4px;
-    color: white;
-    position: relative;
-    &:focus {
+    width: fit-content;
+    height: fit-content;
+    &:focus,
+    :hover {
       outline: none;
+    }
+    & svg {
+      fill: black;
+      @include transition-properties(transform);
+      &:hover,
+      :focus {
+        & path {
+          fill: black;
+          fill-opacity: 1;
+          stroke: black;
+          stroke-width: 1;
+          stroke-dashoffset: 0;
+          stroke-dasharray: 3000;
+
+          animation: animate 7s ease-in-out;
+        }
+      }
     }
   }
   &__genre,
@@ -98,7 +97,16 @@
     color: $text-color-additional-primary;
   }
 }
-
+@keyframes animate {
+  0% {
+    stroke-dashoffset: 3000;
+    fill: none;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: black;
+  }
+}
 //Spinner styles
 
 .spinner-box {
