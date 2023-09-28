@@ -1,5 +1,6 @@
 import './sass/main.scss';
-import { makeFilmsBox, makeFilmsBoxByPage } from './js/main';
+import { makeFilmsBox } from './js/main';
+import { listeners } from './js/searchFn';
 
 makeFilmsBox();
-// makeFilmsBoxByPage();
+listeners();

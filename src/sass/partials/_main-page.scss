@@ -14,6 +14,7 @@
     gap: 32px;
   }
   @media screen and (min-width: $breakpoint-desktop) {
+    justify-content: center;
     gap: 16px;
   }
 }
@@ -41,6 +42,13 @@
     max-width: 100%;
     max-height: 100%;
     height: auto;
+    @media screen and (min-width: $breakpoint-tablet) {
+      height: 480px;
+    }
+    @media screen and (min-width: $breakpoint-desktop) {
+      width: 394px;
+      height: 574px;
+    }
   }
 
   &__description {
@@ -63,14 +71,23 @@
     float: right;
     width: 35px;
     height: 35px;
-    background-color: $text-color-light;
-    border-color: $text-color-additional-primary;
-    border-radius: 50%;
+    background-color: red;
+    border: none;
+    // border: 1px solid green;
+    border-radius: 20%;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
     margin-right: 3px;
-    padding-left: 6px;
-    font-size: $font-size-large;
-    line-height: 0;
-    top: -4px;
+    // padding-left: 6px;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    font-size: 22px;
+    // font-size: $font-size-large;
+    // line-height: 0;
+    // top: -4px;
+    color: white;
     position: relative;
     &:focus {
       outline: none;
