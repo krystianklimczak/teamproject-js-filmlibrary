@@ -1,6 +1,7 @@
 $font-primary: 'Roboto', sans-serif;
 $font-weight-medium: 500;
 $font-weight-regular: 400;
+$website-main-color: rgb(255, 107, 8);
 
 //text colors
 $text-color-light: rgb(255, 255, 255);
@@ -21,7 +22,9 @@ $font-size-header-search: 14px;
 $font-size-footer: 16px;
 
 //footer
-$background-color-footer: #f7f7f7;
+$footer-color-background: rgb(247, 247, 247); //#f7f7f7
+$footer-color-text: $text-color-additional-secondary; //#545454
+$font-size-footer-mobile: 14px;
 
 //hover and focus colors
 $hover-color-primary: rgb(255, 107, 8);
