@@ -278,3 +278,44 @@ export function pushPagination(url, searchParams) {
     }
   });
 }
+
+export function checkBrowersWidth(url, searchParams) {
+  function isBottomOfTheSite() {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      console.log('dojechałeś do końca strony');
+      searchParams.page++;
+      handler(url, searchParams);
+
+      const form = document.querySelector('.search-form');
+      const svgBtn = document.querySelector('.search-form__svg');
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        document.removeEventListener('scroll', isBottomOfTheSite);
+      });
+      svgBtn.addEventListener('click', () => {
+        document.removeEventListener('scroll', isBottomOfTheSite);
+      });
+    }
+  }
+  if (window.innerWidth < 768) {
+    console.log('przeglądarka mobilna');
+    document.addEventListener('scroll', isBottomOfTheSite);
+  }
+}
+
+async function handler(url, searchParams) {
+  try {
+    const data = await fetchApi(url, searchParams);
+    const results = await data.results;
+    if (searchParams.page > data.total_pages || searchParams.page > 500) {
+      console.log(`osiągnięto ostatnią stronę`);
+      return;
+    }
+    console.log(`rysowana jest kolejna strona ${searchParams.page}`);
+    console.log('kolejna strona została narysowana');
+    return drawFilmBox(results, false);
+  } catch (error) {
+    console.log(error);
+  }
+}

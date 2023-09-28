@@ -2,6 +2,7 @@ import { axiosSecondFetchFn, fetchGenres } from './filmApi';
 import { getTrailerKey, showTrailer } from './trailer';
 import { pushPagination } from './pagination';
 import { fetchApi } from './filmApi';
+import { checkBrowersWidth } from './pagination';
 
 export const mainContainer = document.querySelector('.main-section');
 let allGenres = [];
@@ -29,15 +30,19 @@ export async function makeFilmsBox() {
     const data = await fetchApi(url, searchParams);
     const results = await data.results;
 
-    return drawFilmBox(results), pushPagination(url, searchParams);
+    return (
+      drawFilmBox(results), pushPagination(url, searchParams), checkBrowersWidth(url, searchParams)
+    );
   } catch (error) {
     console.log(error);
   }
 }
 
-export function drawFilmBox(films) {
+export function drawFilmBox(films, isNotMobile = true) {
   let posterArray = [];
-  mainContainer.innerHTML = '';
+  if (isNotMobile) {
+    mainContainer.innerHTML = '';
+  }
   films.forEach(film => {
     //We need to add link that brings us to modal window if we press .main__photo-card
 
