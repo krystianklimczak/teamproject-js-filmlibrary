@@ -278,3 +278,29 @@ export function pushPagination(url, searchParams) {
     }
   });
 }
+
+export function checkBrowersWidth(url, searchParams) {
+  if (window.innerWidth < 768) {
+    console.log('przeglądarka mobilna');
+    window.addEventListener('scroll', isBottomOfTheSite);
+    function isBottomOfTheSite() {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+        console.log('dojechałeś do końca strony');
+        searchParams.page++;
+        console.log(`rysowana jest kolejna strona ${searchParams.page}`);
+        handler(url, searchParams);
+        console.log('kolejna strona została narysowana');
+      }
+    }
+  }
+}
+
+async function handler(url, searchParams) {
+  try {
+    const data = await fetchApi(url, searchParams);
+    const results = await data.results;
+    return drawFilmBox(results, false);
+  } catch (error) {
+    console.log(error);
+  }
+}

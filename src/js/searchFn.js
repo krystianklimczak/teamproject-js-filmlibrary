@@ -2,6 +2,7 @@ import axios from 'axios';
 import { drawFilmBox } from './main';
 import { fetchApi } from './filmApi';
 import { pushPagination } from './pagination';
+import { checkBrowersWidth } from './pagination';
 
 const form = document.querySelector('.search-form');
 const input = document.querySelector('.search-form__input');
@@ -35,7 +36,7 @@ async function searchByQ(url, params) {
   try {
     const data = await fetchApi(url, params);
     const results = await data.results;
-    return drawFilmBox(results), pushPagination(url, params);
+    return drawFilmBox(results), pushPagination(url, params), checkBrowersWidth(url, params);
   } catch (error) {
     console.log(error);
   }
