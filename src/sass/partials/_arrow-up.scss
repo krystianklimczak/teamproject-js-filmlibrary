@@ -3,22 +3,27 @@
   right: 25px;
   bottom: 80px;
 
-  font-size: 25px;
-  width: 40px;
-  height: 40px;
-
   border: none;
   border-radius: 50%;
-  background-color: rgb(237, 237, 237);
-
-  transform: rotate(-90deg);
+  background-color: $footer-color-background;
+  opacity: 0.9;
+  line-height: 0;
 
   @media screen and (min-width: $breakpoint-tablet) {
     right: 60px;
     bottom: 100px;
+  }
 
-    font-size: 40px;
-    width: 60px;
-    height: 60px;
+  &__icon {
+    fill: $text-color-dark;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      width: 60px;
+      height: 60px;
+      padding: 12px;
+    }
   }
 }
