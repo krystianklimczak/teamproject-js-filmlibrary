@@ -1,3 +1,8 @@
+body.modal-is-hidden {
+  overflow-y: hidden;
+  height: 100vh;
+}
+
 .backdrop-modal-film {
   position: fixed;
   top: 0;
@@ -9,8 +14,7 @@
   visibility: hidden;
   transition: 0.3s all;
   z-index: 99;
-
-  &:active {
+  &.active {
     opacity: 1;
     visibility: visible;
   }
@@ -35,8 +39,7 @@
     0px 2px 1px rgba(0, 0, 0, 0.2);
   transform: translate(-50%, -50%);
   z-index: 100;
-
-  &:active {
+  &.active {
     opacity: 1;
     visibility: visible;
   }
