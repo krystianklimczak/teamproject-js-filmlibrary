@@ -33,13 +33,32 @@ export function onModalOpenMovie(e) {
   refs.modalBackdrop.classList.add('active');
   refs.modalFilm.classList.add('active');
   document.body.classList.add('modal-is-hidden');
+
   refs.modalFilmBtnClose.addEventListener('click', closeModal);
+  document.addEventListener('keydown', escClose);
+  refs.modalBackdrop.addEventListener('click', backdropClick);
 }
 
 export function closeModal() {
   refs.modalBackdrop.classList.remove('active');
   refs.modalFilm.classList.remove('active');
   document.body.classList.remove('modal-is-hidden');
+
+  refs.modalFilmBtnClose.removeEventListener('click', closeModal);
+  document.removeEventListener('keydown', escClose);
+  refs.modalBackdrop.removeEventListener('click', backdropClick);
+}
+
+export function escClose() {
+  if (e.keyCode === 27) {
+    closeModal();
+  }
+}
+
+export function backdropClick(e) {
+  if (e.target === refs.modalBackdrop) {
+    closeModal();
+  }
 }
 
 function clearModal() {
