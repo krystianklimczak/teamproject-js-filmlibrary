@@ -21,7 +21,7 @@ export function drawModal(key) {
     });
 
     const movieImgBox = document.createElement('div');
-    movieImgBox.innerHTML = `<img src="https://image.tmdb.org/t/p/original${data.backdrop_path}" alt="${data.title}"/>`;
+    movieImgBox.innerHTML = `<img class="film-info__poster" src="https://image.tmdb.org/t/p/original${data.backdrop_path}" alt="${data.title}"/>`;
 
     const movieTitle = document.createElement('h2');
     movieTitle.setAttribute('class', 'film-info__title');
@@ -29,14 +29,16 @@ export function drawModal(key) {
     const movieDetailsBox = document.createElement('div');
     movieDetailsBox.innerHTML = `
     <p class="film-info__stats">Vote / Votes</p>
-    <p>Popularity</p>
-    <p>Original Title</p>
-    <p>Genre</p>
+    <p class="film-info__stats">Popularity</p>
+    <p class="film-info__stats">Original Title</p>
+    <p class="film-info__stats">Genre</p>
     `;
 
     const movieDetailsBoxResults = document.createElement('div');
     movieDetailsBoxResults.innerHTML = `
-    <p><span>${data.vote_average.toFixed(1)}</span> / ${data.vote_count.toFixed(0)}</p>
+    <p><span class="film-info__vote">${data.vote_average.toFixed(
+      1,
+    )}</span> / ${data.vote_count.toFixed(0)}</p>
     <p>${data.popularity.toFixed(0)}</p>
     <p>${data.original_title}</p>
     <p>${movieGenres.join(', ')}</p>
@@ -44,8 +46,8 @@ export function drawModal(key) {
 
     const movieAbout = document.createElement('div');
     movieAbout.innerHTML = `
-    <p>about</p>
-    <p>${data.overview}</p>
+    <p class="film-info__about">about</p>
+    <p class="film-info__descr">${data.overview}</p>
     `;
 
     // <button type="button" class="modal-film__btns-addToWatched">Add to watched</button>

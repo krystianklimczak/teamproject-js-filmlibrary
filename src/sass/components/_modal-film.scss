@@ -1,7 +1,7 @@
-body.modal-is-hidden {
-  overflow-y: hidden;
-  height: 100vh;
-}
+// body.modal-is-hidden {
+//   overflow-y: hidden;
+//   height: 100vh;
+// }
 
 .backdrop-modal-film {
   position: fixed;
@@ -32,16 +32,16 @@ body.modal-is-hidden {
   transform: translate(-50%, -50%);
   z-index: 100;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $breakpoint-tablet) {
     .modal-film {
-      width: 704px;
+      // width: 704px;
       padding: 40px 36px;
     }
   }
 
   @media screen and (min-width: 1280px) {
     .modal-film {
-      width: 806px;
+      // width: 806px;
       padding: 40px 12px;
     }
   }
@@ -57,9 +57,9 @@ body.modal-is-hidden {
   top: 0;
   right: 0;
   padding: 8px;
-  // margin-left: auto;
+  margin-left: auto;
   margin: 8px;
-  // border: none;
+  border: none;
   background-color: transparent;
 }
 
@@ -73,32 +73,33 @@ body.modal-is-hidden {
   }
 }
 
-.film-info {
-  @media screen and (min-width: 768px) {
-    display: flex;
-  }
-}
-
 .film-info__poster {
-  flex-shrink: 0;
-  height: auto;
+  // flex-shrink: 0;
+  width: 100%;
   min-width: 240px;
-  min-height: 357px;
-  margin-bottom: 20px;
+  height: 100%;
+  margin-top: 10px;
+  margin-bottom: 30px;
   border-radius: 5px;
   background-color: #8c8c8c;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $breakpoint-tablet) {
     width: 264px;
     min-height: 374px;
     margin-right: 68px;
     margin-bottom: 0;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: $breakpoint-desktop) {
     width: 375px;
     min-height: 478px;
     margin-right: 16px;
+  }
+}
+
+.film-info {
+  @media screen and (min-width: $breakpoint-tablet) {
+    display: flex;
   }
 }
 
@@ -108,19 +109,15 @@ body.modal-is-hidden {
 // }
 
 .film-info__title {
-  font-size: 20px;
+  // font-size: 20px;
+  font-size: 1.3em;
   line-height: 1.17px;
   margin-bottom: 20px;
   text-transform: uppercase;
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: $breakpoint-desktop) {
     font-size: 30px;
   }
-}
-
-.film-info__table {
-  margin-right: auto;
-  margin-bottom: 20px;
 }
 
 .film-info__stats {
@@ -132,8 +129,10 @@ body.modal-is-hidden {
   display: inline-block;
   text-align: center;
   min-width: 36px;
+  font-size: 0.7em;
+  font-weight: 400;
   height: 16px;
-  padding: 1px;
+  padding: 0 10px;
   border-radius: 5px;
   color: #fff;
   background: #ff6b01;
@@ -155,12 +154,12 @@ body.modal-is-hidden {
   margin-bottom: 20px;
   overflow-y: auto;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $breakpoint-tablet) {
     width: 280px;
     max-height: 125px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: $breakpoint-desktop) {
     width: 385px;
     max-height: 220px;
   }
@@ -171,7 +170,7 @@ body.modal-is-hidden {
   align-items: center;
   justify-content: space-between;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $breakpoint-tablet) {
     .modal-film__btns {
       justify-content: center;
       gap: 20px;
@@ -182,7 +181,7 @@ body.modal-is-hidden {
     }
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: $breakpoint-desktop) {
     .modal-film__btns {
       gap: 15px;
       width: 397px;
@@ -214,14 +213,14 @@ body.modal-is-hidden {
     background-color: #ff6b01;
   }
 
-  @media screen and (min-width: 768) {
+  @media screen and (min-width: $breakpoint-tablet) {
     .modal-film__btns-addToWatched,
     .modal-film__btns-addToQueue {
       width: 125px;
     }
   }
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: $breakpoint-desktop) {
     .modal-film__btns-addToWatched,
     .modal-film__btns-addToQueue {
       width: 136px;
