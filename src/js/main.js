@@ -3,6 +3,7 @@ import { getTrailerKey, showTrailer } from './trailer';
 import { pushPagination } from './pagination';
 import { fetchApi } from './filmApi';
 import { checkBrowersWidth } from './pagination';
+import { drawModal } from './modal-film';
 
 export const mainContainer = document.querySelector('.main-section');
 let allGenres = [];
@@ -104,82 +105,4 @@ export function drawFilmBox(films, isNotMobile = true) {
     posterArray.push(filmPoster);
   });
   mainContainer.append(...posterArray);
-}
-
-function drawModal(key) {
-  const modalFilmCard = document.querySelector('.modal-film__card');
-  modalFilmCard.innerHTML = '';
-  function drawFilmDetails(data) {
-    const movieInfos = [];
-
-    // variables from data
-    // const movieImgPath = data.backdrop_path;
-    // const movieTitle = data.title;
-    // const movieVoteAverage = data.vote_average;
-    // const movieVoteCount = data.vote_count;
-    // const moviePopulatrity = data.popularity;
-    // const movieOryginalTitle = data.original_title;
-    // const movieGenres = [];
-    // const movieOverview = data.overview;
-    const movieGenres = [];
-    data.genres.map(genre => {
-      movieGenres.push(genre.name);
-    });
-
-    const movieImgBox = document.createElement('div');
-    movieImgBox.innerHTML = `<img class="" src="https://image.tmdb.org/t/p/original${data.backdrop_path}" alt="${data.title}"/>`;
-
-    const movieTitle = document.createElement('h2');
-    movieTitle.innerHTML = `${data.title}`;
-    const movieDetailsBox = document.createElement('div');
-    movieDetailsBox.innerHTML = `
-    <p>Vote / Votes</p>
-    <p>Popularity</p>
-    <p>Original Title</p>
-    <p>Genre</p>
-    `;
-
-    const movieDetailsBoxResults = document.createElement('div');
-    movieDetailsBoxResults.innerHTML = `
-    <p><span>${data.vote_average.toFixed(1)}</span> / ${data.vote_count.toFixed(0)}</p>
-    <p>${data.popularity.toFixed(0)}</p>
-    <p>${data.original_title}</p>
-    <p>${movieGenres.join(', ')}</p>
-    `;
-
-    const movieAbout = document.createElement('div');
-    movieAbout.innerHTML = `
-    <p>about</p>
-    <p>${data.overview}</p>
-    `;
-
-    movieInfos.push(movieImgBox, movieTitle, movieDetailsBox, movieDetailsBoxResults, movieAbout);
-    modalFilmCard.append(...movieInfos);
-
-    const backdropModalFilm = document.querySelector('.backdrop-modal-film');
-    backdropModalFilm.classList.remove('is-hidden');
-
-    const modalFilmBtnClose = document.querySelector('.modal-film__btn-close');
-    modalFilmBtnClose.addEventListener('click', () => {
-      backdropModalFilm.classList.add('is-hidden');
-    });
-  }
-
-  async function getMovieDetails(key) {
-    const filmUrl = `https://api.themoviedb.org/3/movie/${key}`;
-    const searchFilmParams = {
-      api_key: '95f474a01cc4252905d63c7d958d5749',
-      language: 'en-US',
-    };
-    try {
-      const data = await fetchApi(filmUrl, searchFilmParams);
-      return drawFilmDetails(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  getMovieDetails(key);
-
-  // modalFilmCard.insertAdjacentHTML('beforeend', key);
 }
