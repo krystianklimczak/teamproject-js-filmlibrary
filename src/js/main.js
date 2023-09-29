@@ -59,8 +59,10 @@ export function drawFilmBox(films, isNotMobile = true) {
     const filmPoster = document.createElement('div');
     filmPoster.classList.add('film-poster');
     filmPoster.addEventListener('click', e => {
-      // console.log(film.id);
-      drawModal(film.id);
+      console.log(e.target.localName);
+      if (e.target.localName !== 'svg' && e.target.localName !== 'button') {
+        drawModal(film.id);
+      }
     });
     filmPoster.setAttribute('value', film.id);
     // THERE IS UPDATED POSTER CONTDITION
@@ -108,7 +110,6 @@ function drawModal(key) {
   const modalFilmCard = document.querySelector('.modal-film__card');
   modalFilmCard.innerHTML = '';
   function drawFilmDetails(data) {
-    console.log(data);
     const movieInfos = [];
 
     // variables from data
@@ -157,6 +158,7 @@ function drawModal(key) {
 
     const backdropModalFilm = document.querySelector('.backdrop-modal-film');
     backdropModalFilm.classList.remove('is-hidden');
+
     const modalFilmBtnClose = document.querySelector('.modal-film__btn-close');
     modalFilmBtnClose.addEventListener('click', () => {
       backdropModalFilm.classList.add('is-hidden');
