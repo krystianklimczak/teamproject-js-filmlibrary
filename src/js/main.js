@@ -3,6 +3,7 @@ import { getTrailerKey, showTrailer } from './trailer';
 import { pushPagination } from './pagination';
 import { fetchApi } from './filmApi';
 import { checkBrowersWidth } from './pagination';
+import { addBtnsListeners } from './local-storage';
 
 export const mainContainer = document.querySelector('.main-section');
 let allGenres = [];
@@ -59,7 +60,6 @@ export function drawFilmBox(films, isNotMobile = true) {
     const filmPoster = document.createElement('div');
     filmPoster.classList.add('film-poster');
     filmPoster.addEventListener('click', e => {
-      console.log(e.target.localName);
       if (e.target.localName !== 'svg' && e.target.localName !== 'button') {
         drawModal(film.id);
       }
@@ -153,8 +153,25 @@ function drawModal(key) {
     <p>${data.overview}</p>
     `;
 
-    movieInfos.push(movieImgBox, movieTitle, movieDetailsBox, movieDetailsBoxResults, movieAbout);
+    const movieBtnBox = document.createElement('div');
+    movieBtnBox.innerHTML = `<div class="modal-film__btns">
+      <button type="button" class="modal-film__btns-addToWatched add-watched" value="${key}">
+        Add to watched
+      </button>
+      <button type="button" class="modal-film__btns-addToQueue add-queue" value="${key}">Add to queue</button>
+    </div>`;
+
+    movieInfos.push(
+      movieImgBox,
+      movieTitle,
+      movieDetailsBox,
+      movieDetailsBoxResults,
+      movieAbout,
+      movieBtnBox,
+    );
     modalFilmCard.append(...movieInfos);
+
+    addBtnsListeners();
 
     const backdropModalFilm = document.querySelector('.backdrop-modal-film');
     backdropModalFilm.classList.remove('is-hidden');
