@@ -1,26 +1,6 @@
 import { drawFilmBox } from './main';
-import axios from 'axios';
 import { mainContainer } from './main';
-
-// FETCHING DATA FROM API FN
-axios.defaults.baseURL = 'https://api.themoviedb.org/3/movie/popular';
-axios.defaults.params = {
-  api_key: '95f474a01cc4252905d63c7d958d5749',
-  language: 'en-US',
-};
-
-const axiosFirstFetchFn = async (page = '1') => {
-  const searchParams = new URLSearchParams({
-    page,
-  });
-  try {
-    const response = await axios.get(`?${searchParams}`);
-    const data = await response.data;
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+import { fetchApi } from './filmApi';
 
 // PAGINATION STRING
 const pagination = `<div class="container pagination-section">
@@ -47,24 +27,25 @@ const pagination = `<div class="container pagination-section">
   </button>
 </div>`;
 
-// ACTUAL PAGE NUMBER
-let currentPage = 1;
-
-// UPDATE PAGES HANDLER
-async function updatePages() {
+// UPDATING PAGES FN
+async function updatePages(url, searchPara) {
   try {
-    const array = await axiosFirstFetchFn(currentPage);
-    const results = await array.results;
-    return drawFilmBox(results);
+    const data = await fetchApi(url, searchPara);
+    const results = await data.results;
+    drawFilmBox(results);
+    pushPagination(url, searchPara);
   } catch (error) {
     console.log(error);
   }
 }
 
 // MAIN PAGINATION FN
-export function pushPagination() {
+export function pushPagination(url, searchParams) {
   // DRAW PAGINATION ON MAIN SECTION
   mainContainer.insertAdjacentHTML('beforeend', pagination);
+  const paginationURL = url;
+  let paginationSearchParams = searchParams;
+  let currentPage = paginationSearchParams.page;
 
   // QUERY SELECTORS
   const currentPageBtn = document.querySelector('.current-page');
@@ -85,139 +66,260 @@ export function pushPagination() {
   const pageSixth = document.querySelector('.page--sixth');
   const pageSeventh = document.querySelector('.page--seventh');
 
-  // LAST PAGE
-  pageLast.innerHTML = 500;
-  pageLast.addEventListener('click', () => {
-    currentPage = 500;
-    updatePages();
-  });
+  // ASYNC FN TO CHECING PAGE
+  async function checkPage() {
+    try {
+      const response = await fetchApi(paginationURL, paginationSearchParams);
+      const totalPages = await response.total_pages;
+      const totalResults = await response.total_results;
 
-  // CONDITIONS
+      let lastPage;
+      lastPage = totalPages;
+      if (totalPages >= 500) {
+        lastPage = 500;
+      }
+      pageLast.innerHTML = lastPage;
+      pageLast.addEventListener('click', () => {
+        paginationSearchParams.page = lastPage;
+        updatePages(paginationURL, paginationSearchParams);
+      });
 
-  switch (currentPage) {
-    case 1:
-      pageFirst.classList.add('hidden');
-      dotsLeft.classList.add('hidden');
-      twoPagesBack.classList.add('hidden');
-      pageBack.classList.add('hidden');
-      pageNext.classList.add('hidden');
-      twoPagesNext.classList.add('hidden');
-      arrowLeft.classList.add('hidden');
-      break;
-    case 2:
-      currentPageBtn.innerHTML = `${currentPage}`;
-      dotsLeft.classList.add('hidden');
-      twoPagesBack.classList.add('hidden');
-      pageBack.classList.add('hidden');
-      pageNext.classList.add('hidden');
-      twoPagesNext.classList.add('hidden');
-      pageSecond.classList.add('hidden');
-      break;
-    case 3:
-      currentPageBtn.innerHTML = `${currentPage}`;
-      dotsLeft.classList.add('hidden');
-      twoPagesBack.classList.add('hidden');
-      pageBack.innerHTML = currentPage - 1;
-      pageNext.classList.add('hidden');
-      twoPagesNext.classList.add('hidden');
-      pageSecond.classList.add('hidden');
-      pageThird.classList.add('hidden');
-      break;
-    case 4:
-      currentPageBtn.innerHTML = `${currentPage}`;
-      dotsLeft.classList.add('hidden');
-      twoPagesBack.innerHTML = currentPage - 2;
-      pageBack.innerHTML = currentPage - 1;
-      pageNext.classList.add('hidden');
-      twoPagesNext.classList.add('hidden');
-      pageSecond.classList.add('hidden');
-      pageThird.classList.add('hidden');
-      pageFourth.classList.add('hidden');
-      break;
-    case 500:
-      pageNext.classList.add('hidden');
-      twoPagesNext.classList.add('hidden');
-      pageLast.classList.add('hidden');
-      dotsRight.classList.add('hidden');
-      arrowRight.classList.add('hidden');
-    case 499:
-      twoPagesNext.classList.add('hidden');
-      pageLast.classList.add('hidden');
-      dotsRight.classList.add('hidden');
-    case 498:
-      pageLast.classList.add('hidden');
-      dotsRight.classList.add('hidden');
-    case 497:
-      dotsRight.classList.add('hidden');
-    default:
-      currentPageBtn.innerHTML = `${currentPage}`;
-      twoPagesBack.innerHTML = currentPage - 2;
-      pageBack.innerHTML = currentPage - 1;
-      pageNext.innerHTML = currentPage + 1;
-      twoPagesNext.innerHTML = currentPage + 2;
-      pageSecond.classList.add('hidden');
-      pageThird.classList.add('hidden');
-      pageFourth.classList.add('hidden');
-      pageFifth.classList.add('hidden');
-      pageSixth.classList.add('hidden');
-      pageSeventh.classList.add('hidden');
+      // CONDITIONS
+      switch (currentPage) {
+        case lastPage:
+          pageNext.classList.add('hidden');
+          twoPagesNext.classList.add('hidden');
+          pageLast.classList.add('hidden');
+          dotsRight.classList.add('hidden');
+          arrowRight.classList.add('hidden');
+          break;
+        case lastPage - 1:
+          twoPagesNext.classList.add('hidden');
+          pageLast.classList.add('hidden');
+          dotsRight.classList.add('hidden');
+          break;
+        case lastPage - 2:
+          pageLast.classList.add('hidden');
+          dotsRight.classList.add('hidden');
+          break;
+        case lastPage - 3:
+          dotsRight.classList.add('hidden');
+          break;
+      }
+      // CONDITIONS
+      switch (currentPage) {
+        case 1:
+          pageFirst.classList.add('hidden');
+          dotsLeft.classList.add('hidden');
+          twoPagesBack.classList.add('hidden');
+          pageBack.classList.add('hidden');
+          pageNext.classList.add('hidden');
+          twoPagesNext.classList.add('hidden');
+          arrowLeft.classList.add('hidden');
+          break;
+        case 2:
+          currentPageBtn.innerHTML = `${paginationSearchParams.page}`;
+          dotsLeft.classList.add('hidden');
+          twoPagesBack.classList.add('hidden');
+          pageBack.classList.add('hidden');
+          pageNext.classList.add('hidden');
+          twoPagesNext.classList.add('hidden');
+          pageSecond.classList.add('hidden');
+          break;
+        case 3:
+          currentPageBtn.innerHTML = `${paginationSearchParams.page}`;
+          dotsLeft.classList.add('hidden');
+          twoPagesBack.classList.add('hidden');
+          pageBack.innerHTML = paginationSearchParams.page - 1;
+          pageNext.classList.add('hidden');
+          twoPagesNext.classList.add('hidden');
+          pageSecond.classList.add('hidden');
+          pageThird.classList.add('hidden');
+          break;
+        case 4:
+          currentPageBtn.innerHTML = `${paginationSearchParams.page}`;
+          dotsLeft.classList.add('hidden');
+          twoPagesBack.innerHTML = paginationSearchParams.page - 2;
+          pageBack.innerHTML = paginationSearchParams.page - 1;
+          pageNext.classList.add('hidden');
+          twoPagesNext.classList.add('hidden');
+          pageSecond.classList.add('hidden');
+          pageThird.classList.add('hidden');
+          pageFourth.classList.add('hidden');
+          break;
+        default:
+          currentPageBtn.innerHTML = `${paginationSearchParams.page}`;
+          twoPagesBack.innerHTML = paginationSearchParams.page - 2;
+          pageBack.innerHTML = paginationSearchParams.page - 1;
+          pageNext.innerHTML = paginationSearchParams.page + 1;
+          twoPagesNext.innerHTML = paginationSearchParams.page + 2;
+          pageSecond.classList.add('hidden');
+          pageThird.classList.add('hidden');
+          pageFourth.classList.add('hidden');
+          pageFifth.classList.add('hidden');
+          pageSixth.classList.add('hidden');
+          pageSeventh.classList.add('hidden');
+      }
+      switch (lastPage) {
+        case 7:
+          pageLast.classList.add('hidden');
+          dotsRight.classList.add('hidden');
+          break;
+        case 6:
+          pageSeventh.classList.add('hidden');
+          pageLast.classList.add('hidden');
+          dotsRight.classList.add('hidden');
+          break;
+        case 5:
+          pageSixth.classList.add('hidden');
+          pageSeventh.classList.add('hidden');
+          pageLast.classList.add('hidden');
+          dotsRight.classList.add('hidden');
+          break;
+        case 4:
+          pageFifth.classList.add('hidden');
+          pageSixth.classList.add('hidden');
+          pageSeventh.classList.add('hidden');
+          pageLast.classList.add('hidden');
+          dotsRight.classList.add('hidden');
+          break;
+        case 3:
+          pageFourth.classList.add('hidden');
+          pageFifth.classList.add('hidden');
+          pageSixth.classList.add('hidden');
+          pageSeventh.classList.add('hidden');
+          pageLast.classList.add('hidden');
+          dotsRight.classList.add('hidden');
+          break;
+        case 2:
+          pageThird.classList.add('hidden');
+          pageFourth.classList.add('hidden');
+          pageFifth.classList.add('hidden');
+          pageSixth.classList.add('hidden');
+          pageSeventh.classList.add('hidden');
+          pageLast.classList.add('hidden');
+          dotsRight.classList.add('hidden');
+          break;
+        case 1:
+          pageSecond.classList.add('hidden');
+          pageThird.classList.add('hidden');
+          pageFourth.classList.add('hidden');
+          pageFifth.classList.add('hidden');
+          pageSixth.classList.add('hidden');
+          pageSeventh.classList.add('hidden');
+          pageLast.classList.add('hidden');
+          dotsRight.classList.add('hidden');
+          break;
+      }
+      if (totalResults === 0) {
+        currentPageBtn.classList.add('hidden');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
+
+  // RUN CHECKING...
+  checkPage();
 
   // BUTTONS LISTENERS
   pageFirst.addEventListener('click', () => {
-    currentPage = 1;
-    updatePages();
+    paginationSearchParams.page = 1;
+    updatePages(paginationURL, paginationSearchParams);
   });
   pageSecond.addEventListener('click', () => {
-    currentPage = 2;
-    updatePages();
+    paginationSearchParams.page = 2;
+    updatePages(paginationURL, paginationSearchParams);
   });
   pageThird.addEventListener('click', () => {
-    currentPage = 3;
-    updatePages();
+    paginationSearchParams.page = 3;
+    updatePages(paginationURL, paginationSearchParams);
   });
   pageFourth.addEventListener('click', () => {
-    currentPage = 4;
-    updatePages();
+    paginationSearchParams.page = 4;
+    updatePages(paginationURL, paginationSearchParams);
   });
   pageFifth.addEventListener('click', () => {
-    currentPage = 5;
-    updatePages();
+    paginationSearchParams.page = 5;
+    updatePages(paginationURL, paginationSearchParams);
   });
   pageSixth.addEventListener('click', () => {
-    currentPage = 6;
-    updatePages();
+    paginationSearchParams.page = 6;
+    updatePages(paginationURL, paginationSearchParams);
   });
   pageSeventh.addEventListener('click', () => {
-    currentPage = 7;
-    updatePages();
+    paginationSearchParams.page = 7;
+    updatePages(paginationURL, paginationSearchParams);
   });
   pageNext.addEventListener('click', () => {
-    currentPage++;
-    updatePages();
+    paginationSearchParams.page++;
+    updatePages(paginationURL, paginationSearchParams);
   });
   twoPagesNext.addEventListener('click', () => {
-    currentPage += 2;
-    updatePages();
+    paginationSearchParams.page += 2;
+    updatePages(paginationURL, paginationSearchParams);
   });
   pageBack.addEventListener('click', () => {
-    currentPage--;
-    updatePages();
+    paginationSearchParams.page--;
+    updatePages(paginationURL, paginationSearchParams);
   });
   twoPagesBack.addEventListener('click', () => {
-    currentPage -= 2;
-    updatePages();
+    paginationSearchParams.page -= 2;
+    updatePages(paginationURL, paginationSearchParams);
   });
-
   arrowRight.addEventListener('click', () => {
-    currentPage++;
-    updatePages();
+    paginationSearchParams.page++;
+    updatePages(paginationURL, paginationSearchParams);
   });
-
   arrowLeft.addEventListener('click', () => {
-    if (currentPage !== 1) {
-      currentPage--;
-      updatePages();
+    if (paginationSearchParams.page !== 1) {
+      paginationSearchParams.page--;
+      updatePages(paginationURL, paginationSearchParams);
     }
   });
+}
+
+export function checkBrowersWidth(url, searchParams) {
+  function isBottomOfTheSite() {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      console.log('dojechałeś do końca strony');
+      searchParams.page++;
+      handler(url, searchParams);
+
+      const form = document.querySelector('.search-form');
+      const svgBtn = document.querySelector('.search-form__svg');
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        document.removeEventListener('scroll', isBottomOfTheSite);
+      });
+      svgBtn.addEventListener('click', () => {
+        document.removeEventListener('scroll', isBottomOfTheSite);
+      });
+    }
+  }
+  if (window.innerWidth < 768) {
+    console.log('przeglądarka mobilna');
+    document.addEventListener('scroll', isBottomOfTheSite);
+  }
+}
+
+async function handler(url, searchParams) {
+  try {
+    const data = await fetchApi(url, searchParams);
+    const results = await data.results;
+    if (searchParams.page > data.total_pages || searchParams.page > 500) {
+      console.log(`osiągnięto ostatnią stronę`);
+      return;
+    }
+    console.log(
+      `rysowana jest kolejna strona ${searchParams.page} / ${
+        data.total_pages <= 500 ? data.total_pages : 500
+      }`,
+    );
+    console.log('kolejna strona została narysowana');
+    return drawFilmBox(results, false);
+  } catch (error) {
+    console.log(error);
+  }
 }
