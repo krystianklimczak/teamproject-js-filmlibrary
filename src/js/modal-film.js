@@ -117,8 +117,8 @@ export function drawModal(key) {
     // <button type="button" class="modal-film__btns-addToWatched">Add to watched</button>
     // <button type="button" class="modal-film__btns-addToQueue">Add to queue</button>
     const movieButtonBox = document.createElement('div');
-    movieButtonBox.innerHTML = `<button type="button" class="modal-film__btns-addToWatched">Add to watched</button>
-      <button type="button" class="modal-film__btns-addToQueue">Add to queue</button>`;
+    movieButtonBox.innerHTML = `<button type="button" class="modal-film__btns-addToWatched" value="${key}">Add to watched</button>
+      <button type="button" class="modal-film__btns-addToQueue" value="${key}">Add to queue</button>`;
 
     movieInfos.push(
       movieImgBox,
