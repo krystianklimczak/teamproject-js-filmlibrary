@@ -1,5 +1,6 @@
 // import { WATCHED_KEY, QUEUE_KEY } from '.localStorageKeys'; // how should I find this? // do we have localStorage?
 import { refs } from './refs';
+import { locStorage } from './local-storage';
 
 refs.filmList.addEventListener('click', event => {
   onModalOpenMovie(event);
@@ -37,6 +38,7 @@ export function onModalOpenMovie(e) {
   refs.modalFilmBtnClose.addEventListener('click', closeModal);
   document.addEventListener('keydown', escClose);
   refs.modalBackdrop.addEventListener('click', backdropClick);
+  locStorage(data);
 }
 
 export function closeModal() {
