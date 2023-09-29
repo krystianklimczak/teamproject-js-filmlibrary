@@ -1,4 +1,4 @@
-<div class="backdrop-modal-film">
+<div class="backdrop-modal-film is-hidden">
   <div class="modal-film container">
     <button type="button" class="modal-film__btn-close" aria-label="close button">
       <svg class="modal-film__btn-close-icon" width="20" height="20">
@@ -6,13 +6,10 @@
       </svg>
     </button>
     <!-- As agreed, I added a button to play the trailer window -->
-    <div class="trailer-btn">
-      <svg class="trailer-btn__play" width="60" height="60">
-        <use href="/src/images/icons.svg#icon-play-grey" />
-      </svg>
-    </div>
+
     <div class="modal-film__card"></div>
     <!-- JS injected html -->
+
     <!-- <div class="film-info">
       <img src="#" srcset="#" alt="movie poster" class="film-info__poster" />
       <div class="film-info__wrapper">
@@ -48,6 +45,7 @@
         </p>
       </div>
     </div> -->
+
     <!-- additional "watched" & "queue" buttons -->
     <div class="modal-film__btns">
       <button type="button" class="modal-film__btns-addToWatched">Add to watched</button>
