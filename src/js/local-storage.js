@@ -78,7 +78,7 @@ export function locStorage(data) {
   }
 }
 
-export function addBtnsListeners() {
+export function addBtnsListeners(key) {
   const addWatchedRef = document.querySelector('.add-watched');
   const addQueueRef = document.querySelector('.add-queue');
 
@@ -86,10 +86,10 @@ export function addBtnsListeners() {
   addQueueRef.addEventListener('click', handlerQueue);
 
   function handlerWatch(e) {
-    console.log(`Dodaj do watched film i id : ${e.target.value}`);
+    console.log(key);
   }
 
   function handlerQueue(e) {
-    console.log(`Dodaj do queue film i id : ${e.target.value}`);
+    console.log(key);
   }
 }

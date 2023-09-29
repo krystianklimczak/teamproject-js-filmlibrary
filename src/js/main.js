@@ -171,7 +171,7 @@ function drawModal(key) {
     );
     modalFilmCard.append(...movieInfos);
 
-    addBtnsListeners();
+    addBtnsListeners(key);
 
     const backdropModalFilm = document.querySelector('.backdrop-modal-film');
     backdropModalFilm.classList.remove('is-hidden');
