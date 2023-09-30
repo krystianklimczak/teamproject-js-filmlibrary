@@ -27,28 +27,37 @@ export function showTrailer(key) {
     `<iframe class="modal-trailer__iframe" src="https://www.youtube.com/embed/${key}?si=NP4x3PPUZd7lNCFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
   );
   //TRAILER CLOSE BTN
-  const trailerCloseBtn = `<button class ="modal-trailer__button">X</button>`;
-  trailer.insertAdjacentHTML('beforeend', trailerCloseBtn);
+  const trailerCloseBtnHTML = `<button class ="modal-trailer__button">X</button>`;
+  trailer.insertAdjacentHTML('beforeend', trailerCloseBtnHTML);
+
+  const trailerCloseBtn = document.querySelector('.modal-trailer__button');
+  trailerCloseBtn.addEventListener('click', closeTrailer);
 
   //
   backdrop.innerHTML = '';
-  backdrop.insertAdjacentElement('afterbegin', trailer);
   backdrop.classList.remove('is-hidden');
-  document.body.style.overflow = 'hidden';
+  trailer.classList.remove('is-hidden');
   backdrop.addEventListener('click', closeTrailer);
   document.addEventListener('keydown', handler);
+  document.body.style.overflow = 'hidden';
 }
 function closeTrailer() {
   backdrop.classList.add('is-hidden');
+  trailer.classList.add('is-hidden');
   backdrop.innerHTML = '';
-  document.removeEventListener('click', closeTrailer);
   document.body.style.overflow = 'auto';
+  backdrop.removeEventListener('click', closeTrailer);
+  document.removeEventListener('keydown', handler);
+  trailerCloseBtn.removeEventListener('click', closeTrailer);
 }
 function handler(e) {
   if (e.key === 'Escape') {
     backdrop.classList.add('is-hidden');
+    trailer.classList.add('is-hidden');
     backdrop.innerHTML = '';
-    document.removeEventListener('keydown', handler);
     document.body.style.overflow = 'auto';
+    backdrop.removeEventListener('click', closeTrailer);
+    document.removeEventListener('keydown', handler);
+    trailerCloseBtn.removeEventListener('click', closeTrailer);
   }
 }
