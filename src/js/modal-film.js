@@ -2,6 +2,7 @@ import { fetchApi } from './filmApi';
 
 export function drawModal(key) {
   const modalFilmCard = document.querySelector('.modal-film__card');
+  const modalFilmContainer = document.querySelector('.modal-film');
   modalFilmCard.innerHTML = '';
   function drawFilmDetails(data) {
     const movieInfos = [];
@@ -69,18 +70,31 @@ export function drawModal(key) {
 
     const backdropModalFilm = document.querySelector('.backdrop-modal-film');
     backdropModalFilm.classList.remove('is-hidden');
-    window.addEventListener('keydown', e => {
+    modalFilmContainer.classList.remove('is-hidden');
+    window.addEventListener('keydown', closeModalEscapeHandler);
+    function closeModalEscapeHandler(e) {
       if (e.key === 'Escape') {
         backdropModalFilm.classList.add('is-hidden');
+        modalFilmContainer.classList.add('is-hidden');
+        window.removeEventListener('keydown', closeModalEscapeHandler);
+        backdropModalFilm.removeEventListener('click', closeModalHander);
       }
-    });
-    backdropModalFilm.addEventListener('click', () => {
+    }
+
+    backdropModalFilm.addEventListener('click', closeModalHander);
+
+    function closeModalHander(e) {
+      console.log(e.target);
       backdropModalFilm.classList.add('is-hidden');
-    });
+      modalFilmContainer.classList.add('is-hidden');
+      window.removeEventListener('keydown', closeModalEscapeHandler);
+      backdropModalFilm.removeEventListener('click', closeModalHander);
+    }
 
     const modalFilmBtnClose = document.querySelector('.modal-film__btn-close');
     modalFilmBtnClose.addEventListener('click', () => {
       backdropModalFilm.classList.add('is-hidden');
+      modalFilmContainer.classList.add('is-hidden');
     });
   }
 

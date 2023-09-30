@@ -60,7 +60,6 @@ export function drawFilmBox(films, isNotMobile = true) {
     const filmPoster = document.createElement('div');
     filmPoster.classList.add('film-poster');
     filmPoster.addEventListener('click', e => {
-      console.log(e.target.localName);
       if (e.target.localName !== 'svg' && e.target.localName !== 'button') {
         drawModal(film.id);
       }
