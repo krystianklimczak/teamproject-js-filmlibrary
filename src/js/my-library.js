@@ -2,41 +2,55 @@ import { fetchApi } from './filmApi';
 import { getTrailerKey, showTrailer } from './trailer';
 import { drawModal } from './main';
 
+const moviesWatched = JSON.parse(localStorage.getItem('movies-watched')) || [];
 const mainContainer = document.querySelector('.main-section');
+const queueBtn = document.querySelector('.queue');
+const watchedBtn = document.querySelector('.watched');
 let posterArray = [];
 
-export function checkLibraryMovies() {
-  const moviesWatched = JSON.parse(localStorage.getItem('movies-watched')) || [];
+queueBtn.addEventListener('click', drawQueue);
+function drawQueue() {
+  posterArray = [];
+  mainContainer.innerHTML = '';
   const moviesQueue = JSON.parse(localStorage.getItem('movies-queue')) || [];
-
-  //   console.log(moviesWatched);
-  //   console.log(moviesQueue);
-
-  async function getMovieDetails(id) {
-    const url = `https://api.themoviedb.org/3/movie/${id}`;
-    const searchParams = {
-      api_key: '95f474a01cc4252905d63c7d958d5749',
-      language: 'en-US',
-    };
-    try {
-      const response = await fetchApi(url, searchParams);
-      pushMovie(response);
-      mainContainer.append(...posterArray);
-    } catch (err) {
-      console.log(err.message);
-    }
-  }
-
-  function drawWatched(moviesWatched) {
-    moviesWatched.forEach(id => {
-      getMovieDetails(id);
-    });
-  }
-
-  drawWatched(moviesWatched);
+  drawMovies(moviesQueue);
+  queueBtn.removeEventListener('click', drawQueue);
+  watchedBtn.addEventListener('click', drawWatched);
+}
+watchedBtn.addEventListener('click', drawWatched);
+function drawWatched() {
+  posterArray = [];
+  mainContainer.innerHTML = '';
+  const moviesWatched = JSON.parse(localStorage.getItem('movies-watched')) || [];
+  drawMovies(moviesWatched);
+  watchedBtn.removeEventListener('click', drawWatched);
+  queueBtn.addEventListener('click', drawQueue);
 }
 
-// response is object returned from fetch
+async function getMovieDetails(id) {
+  const url = `https://api.themoviedb.org/3/movie/${id}`;
+  const searchParams = {
+    api_key: '95f474a01cc4252905d63c7d958d5749',
+    language: 'en-US',
+  };
+  try {
+    const response = await fetchApi(url, searchParams);
+    pushMovie(response);
+    mainContainer.append(...posterArray);
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+function drawMovies(moviesToDraw) {
+  moviesToDraw.forEach(id => {
+    getMovieDetails(id);
+  });
+}
+
+export function checkLibraryMovies() {
+  drawMovies(moviesWatched);
+}
+
 function pushMovie(response) {
   let genreList = [];
   response.genres.forEach(genre => {
