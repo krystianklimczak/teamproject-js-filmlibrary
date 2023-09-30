@@ -5,7 +5,7 @@ import {
   infoRemoveFromWatched,
 } from './notifications';
 
-export function locStorage(data) {
+export function addBtnsListeners(data) {
   const moviesWatched = JSON.parse(localStorage.getItem('movies-watched')) || [];
   const moviesQueue = JSON.parse(localStorage.getItem('movies-queue')) || [];
 
@@ -78,18 +78,3 @@ export function locStorage(data) {
   }
 }
 
-export function addBtnsListeners(key) {
-  const addWatchedRef = document.querySelector('.add-watched');
-  const addQueueRef = document.querySelector('.add-queue');
-
-  addWatchedRef.addEventListener('click', handlerWatch);
-  addQueueRef.addEventListener('click', handlerQueue);
-
-  function handlerWatch(e) {
-    console.log(key);
-  }
-
-  function handlerQueue(e) {
-    console.log(key);
-  }
-}
