@@ -21,6 +21,7 @@ export function drawModal(key) {
     });
 
     const movieImgBox = document.createElement('div');
+    movieImgBox.setAttribute('class', 'film-info__poster'); // need this style
     movieImgBox.innerHTML = `<img class="film-info__poster" src="https://image.tmdb.org/t/p/original${data.backdrop_path}" alt="${data.title}"/>`;
 
     const movieTitle = document.createElement('h2');

@@ -1,8 +1,3 @@
-// body.modal-is-hidden {
-//   overflow-y: hidden;
-//   height: 100vh;
-// }
-
 .backdrop-modal-film {
   position: fixed;
   top: 0;
@@ -10,7 +5,6 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.25);
-  transition: 0.3s all;
   z-index: 99;
 }
 
@@ -18,9 +12,10 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 280px;
-  height: auto;
-  max-width: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 280px;
   max-height: 90vh;
   padding: 40px 20px;
   border-radius: 5px;
@@ -33,17 +28,15 @@
   z-index: 100;
 
   @media screen and (min-width: $breakpoint-tablet) {
-    .modal-film {
-      // width: 704px;
-      padding: 40px 36px;
-    }
+    flex-direction: row;
+    min-width: 704px;
+    padding: 40px 36px;
   }
 
-  @media screen and (min-width: 1280px) {
-    .modal-film {
-      // width: 806px;
-      padding: 40px 12px;
-    }
+  @media screen and (min-width: $breakpoint-desktop) {
+    flex-direction: row;
+    min-width: 806px;
+    padding: 40px 12px;
   }
 }
 
@@ -75,33 +68,33 @@
 
 .film-info__poster {
   // flex-shrink: 0;
-  width: 100%;
-  min-width: 240px;
-  height: 100%;
+  object-fit: cover;
+  max-width: 240px;
+  min-height: 357px;
   margin-top: 10px;
   margin-bottom: 30px;
   border-radius: 5px;
   background-color: #8c8c8c;
 
   @media screen and (min-width: $breakpoint-tablet) {
-    width: 264px;
+    max-width: 264px;
     min-height: 374px;
     margin-right: 68px;
     margin-bottom: 0;
   }
 
   @media screen and (min-width: $breakpoint-desktop) {
-    width: 375px;
+    max-width: 375px;
     min-height: 478px;
     margin-right: 16px;
   }
 }
 
-.film-info {
-  @media screen and (min-width: $breakpoint-tablet) {
-    display: flex;
-  }
-}
+// .film-info {
+//   @media screen and (min-width: $breakpoint-tablet) {
+//     display: flex;
+//   }
+// }
 
 // .film-info__wrapper {
 //   @media screen and (min-width: 768px) {
@@ -109,8 +102,8 @@
 // }
 
 .film-info__title {
-  // font-size: 20px;
-  font-size: 1.3em;
+  font-size: 20px;
+  // font-size: 1.3em;
   line-height: 1.17px;
   margin-bottom: 20px;
   text-transform: uppercase;
