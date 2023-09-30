@@ -34,6 +34,10 @@ async function updatePages(url, searchPara) {
     const results = await data.results;
     drawFilmBox(results);
     pushPagination(url, searchPara);
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
   } catch (error) {
     console.log(error);
   }
