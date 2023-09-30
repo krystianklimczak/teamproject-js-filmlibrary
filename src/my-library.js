@@ -1,4 +1,5 @@
 import './sass/main.scss';
+import './js/modal-squad';
 
 const navigation = document.querySelectorAll('.navigation__item');
 const myLibrary = document.querySelector('.my-library');
