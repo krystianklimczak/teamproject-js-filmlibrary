@@ -1,19 +1,42 @@
 .modal-backdrop {
   position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   width: 100%;
   height: 100%;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.797);
   justify-content: center;
   align-items: center;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: opacity, background-color, visibility;
   transition-duration: 250ms;
-  z-index: 3;
 }
 .modal-trailer {
-  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 150;
+  max-width: 80vw;
+  width: 100%;
+  //padding-top: 41.25%;
+  padding-top: 46.25%;
+  margin: 0 auto;
+  position: fixed;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+@media screen and (min-width: $breakpoint-tablet) {
+  .modal-trailer {
+    width: 75%;
+  }
+}
+
+@media screen and (min-width: $breakpoint-desktop) {
+  .modal-trailer {
+    width: 75%;
+  }
 }
 
 .is-hidden {
@@ -21,6 +44,52 @@
 }
 
 .modal-trailer__iframe {
-  width: 500px;
-  height: 300px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 3%;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+@media screen and (min-width: $breakpoint-tablet) {
+  .modal-trailer__iframe {
+    padding: 3%;
+  }
+}
+@media screen and (min-width: $breakpoint-desktop) {
+  .modal-trailer__iframe {
+    padding: 4%;
+  }
+}
+
+.modal-trailer__button {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  border: none;
+  background-color: $footer-color-background;
+  text-align: center;
+  font-weight: 600;
+  &:hover {
+    background-color: rgb(165, 165, 165);
+  }
+}
+@media screen and (min-width: $breakpoint-tablet) {
+  .modal-trailer__button {
+    width: 25px;
+    height: 25px;
+  }
+}
+@media screen and (min-width: $breakpoint-desktop) {
+  .modal-trailer__button {
+    width: 30px;
+    height: 30px;
+  }
+}
+.modal-trailer__svg {
+  fill: black;
 }
