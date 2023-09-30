@@ -3,7 +3,7 @@ import { getTrailerKey, showTrailer } from './trailer';
 import { pushPagination } from './pagination';
 import { fetchApi } from './filmApi';
 import { checkBrowersWidth } from './pagination';
-import { addBtnsListeners } from './local-storage';
+import { addBtnsListeners, checkLocalStorage } from './local-storage';
 
 export const mainContainer = document.querySelector('.main-section');
 let allGenres = [];
@@ -106,7 +106,7 @@ export function drawFilmBox(films, isNotMobile = true) {
   mainContainer.append(...posterArray);
 }
 
-function drawModal(key) {
+export function drawModal(key) {
   const modalFilmCard = document.querySelector('.modal-film__card');
   modalFilmCard.innerHTML = '';
   function drawFilmDetails(data) {
@@ -171,7 +171,21 @@ function drawModal(key) {
     );
     modalFilmCard.append(...movieInfos);
 
+    // const movieBtnAddWatched = document.querySelector('.add-watched');
+    // const movieBtnAddQueue = document.querySelector('.add-queue');
+
+    // movieBtnAddWatched.addEventListener('click', addToWatched);
+    // movieBtnAddQueue.addEventListener('click', addToQueue);
+
+    // function addToWatched() {
+    //   console.log(key);
+    // }
+    // function addToQueue() {
+    //   console.log(key);
+    // }
+
     addBtnsListeners(key);
+    checkLocalStorage(key);
 
     const backdropModalFilm = document.querySelector('.backdrop-modal-film');
     backdropModalFilm.classList.remove('is-hidden');
