@@ -1,0 +1,16 @@
+var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},t={},r={},o=e.parcelRequired7c6;null==o&&((o=function(e){if(e in t)return t[e].exports;if(e in r){var o=r[e];delete r[e];var i={id:e,exports:{}};return t[e]=i,o.call(i.exports,i,i.exports),i.exports}var l=Error("Cannot find module '"+e+"'");throw l.code="MODULE_NOT_FOUND",l}).register=function(e,t){r[e]=t},e.parcelRequired7c6=o);var i=o("jQOIO"),l=o("8h1Dk"),n=o("3GqKF");const s=document.querySelector(".main-section");let a=[];const c=document.querySelectorAll(".navigation__item"),d=document.querySelector(".my-library"),u=document.querySelector(".header"),m=document.querySelector(".search-form"),g=document.querySelectorAll(".library__button"),p=document.querySelector(".watched"),f=document.querySelector(".queue");for(const e of c)e.classList.toggle("is-active");for(const e of(""===d.innerHTML&&d.classList.add("is-empty"),u.classList.toggle("header-library"),m.classList.add("is-hidden"),g))e.classList.toggle("is-hidden"),e.addEventListener("click",e=>{let t=[...e.target.classList],r=t.some(e=>"library__button--current"===e);r||(p.classList.toggle("library__button--current"),f.classList.toggle("library__button--current"))});!function(){let e=JSON.parse(localStorage.getItem("movies-watched"))||[];//   console.log(moviesWatched);
+//   console.log(moviesQueue);
+async function t(e){let t=`https://api.themoviedb.org/3/movie/${e}`;try{let e=await (0,i.fetchApi)(t,{api_key:"95f474a01cc4252905d63c7d958d5749",language:"en-US"});// response is object returned from fetch
+(function(e){let t=[];e.genres.forEach(e=>{t.push(e.name)});let r=document.createElement("div");r.classList.add("film-poster"),r.setAttribute("value",e.id),r.addEventListener("click",t=>{"svg"!==t.target.localName&&"button"!==t.target.localName&&(0,n.drawModal)(e.id)}),r.innerHTML=`<img class="film-poster__photo" src="https://image.tmdb.org/t/p/original${e.poster_path}" alt="${e.title}" loading="lazy"/>`;let o=document.createElement("div");o.classList.add("film-poster__description");let i=document.createElement("button");i.classList.add("film-poster__button"),i.setAttribute("type","button"),i.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>',i.addEventListener("click",t=>{(0,l.getTrailerKey)(e.id).then(e=>{(0,l.showTrailer)(e)})}),o.insertAdjacentElement("afterbegin",i),o.insertAdjacentHTML("beforeend",` <p class="film-poster__title">
+              ${e.title}
+            </p><br />
+            <p class="film-poster__genre">
+              ${t.join(", ")} |
+            </p>
+            <p class="film-poster__year">
+              ${e.release_date.substring(0,4)}
+            </p>
+          </div>
+        </div>`),r.insertAdjacentElement("beforeend",o),a.push(r)})(e),s.append(...a)}catch(e){console.log(e.message)}}JSON.parse(localStorage.getItem("movies-queue")),function(e){e.forEach(e=>{t(e)})}(e)}();//# sourceMappingURL=my-library.d5c9346a.js.map
+
+//# sourceMappingURL=my-library.d5c9346a.js.map
