@@ -1,4 +1,5 @@
 import './sass/main.scss';
+import { checkLibraryMovies } from './js/my-library';
 
 const navigation = document.querySelectorAll('.navigation__item');
 const myLibrary = document.querySelector('.my-library');
@@ -33,3 +34,5 @@ for (const btn of libraryBtns) {
     }
   });
 }
+
+checkLibraryMovies();
