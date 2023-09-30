@@ -112,88 +112,77 @@ export function drawModal(key) {
   function drawFilmDetails(data) {
     const movieInfos = [];
 
-    // variables from data
-    // const movieImgPath = data.backdrop_path;
-    // const movieTitle = data.title;
-    // const movieVoteAverage = data.vote_average;
-    // const movieVoteCount = data.vote_count;
-    // const moviePopulatrity = data.popularity;
-    // const movieOryginalTitle = data.original_title;
-    // const movieGenres = [];
-    // const movieOverview = data.overview;
     const movieGenres = [];
     data.genres.map(genre => {
       movieGenres.push(genre.name);
     });
 
     const movieImgBox = document.createElement('div');
-    movieImgBox.innerHTML = `<img class="" src="https://image.tmdb.org/t/p/original${data.backdrop_path}" alt="${data.title}"/>`;
+    movieImgBox.innerHTML = `<img class="film-info__poster" src="https://image.tmdb.org/t/p/original${data.backdrop_path}" alt="${data.title}"/>`;
 
-    const movieTitle = document.createElement('h2');
+    const movieTitle = document.createElement('div');
+    movieTitle.setAttribute('class', 'film-info__title');
     movieTitle.innerHTML = `${data.title}`;
-    const movieDetailsBox = document.createElement('div');
-    movieDetailsBox.innerHTML = `
-    <p>Vote / Votes</p>
-    <p>Popularity</p>
-    <p>Original Title</p>
-    <p>Genre</p>
-    `;
 
-    const movieDetailsBoxResults = document.createElement('div');
-    movieDetailsBoxResults.innerHTML = `
-    <p><span>${data.vote_average.toFixed(1)}</span> / ${data.vote_count.toFixed(0)}</p>
-    <p>${data.popularity.toFixed(0)}</p>
-    <p>${data.original_title}</p>
-    <p>${movieGenres.join(', ')}</p>
+    const movieDetailsBox = document.createElement('div');
+    movieDetailsBox.classList.add('film-info__stats-container');
+    movieDetailsBox.innerHTML = `
+    <span class="film-info__stats">Vote / Votes<span class="film-info__stats-votes">${data.vote_average.toFixed(
+      1,
+    )}</span><span class="film-info__stats-votecount"> / ${data.vote_count.toFixed(
+      0,
+    )}</span></span></span><br/>
+    <span class="film-info__stats">Popularity<span class="film-info__stats-popularity">${data.popularity.toFixed(
+      0,
+    )}</span></span> <br/>
+    <span class="film-info__stats">Original Title <span class="film-info__stats-title">${
+      data.original_title
+    }</span></span><br/>
+    <span class="film-info__stats">Genre <span class="film-info__stats-genres">${movieGenres.join(
+      ', ',
+    )}</span></span>
     `;
 
     const movieAbout = document.createElement('div');
     movieAbout.innerHTML = `
-    <p>about</p>
-    <p>${data.overview}</p>
+    <p class="film-info__about">about</p>
+    <p class="film-info__descr">${data.overview}</p>
     `;
 
-    const movieBtnBox = document.createElement('div');
-    movieBtnBox.innerHTML = `<div class="modal-film__btns">
-      <button type="button" class="modal-film__btns-addToWatched add-watched" value="${key}">
-        Add to watched
-      </button>
-      <button type="button" class="modal-film__btns-addToQueue add-queue" value="${key}">Add to queue</button>
-    </div>`;
+    const movieButtonBox = document.createElement('div');
+    movieButtonBox.classList.add('movie-button-box');
 
-    movieInfos.push(
-      movieImgBox,
-      movieTitle,
-      movieDetailsBox,
-      movieDetailsBoxResults,
-      movieAbout,
-      movieBtnBox,
-    );
+    movieButtonBox.innerHTML = `<button type="button" class="modal-film__btns-addToWatched add-watched" value="${key}">Add to watched</button>
+      <button type="button" class="modal-film__btns-addToQueue add-queue" value="${key}">Add to queue</button>`;
+
+    movieInfos.push(movieImgBox, movieTitle, movieDetailsBox, movieAbout, movieButtonBox);
     modalFilmCard.append(...movieInfos);
-
-    // const movieBtnAddWatched = document.querySelector('.add-watched');
-    // const movieBtnAddQueue = document.querySelector('.add-queue');
-
-    // movieBtnAddWatched.addEventListener('click', addToWatched);
-    // movieBtnAddQueue.addEventListener('click', addToQueue);
-
-    // function addToWatched() {
-    //   console.log(key);
-    // }
-    // function addToQueue() {
-    //   console.log(key);
-    // }
 
     addBtnsListeners(key);
     checkLocalStorage(key);
 
     const backdropModalFilm = document.querySelector('.backdrop-modal-film');
+    const modalFilm = document.querySelector('.modal-film');
     backdropModalFilm.classList.remove('is-hidden');
+    modalFilm.classList.remove('is-hidden');
+    window.addEventListener('keydown', closeModalEsc);
+    function closeModalEsc(ev) {
+      if (ev.key === 'Escape') {
+        backdropModalFilm.classList.add('is-hidden');
+        modalFilm.classList.add('is-hidden');
+        window.removeEventListener('keydown', closeModalEsc);
+      }
+    }
+    backdropModalFilm.addEventListener('click', closeModal);
+    function closeModal() {
+      backdropModalFilm.classList.add('is-hidden');
+      modalFilm.classList.add('is-hidden');
+      backdropModalFilm.removeEventListener('click', closeModal);
+      modalFilmBtnClose.removeEventListener('click', closeModal);
+    }
 
     const modalFilmBtnClose = document.querySelector('.modal-film__btn-close');
-    modalFilmBtnClose.addEventListener('click', () => {
-      backdropModalFilm.classList.add('is-hidden');
-    });
+    modalFilmBtnClose.addEventListener('click', closeModal);
   }
 
   async function getMovieDetails(key) {
