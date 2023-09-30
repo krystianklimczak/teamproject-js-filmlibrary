@@ -1,12 +1,15 @@
 .backdrop-modal-film {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.25);
+  font-family: $font-primary;
   opacity: 1;
+  visibility: visible;
+  transition: opacity;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 99;
 }
 
 .modal-film {
@@ -16,17 +19,44 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 280px;
-  max-height: 90vh;
-  padding: 40px 20px;
+  width: calc(100vw - 40px);
+  height: min-content;
+  max-height: calc(100vh - 58px);
+  // max-width: 280px;
+  // max-height: 90vh;
+  padding: 0;
+  // padding: 40px 20px;
   border-radius: 5px;
-  background-color: #fafafa;
+  background-color: $text-color-light;
+  // background-color: #fafafa;
   font-weight: 500;
   line-height: 1.33;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   transform: translate(-50%, -50%);
-  z-index: 150;
+  z-index: 100;
+  &__card {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 48px 20px 40px 20px;
+    // & > div {
+    //   flex-grow: 6;
+    // }
+    & > div:nth-child(3) {
+      //flex-grow: 1;
+      //float: left;
+      font-size: $font-size-small;
+      color: rgb(140, 140, 140);
+      padding-bottom: 20px;
+      //display: inline;
+    }
+    & > div:nth-child(4) {
+      //flex-grow: 1;
+      float: right;
+      font-size: $font-size-small;
+      display: inline;
+    }
+  }
 
   @media screen and (min-width: $breakpoint-tablet) {
     flex-direction: row;
@@ -72,8 +102,8 @@
   object-fit: cover;
   max-width: 240px;
   min-height: 357px;
-  margin-top: 10px;
-  margin-bottom: 30px;
+  // margin-top: 10px;
+  // margin-bottom: 30px;
   border-radius: 5px;
   background-color: #8c8c8c;
 
