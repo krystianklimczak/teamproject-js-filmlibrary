@@ -24,8 +24,8 @@ header.classList.toggle('header-library');
 
 form.classList.add('is-hidden');
 
-document.querySelector('.banner-library').style.display = "block";
-document.querySelector('.banner').style.display = "none";
+document.querySelector('.banner-library').style.display = 'block';
+document.querySelector('.banner').style.display = 'none';
 
 for (const btn of libraryBtns) {
   btn.classList.toggle('is-hidden');

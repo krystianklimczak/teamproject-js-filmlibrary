@@ -41,6 +41,8 @@ export function listeners() {
   });
 }
 
+const errorPoster = document.querySelector('.error-404');
+const posterContainer = document.querySelector('.main-section');
 async function searchByQ(url, params, input) {
   try {
     const response = await fetchApi(url, params);
@@ -49,11 +51,14 @@ async function searchByQ(url, params, input) {
     if (data.total_results === 0) {
       Notiflix.Notify.failure(`Sorry, no matches found for your search query`);
       // THERE WILL BE LOGIC OF EMPTY SITE
-      return (
-        drawFilmBox(results), pushPagination(url, params, data), checkBrowersWidth(url, params)
-      );
+      errorPoster.classList.remove('is-hidden');
+      posterContainer.classList.add('is-hidden');
+      return;
+      // drawFilmBox(results), pushPagination(url, params, data), checkBrowersWidth(url, params)
     }
     Notiflix.Notify.success(`Hurraa we found ${data.total_results} movies for "${input}"`);
+    errorPoster.classList.add('is-hidden');
+    posterContainer.classList.remove('is-hidden');
 
     return drawFilmBox(results), pushPagination(url, params, data), checkBrowersWidth(url, params);
   } catch (error) {
