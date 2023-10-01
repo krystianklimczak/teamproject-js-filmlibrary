@@ -20,6 +20,10 @@ export function listeners() {
       query: `${input.value}`,
     };
     searchByQ(url, searchParams, input.value);
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
   });
   svgBtn.addEventListener('click', e => {
     const url = `https://api.themoviedb.org/3/search/movie`;
@@ -30,6 +34,10 @@ export function listeners() {
       query: `${input.value}`,
     };
     searchByQ(url, searchParams, input.value);
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
   });
 }
 
