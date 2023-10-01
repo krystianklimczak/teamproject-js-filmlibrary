@@ -1,0 +1,316 @@
+.backdrop-modal-film {
+  font-family: $font-primary;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  transition: opacity;
+  z-index: 99;
+  visibility: visible;
+}
+
+.modal-film {
+  overflow-y: scroll;
+  padding: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: calc(100vw - 40px);
+  height: min-content;
+  max-height: calc(100vh - 58px);
+  border-radius: 5px;
+  background-color: $text-color-light;
+  font-weight: 500;
+  line-height: 1.33;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  @media screen and (min-width: $breakpoint-tablet) {
+    overflow-y: hidden;
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    height: 558px;
+    max-width: 806px;
+  }
+
+  &__card {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 48px 20px 40px 20px;
+    @media screen and (min-width: $breakpoint-tablet) {
+      max-width: 704px;
+      flex-direction: column;
+      height: 552px;
+      & > div:nth-child(1) {
+        flex-grow: 3;
+        height: 500px;
+        width: 45%;
+        @media screen and (min-width: $breakpoint-desktop) {
+          width: 50%;
+        }
+      }
+      & > div:nth-child(1n + 2) {
+        margin-left: 50px;
+      }
+    }
+  }
+}
+
+.film-info {
+  &__vote-original-title {
+    width: 160px;
+  }
+
+  &__poster {
+    width: 100%;
+    object-fit: cover;
+    max-width: 360px;
+    min-height: 357px;
+    border-radius: 5px;
+    background-color: rgb(140, 140, 140);
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      margin-top: 40px;
+      max-width: 264px;
+      min-height: 373px;
+      margin-right: 68px;
+    }
+
+    @media screen and (min-width: $breakpoint-desktop) {
+      max-width: 375px;
+      min-height: 375px;
+      margin-right: 16px;
+    }
+  }
+
+  &__title {
+    max-width: 240px;
+    padding-top: 20px;
+    font-size: $font-size-medium;
+    line-height: 1.17px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    overflow: visible;
+    line-height: 23px;
+    @media screen and (min-width: $breakpoint-tablet) {
+      line-height: 24px;
+      padding-top: 0;
+      margin-top: 40px;
+      display: inline;
+      width: fit-content;
+      height: fit-content;
+    }
+    @media screen and (min-width: $breakpoint-desktop) {
+      font-size: $font-size-large;
+      line-height: 30px;
+    }
+  }
+
+  &__stats {
+    font-size: $font-size-small;
+    width: 260px;
+    color: rgb(140, 140, 140);
+    &-votecount {
+      color: $text-color-dark;
+    }
+    &-votes {
+      & > span {
+        color: $text-color-dark;
+      }
+      color: $text-color-dark;
+    }
+    &-popularity {
+      color: $text-color-dark;
+      padding-left: 52.5px;
+    }
+    &-genres {
+      color: $text-color-dark;
+      padding-left: 72px;
+      display: inline-flex;
+      height: max-content;
+      width: 180px;
+      overflow-y: hidden;
+      @media screen and (min-width: $breakpoint-tablet) {
+        width: 300px;
+      }
+    }
+    &-title {
+      text-align: left;
+      color: $text-color-dark;
+      padding-left: 34.8px;
+      display: inline-flex;
+      flex-direction: column;
+      height: max-content;
+      width: 160px;
+      overflow-y: hidden;
+      @media screen and (min-width: $breakpoint-tablet) {
+        width: 120px;
+        display: inline;
+      }
+    }
+    &-votes {
+      margin-left: 41px;
+      width: 36px;
+      display: inline-block;
+      text-align: center;
+      font-weight: $font-weight-regular;
+      border-radius: 5px;
+      color: $text-color-light;
+      background: $website-main-color;
+    }
+
+    &-container {
+      height: 100%;
+      width: 100%;
+      @media screen and (min-width: $breakpoint-tablet) {
+        max-width: 340px;
+        height: fit-content;
+      }
+      @media screen and (min-width: $breakpoint-desktop) {
+        width: 385px;
+      }
+    }
+  }
+
+  &__vote {
+    width: 36px;
+    display: inline-block;
+    text-align: center;
+    font-weight: $font-weight-regular;
+    border-radius: 5px;
+    color: $text-color-light;
+    background: $website-main-color;
+    &-genres {
+      max-width: 160px;
+    }
+  }
+
+  &__origin-title {
+    max-width: 100px;
+    text-transform: uppercase;
+  }
+
+  &__about {
+    font-size: $font-size-small;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  &__descr {
+    font-size: $font-size-small;
+    line-height: 1.67;
+    margin-bottom: 20px;
+    overflow-y: hidden;
+    @media screen and (min-width: $breakpoint-tablet) {
+      max-width: 340px;
+    }
+    @media screen and (min-width: $breakpoint-desktop) {
+      max-width: 385px;
+    }
+  }
+}
+
+.modal-film__btn-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px;
+  margin-left: auto;
+  margin: 8px;
+  border: none;
+  background-color: transparent;
+
+  &-icon {
+    fill: #000;
+    width: 20px;
+    height: 20px;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover,
+    &:focus {
+      fill: #ff6b01;
+    }
+  }
+}
+
+.modal-film__btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-addToWatched,
+  &-addToQueue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-small;
+    font-weight: 500;
+    text-transform: uppercase;
+    width: 110px;
+    height: 44px;
+    padding: 6px;
+    border: 1px solid $text-color-dark;
+    border-radius: 5px;
+    background-color: inherit;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    @media screen and (min-width: $breakpoint-tablet) {
+      width: 125px;
+    }
+    @media screen and (min-width: $breakpoint-desktop) {
+      width: 136px;
+    }
+  }
+  @media screen and (min-width: $breakpoint-tablet) {
+    .modal-film__btns {
+      justify-content: center;
+      gap: 20px;
+      position: absolute;
+      right: 0;
+      width: 337px;
+      transform: translateY(-100%);
+    }
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    .modal-film__btns {
+      gap: 15px;
+      width: 397px;
+    }
+  }
+}
+
+.movie-button-box {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  @media screen and (min-width: $breakpoint-tablet) {
+    width: fit-content;
+    justify-content: left;
+    gap: 15px;
+  }
+}
+
+.modal-film__btns-addToQueue {
+  &:hover,
+  &:focus {
+    color: $text-color-light;
+    border: none;
+    background-color: $hover-color-primary;
+  }
+}
+
+.modal-film__btns-addToWatched {
+  &:hover,
+  &:focus {
+    color: $text-color-light;
+    border: none;
+    background-color: $hover-color-primary;
+  }
+}

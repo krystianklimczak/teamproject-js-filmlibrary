@@ -1,9 +1,143 @@
+.close-btn {
+  // same as above - it should be in 'commons.scss'
+  position: sticky;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  margin-left: auto;
+  padding: 0;
+  width: 25px;
+  height: 25px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  z-index: 2000;
+}
+//
+.close-icon {
+  height: 30px;
+}
+
+.close-icon:focus,
+.close-icon:hover {
+  fill: $hover-color-primary;
+}
+
+.modal-squad-backdrop {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: opacity, background-color, visibility;
+  transition-duration: 250ms;
+  z-index: 1000;
+}
+
+.modal-squad-info {
+  border-radius: 5px;
+  background-color: $footer-color-background; // almost white
+  max-height: 90%;
+  min-width: 90%;
+  overflow: auto;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(calc(-50%), calc(-50%));
+}
+
+.squad-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+
+  &__cmc {
+    font-size: 0.75rem;
+    margin-top: 2px;
+    color: $text-color-additional-secondary;
+  }
+  &__team {
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    margin-top: 10px;
+    @media screen and (min-width: $breakpoint-tablet) {
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+      font-size: 2.5rem;
+      margin-top: 10px;
+    }
+  }
+  &__dev {
+    font-weight: $font-weight-bold;
+    font-size: 0.75rem;
+    margin-top: 2px;
+    color: rgb(8, 175, 152);
+    @media screen and (min-width: $breakpoint-tablet) {
+      font-weight: $font-weight-bold;
+      font-size: 1rem;
+      margin-top: 2px;
+      color: rgb(8, 175, 152);
+    }
+  }
+}
+
+.squad-list {
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: wrap;
+  }
+
+  @media screen and (min-width: $breakpoint-desktop) {
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: wrap;
+  }
+}
+
+.squad__item {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 200px;
+  margin: 30px;
+
+  // @media screen and (min-width: $breakpoint-tablet) {
+  //   flex-basis: 200px;
+  //   margin: 30px;
+  // }
+
+  // Above & below maybe required in the near future
+
+  // @media screen and (min-width: $breakpoint-desktop) {
+  //   flex-basis: 200px;
+  //   margin: 30px;
+  // }
+}
+
+.squad__photo {
+  border-radius: 50%;
+  margin: 5px;
+  box-shadow: 0 0 20px 5px $footer-color-text;
+  background-color: $footer-color-text;
+}
+
 .footer {
   font-family: $font-primary;
   font-size: $font-size-footer-mobile;
   font-weight: $font-weight-regular;
-  background-color: $footer-color-background; //#F7F7F7
-  color: $text-color-additional-secondary; //#545454
+  background-color: $footer-color-background;
+  color: $text-color-additional-secondary;
   text-align: center;
   opacity: 0.95;
   padding: 10px;
@@ -18,30 +152,65 @@
     position: relative;
     bottom: auto;
   }
+
+  & > p {
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+    align-items: center;
+  }
+
+  &__button {
+    border: 0;
+    border-bottom: 1px solid $text-color-additional-secondary;
+
+    margin-left: 5px;
+    color: $text-color-additional-secondary;
+  }
+
+  &__button:hover,
+  &__button:focus {
+    color: $hover-color-primary;
+    border-bottom: 1px solid $hover-color-primary;
+  }
 }
 
-.footer > p {
-  margin: 0 auto;
-  text-align: center;
-  display: inline-block;
+.dev-info {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-}
 
-.footer__button {
-  border: 0;
-  border-bottom: 1px solid $text-color-additional-secondary;
-  margin-left: 5px;
+  &__name {
+    font-weight: $font-weight-bold;
+    color: $footer-color-text;
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin-top: 10px;
+    @media screen and (min-width: $breakpoint-tablet) {
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+  }
+  &__role {
+    font-weight: $font-weight-bold;
+    font-size: 1rem;
+    margin-top: 10px;
+    color: rgb(8, 175, 152);
+    @media screen and (min-width: $breakpoint-tablet) {
+      font-weight: $font-weight-bold;
+      font-size: 1rem;
+      margin-top: 10px;
+      color: rgb(8, 175, 152);
+    }
+  }
 }
 
 .heart-icon {
-  fill: $text-color-additional-primary; // #FF6B08
+  fill: $text-color-additional-primary;
 }
 
-.students {
-}
-
-.footer__button {
-}
-
-.underline {
+.is-hidden {
+  display: none; // please add this class to 'commons.scss', unify the name and remove it from 'scss' partials
 }
