@@ -20,9 +20,9 @@ observer.observe(header);
 function showArrow(entries) {
   entries.forEach(entry => {
     if (entry.intersectionRatio > 0) {
-      arrow.classList.add('is-hidden');
+      arrow.classList.add('arrow--hidden');
     } else {
-      arrow.classList.remove('is-hidden');
+      arrow.classList.remove('arrow--hidden');
     }
   });
 }
