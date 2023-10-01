@@ -1,5 +1,4 @@
 const arrow = document.querySelector('.arrow');
-const header = document.querySelector('.header');
 
 arrow.addEventListener('click', () => {
   window.scroll({
@@ -8,21 +7,6 @@ arrow.addEventListener('click', () => {
   });
 });
 
-let options = {
-  root: null,
-  rootMargin: '0px',
-  threshold: 0,
-};
-
-let observer = new IntersectionObserver(showArrow, options);
-observer.observe(header);
-
-function showArrow(entries) {
-  entries.forEach(entry => {
-    if (entry.intersectionRatio > 0) {
-      arrow.classList.add('arrow--hidden');
-    } else {
-      arrow.classList.remove('arrow--hidden');
-    }
-  });
-}
+window.addEventListener('scroll', () => {
+  arrow.classList.toggle('arrow--hidden', window.scrollY < 35);
+});

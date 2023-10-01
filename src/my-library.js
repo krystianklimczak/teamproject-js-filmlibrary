@@ -1,6 +1,7 @@
 import './sass/main.scss';
 import './js/modal-squad';
 import './js/sticky-menu';
+import './js/arrow-up';
 import { checkLibraryMovies } from './js/my-library';
 
 const navigation = document.querySelectorAll('.navigation__item');
