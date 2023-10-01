@@ -1,5 +1,6 @@
 import './sass/main.scss';
 import './js/modal-squad';
+import './js/sticky-menu';
 import { checkLibraryMovies } from './js/my-library';
 
 const navigation = document.querySelectorAll('.navigation__item');
@@ -21,6 +22,7 @@ if (myLibrary.innerHTML === '') {
 header.classList.toggle('header-library');
 
 form.classList.add('is-hidden');
+
 
 for (const btn of libraryBtns) {
   btn.classList.toggle('is-hidden');
