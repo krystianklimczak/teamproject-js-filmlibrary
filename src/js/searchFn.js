@@ -19,6 +19,10 @@ export function listeners() {
       page: 1,
       query: `${input.value}`,
     };
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
     searchByQ(url, searchParams, input.value);
   });
   svgBtn.addEventListener('click', e => {
@@ -29,6 +33,10 @@ export function listeners() {
       page: 1,
       query: `${input.value}`,
     };
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
     searchByQ(url, searchParams, input.value);
   });
 }
