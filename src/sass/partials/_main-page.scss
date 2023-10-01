@@ -20,6 +20,7 @@
 }
 
 .film-poster {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
   display: flex;
   flex-direction: column;
   @include transition-properties(transform);
@@ -52,6 +53,7 @@
   }
 
   &__description {
+    padding: 7px;
     font-size: $font-size-small;
     margin-top: 10px;
     @media screen and (min-width: $breakpoint-desktop) {
