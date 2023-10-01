@@ -121,7 +121,7 @@
   margin-top: -2.8rem;
   margin-left: 4rem;
   margin-bottom: 3rem;
-  
+
   &__label {
     width: 100%;
     display: flex;
@@ -132,6 +132,8 @@
   &__svg {
     fill: $text-color-light;
     cursor: pointer;
+    width: 2.5rem;
+    height: auto;
   }
 
   &__input {
