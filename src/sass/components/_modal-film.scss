@@ -112,7 +112,7 @@
 
   &__stats {
     font-size: $font-size-small;
-    width: 200px;
+    width: 260px;
     color: rgb(140, 140, 140);
     &-votecount {
       color: $text-color-dark;
@@ -127,17 +127,31 @@
       color: $text-color-dark;
       padding-left: 52.5px;
     }
-    &-title {
-      max-width: 120px;
-      text-align: center;
-      color: $text-color-dark;
-      padding-left: 35.5px;
-    }
     &-genres {
       color: $text-color-dark;
       padding-left: 72px;
+      display: inline-flex;
+      height: max-content;
+      width: 180px;
+      overflow-y: hidden;
+      @media screen and (min-width: $breakpoint-tablet) {
+        width: 300px;
+      }
     }
-
+    &-title {
+      text-align: left;
+      color: $text-color-dark;
+      padding-left: 34.8px;
+      display: inline-flex;
+      flex-direction: column;
+      height: max-content;
+      width: 160px;
+      overflow-y: hidden;
+      @media screen and (min-width: $breakpoint-tablet) {
+        width: 120px;
+        display: inline;
+      }
+    }
     &-votes {
       margin-left: 41px;
       width: 36px;
