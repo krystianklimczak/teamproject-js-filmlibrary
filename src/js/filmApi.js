@@ -16,7 +16,7 @@ export const fetchGenres = async () => {
     // spinnerBox.classList.add('spinner-box--hidden');
     return genres;
   } catch (error) {
-    console.error(error.message);
+    return console.error(error.message);
   }
 };
 
@@ -32,7 +32,7 @@ export const fetchTrailer = async key => {
     // spinnerBox.classList.add('spinner-box--hidden');
     return response;
   } catch (error) {
-    console.log(error);
+    return console.log(error);
   }
 };
 
@@ -42,12 +42,9 @@ export async function fetchApi(url, searchParameters) {
   const searchParams = new URLSearchParams(searchParameters);
   try {
     const response = await axios.get(`${url}?${searchParams}`);
-    // const data = await response.data;
-    console.log('fetchApi zwraca response');
-    console.log(response);
     spinnerBox.classList.add('spinner-box--hidden');
     return response;
   } catch (error) {
-    console.log(error);
+    return console.log(error);
   }
 }
