@@ -29,6 +29,10 @@
     0px 2px 1px rgba(0, 0, 0, 0.2);
   transform: translate(-50%, -50%);
   z-index: 100;
+  &--dark-mode {
+    background-color: $website-color-secondary;
+    box-shadow: rgba(253, 251, 251, 0.25) 0px 2px 10px 0px;
+  }
   @media screen and (min-width: $breakpoint-tablet) {
     overflow-y: hidden;
   }
@@ -68,7 +72,7 @@
   &__poster {
     width: 100%;
     object-fit: cover;
-    max-width: 360px;
+    //max-width: 400px;
     min-height: 357px;
     border-radius: 5px;
     background-color: rgb(140, 140, 140);
@@ -229,13 +233,16 @@
   background-color: transparent;
 
   &-icon {
-    fill: #000;
+    fill: $text-color-dark;
     width: 20px;
     height: 20px;
     transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:hover,
     &:focus {
       fill: #ff6b01;
+    }
+    &--dark-mode {
+      fill: $footer-color-background;
     }
   }
 }
@@ -289,7 +296,7 @@
 .movie-button-box {
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-around;
   @media screen and (min-width: $breakpoint-tablet) {
     width: fit-content;
     justify-content: left;
@@ -313,4 +320,13 @@
     border: none;
     background-color: $hover-color-primary;
   }
+}
+
+.modal-film-text--dark-mode {
+  color: $text-color-light;
+}
+
+.modal-film-button--dark-mode {
+  color: $text-color-light;
+  border-color: $text-color-light;
 }

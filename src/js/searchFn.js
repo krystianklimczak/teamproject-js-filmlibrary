@@ -3,6 +3,7 @@ import { drawFilmBox } from './main';
 import { fetchApi } from './filmApi';
 import { pushPagination } from './pagination';
 import { checkBrowersWidth } from './pagination';
+import { checkAndChangeTheme } from './dark-mode';
 import Notiflix from 'notiflix';
 
 const form = document.querySelector('.search-form');
@@ -39,6 +40,7 @@ export function listeners() {
     });
     searchByQ(url, searchParams, input.value);
   });
+  checkAndChangeTheme();
 }
 
 const errorPoster = document.querySelector('.error-404');

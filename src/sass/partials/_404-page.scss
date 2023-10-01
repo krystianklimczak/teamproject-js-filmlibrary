@@ -25,6 +25,10 @@
   height: 100%;
   max-width: 100%;
 
+  &--dark-mode {
+    background: $website-color-secondary;
+  }
+
   //   keyframes
   @keyframes gradient {
     0% {
@@ -72,7 +76,11 @@
         font-size: 3vh;
       }
     }
+    & > .error-404-text--dark-mode {
+      color: $text-color-light;
+    }
   }
+
   // img
   &__image {
     max-width: 100%;

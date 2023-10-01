@@ -4,6 +4,7 @@ import { pushPagination } from './pagination';
 import { fetchApi } from './filmApi';
 import { checkBrowersWidth } from './pagination';
 import { addBtnsListeners, checkLocalStorage } from './local-storage';
+import { checkAndChangeTheme } from './dark-mode';
 
 export const mainContainer = document.querySelector('.main-section');
 let allGenres = [];
@@ -181,6 +182,7 @@ export function drawModal(key) {
 
     const modalFilmBtnClose = document.querySelector('.modal-film__btn-close');
     modalFilmBtnClose.addEventListener('click', closeModal);
+    checkAndChangeTheme();
   }
 
   async function getMovieDetails(key) {
@@ -199,6 +201,5 @@ export function drawModal(key) {
   }
 
   getMovieDetails(key);
-
   // modalFilmCard.insertAdjacentHTML('beforeend', key);
 }
