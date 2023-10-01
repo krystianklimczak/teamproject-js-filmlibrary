@@ -179,3 +179,32 @@
   pointer-events: none;
   visibility: hidden;
 }
+
+// dark-mode button
+.icon-moon,
+.icon-sun,
+.icon-moon--visible,
+.icon-sun--visible {
+  display: block;
+  fill: $text-color-light;
+  fill: red;
+  width: 23px;
+  height: 23px;
+}
+.dark-mode-button {
+  margin-top: 15px;
+  margin-left: 40px;
+  background-color: transparent;
+  border: none;
+  width: fit-content;
+  height: fit-content;
+}
+
+.icon-moon--hidden,
+.icon-sun--hidden {
+  display: none;
+}
+
+.body--dark {
+  background-color: $website-color-secondary;
+}

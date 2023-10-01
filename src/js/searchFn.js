@@ -3,6 +3,7 @@ import { drawFilmBox } from './main';
 import { fetchApi } from './filmApi';
 import { pushPagination } from './pagination';
 import { checkBrowersWidth } from './pagination';
+import { checkAndChangeTheme } from './dark-mode';
 
 const form = document.querySelector('.search-form');
 const input = document.querySelector('.search-form__input');
@@ -30,6 +31,7 @@ export function listeners() {
     };
     searchByQ(url, searchParams);
   });
+  checkAndChangeTheme();
 }
 
 async function searchByQ(url, params) {

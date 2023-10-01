@@ -1,6 +1,7 @@
 import { drawFilmBox } from './main';
 import { mainContainer } from './main';
 import { fetchApi } from './filmApi';
+import { checkAndChangeTheme } from './dark-mode';
 
 // PAGINATION STRING
 const pagination = `<div class="container pagination-section">
@@ -217,12 +218,14 @@ export function pushPagination(url, searchParams, data) {
           dotsRight.classList.add('hidden');
           break;
       }
+
       if (totalResults === 0) {
         currentPageBtn.classList.add('hidden');
       }
     } catch (error) {
       console.log(error);
     }
+    checkAndChangeTheme();
   }
 
   // RUN CHECKING...
