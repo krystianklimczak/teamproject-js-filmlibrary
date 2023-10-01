@@ -98,14 +98,6 @@
 }
 
 .search-form {
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-  max-width: 100%;
-  margin-top: -2.8rem;
-  margin-left: 4rem;
-  margin-bottom: 3rem;
-
   @media screen and (min-width: $breakpoint-mobile) {
     padding-bottom: 0;
     margin-top: 0;
@@ -122,7 +114,14 @@
   @media screen and (min-width: $breakpoint-desktop) {
    width: 40rem;
   }
-
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  max-width: 100%;
+  margin-top: -2.8rem;
+  margin-left: 4rem;
+  margin-bottom: 3rem;
+  
   &__label {
     width: 100%;
     display: flex;

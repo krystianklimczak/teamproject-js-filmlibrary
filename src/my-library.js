@@ -6,6 +6,7 @@ import { checkLibraryMovies } from './js/my-library';
 const navigation = document.querySelectorAll('.navigation__item');
 const myLibrary = document.querySelector('.my-library');
 const header = document.querySelector('.header');
+const banner = document.querySelector('.banner');
 const form = document.querySelector('.search-form');
 const libraryBtns = document.querySelectorAll('.library__button');
 const watched = document.querySelector('.watched');
@@ -23,6 +24,8 @@ header.classList.toggle('header-library');
 
 form.classList.add('is-hidden');
 
+document.querySelector('.banner-library').style.display = "block";
+document.querySelector('.banner').style.display = "none";
 
 for (const btn of libraryBtns) {
   btn.classList.toggle('is-hidden');
