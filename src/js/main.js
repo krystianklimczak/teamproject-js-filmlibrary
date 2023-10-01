@@ -28,11 +28,14 @@ export async function makeFilmsBox() {
   };
 
   try {
-    const data = await fetchApi(url, searchParams);
+    const response = await fetchApi(url, searchParams);
+    const data = await response.data;
     const results = await data.results;
 
     return (
-      drawFilmBox(results), pushPagination(url, searchParams), checkBrowersWidth(url, searchParams)
+      drawFilmBox(results),
+      pushPagination(url, searchParams, data),
+      checkBrowersWidth(url, searchParams)
     );
   } catch (error) {
     console.log(error);
@@ -192,7 +195,8 @@ export function drawModal(key) {
       language: 'en-US',
     };
     try {
-      const data = await fetchApi(filmUrl, searchFilmParams);
+      const response = await fetchApi(filmUrl, searchFilmParams);
+      const data = await response.data;
       return drawFilmDetails(data);
     } catch (error) {
       console.log(error);
