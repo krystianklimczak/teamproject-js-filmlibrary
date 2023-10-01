@@ -41,7 +41,9 @@ async function searchByQ(url, params, input) {
     if (data.total_results === 0) {
       Notiflix.Notify.failure(`Sorry, no matches found for your search query`);
       // THERE WILL BE LOGIC OF EMPTY SITE
-      return;
+      return (
+        drawFilmBox(results), pushPagination(url, params, data), checkBrowersWidth(url, params)
+      );
     }
     Notiflix.Notify.success(`Hurraa we found ${data.total_results} movies for "${input}"`);
 
