@@ -106,6 +106,7 @@ export function drawFilmBox(films, isNotMobile = true) {
 }
 
 export function drawModal(key) {
+  document.body.style.overflow = 'hidden';
   const modalFilmCard = document.querySelector('.modal-film__card');
   modalFilmCard.innerHTML = '';
   function drawFilmDetails(data) {
@@ -167,6 +168,7 @@ export function drawModal(key) {
     window.addEventListener('keydown', closeModalEsc);
     function closeModalEsc(ev) {
       if (ev.key === 'Escape') {
+        document.body.style.overflow = 'auto';
         backdropModalFilm.classList.add('is-hidden');
         modalFilm.classList.add('is-hidden');
         window.removeEventListener('keydown', closeModalEsc);
@@ -174,10 +176,12 @@ export function drawModal(key) {
     }
     backdropModalFilm.addEventListener('click', closeModal);
     function closeModal() {
+      document.body.style.overflow = 'auto';
       backdropModalFilm.classList.add('is-hidden');
       modalFilm.classList.add('is-hidden');
       backdropModalFilm.removeEventListener('click', closeModal);
       modalFilmBtnClose.removeEventListener('click', closeModal);
+      window.removeEventListener('keydown', closeModalEsc);
     }
 
     const modalFilmBtnClose = document.querySelector('.modal-film__btn-close');
