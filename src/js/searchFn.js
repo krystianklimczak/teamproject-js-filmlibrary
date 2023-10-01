@@ -38,6 +38,11 @@ async function searchByQ(url, params, input) {
     const response = await fetchApi(url, params);
     const data = await response.data;
     const results = await data.results;
+    if (data.total_results === 0) {
+      Notiflix.Notify.failure(`Sorry, no matches found for your search query`);
+      // THERE WILL BE LOGIC OF EMPTY SITE
+      return;
+    }
     Notiflix.Notify.success(`Hurraa we found ${data.total_results} movies for "${input}"`);
 
     return drawFilmBox(results), pushPagination(url, params, data), checkBrowersWidth(url, params);
