@@ -57,7 +57,7 @@ export function drawFilmBox(films, isNotMobile = true) {
       });
     }
 
-    const filmPoster = document.createElement('div');
+    const filmPoster = document.createElement('li');
     filmPoster.classList.add('film-poster');
     filmPoster.addEventListener('click', e => {
       if (e.target.localName !== 'svg' && e.target.localName !== 'button') {
