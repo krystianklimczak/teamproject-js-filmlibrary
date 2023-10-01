@@ -15,11 +15,6 @@ fetchGenres()
 //Function for drawing first 20 popular films
 
 export async function makeFilmsBox() {
-  // const data = await axiosSecondFetchFn()
-  //   .then(data => {
-  //     drawFilmBox(data.results);
-  //   })
-  //   .catch(error => console.log(error));
   const url = `https://api.themoviedb.org/3/movie/popular`;
   const searchParams = {
     api_key: '95f474a01cc4252905d63c7d958d5749',

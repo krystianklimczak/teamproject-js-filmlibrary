@@ -3,6 +3,7 @@ import { drawFilmBox } from './main';
 import { fetchApi } from './filmApi';
 import { pushPagination } from './pagination';
 import { checkBrowersWidth } from './pagination';
+import Notiflix from 'notiflix';
 
 const form = document.querySelector('.search-form');
 const input = document.querySelector('.search-form__input');
@@ -18,7 +19,11 @@ export function listeners() {
       page: 1,
       query: `${input.value}`,
     };
-    searchByQ(url, searchParams);
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+    searchByQ(url, searchParams, input.value);
   });
   svgBtn.addEventListener('click', e => {
     const url = `https://api.themoviedb.org/3/search/movie`;
@@ -28,15 +33,27 @@ export function listeners() {
       page: 1,
       query: `${input.value}`,
     };
-    searchByQ(url, searchParams);
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+    searchByQ(url, searchParams, input.value);
   });
 }
 
-async function searchByQ(url, params) {
+async function searchByQ(url, params, input) {
   try {
     const response = await fetchApi(url, params);
     const data = await response.data;
     const results = await data.results;
+    if (data.total_results === 0) {
+      Notiflix.Notify.failure(`Sorry, no matches found for your search query`);
+      // THERE WILL BE LOGIC OF EMPTY SITE
+      return (
+        drawFilmBox(results), pushPagination(url, params, data), checkBrowersWidth(url, params)
+      );
+    }
+    Notiflix.Notify.success(`Hurraa we found ${data.total_results} movies for "${input}"`);
 
     return drawFilmBox(results), pushPagination(url, params, data), checkBrowersWidth(url, params);
   } catch (error) {
