@@ -7,22 +7,36 @@ const moviesWatched = JSON.parse(localStorage.getItem('movies-watched')) || [];
 const mainContainer = document.querySelector('.main-section');
 const queueBtn = document.querySelector('.queue');
 const watchedBtn = document.querySelector('.watched');
+const emptyLibrary = document.querySelector('.error-library');
+const myLibrary = document.querySelector('.my-library');
 let posterArray = [];
 
 queueBtn.addEventListener('click', drawQueue);
 function drawQueue() {
+  emptyLibrary.classList.add('is-hidden');
+  myLibrary.classList.remove('is-hidden');
   posterArray = [];
   mainContainer.innerHTML = '';
   const moviesQueue = JSON.parse(localStorage.getItem('movies-queue')) || [];
+  if (moviesQueue.length === 0) {
+    emptyLibrary.classList.remove('is-hidden');
+    myLibrary.classList.add('is-hidden');
+  }
   drawMovies(moviesQueue);
   queueBtn.removeEventListener('click', drawQueue);
   watchedBtn.addEventListener('click', drawWatched);
 }
 watchedBtn.addEventListener('click', drawWatched);
 function drawWatched() {
+  emptyLibrary.classList.add('is-hidden');
+  myLibrary.classList.remove('is-hidden');
   posterArray = [];
   mainContainer.innerHTML = '';
   const moviesWatched = JSON.parse(localStorage.getItem('movies-watched')) || [];
+  if (moviesWatched.length === 0) {
+    emptyLibrary.classList.remove('is-hidden');
+    myLibrary.classList.add('is-hidden');
+  }
   drawMovies(moviesWatched);
   watchedBtn.removeEventListener('click', drawWatched);
   queueBtn.addEventListener('click', drawQueue);
@@ -51,6 +65,10 @@ function drawMovies(moviesToDraw) {
 
 export function checkLibraryMovies() {
   spinnerBox.classList.add('spinner-box--hidden');
+  if (moviesWatched.length === 0) {
+    emptyLibrary.classList.remove('is-hidden');
+    myLibrary.classList.add('is-hidden');
+  }
   drawMovies(moviesWatched);
 }
 

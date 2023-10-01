@@ -1,5 +1,4 @@
 .header {
-
   @media screen and (min-width: $breakpoint-mobile) {
     flex-direction: row;
     justify-content: space-between;
@@ -15,7 +14,6 @@
   z-index: 1;
   padding: 2rem 3rem;
 
-  
   & .logo {
     position: relative;
     font-size: 2rem;
@@ -27,7 +25,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-
+    max-width: 24px;
     & p {
       color: #fff;
       text-align: center;
@@ -52,56 +50,55 @@
     }
   }
 
-
   &.sticky {
     padding: 1.5rem 2rem;
-    background-color: rgba(0,0,0, 0.7); 
+    background-color: rgba(0, 0, 0, 0.7);
 
     @media screen and (min-width: $breakpoint-mobile) {
       padding: 3rem 2rem;
-    }   
-}
+    }
+  }
 }
 
 .navigation {
   & #home {
     display: none;
   }
-      &__list {
-        position: relative;
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        display: flex;
-        gap: 4rem;
-        text-transform: uppercase;
-        color: $text-color-light;
-        font-family: Roboto;
-        font-size: $font-size-small;
-        font-weight: $font-weight-medium;
+  &__list {
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    display: flex;
+    gap: 4rem;
+    text-transform: uppercase;
+    color: $text-color-light;
+    font-family: Roboto;
+    font-size: $font-size-small;
+    font-weight: $font-weight-medium;
 
-        &__item {
-          position: relative;
-          list-style: none;
-        }
-        & #home {
-          @media screen and (min-width: $breakpoint-tablet) {
-          display: block;
-          }
-        }
-
-        & a {
-        position: relative;
-        text-decoration: none;
-        font-weight: 500;
-        transition: 0.6s;
-            color: $text-color-light;
-            &:hover,
-            :focus {
-              color: $website-main-color;
-            }
-          }
+    &__item {
+      position: relative;
+      list-style: none;
+    }
+    & #home {
+      @media screen and (min-width: $breakpoint-tablet) {
+        display: block;
       }
+    }
+
+    & a {
+      position: relative;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.6s;
+      color: $text-color-light;
+      &:hover,
+      :focus {
+        color: $website-main-color;
+      }
+    }
+  }
 }
 
 .search-form {
@@ -119,7 +116,7 @@
     margin-top: 0;
   }
   @media screen and (min-width: $breakpoint-desktop) {
-   width: 40rem;
+    width: 40rem;
   }
   display: flex;
   justify-content: flex-end;
@@ -277,7 +274,6 @@
 //   padding-bottom: 6.2rem;
 // }
 
-
 // previous styles
 
 // .header {
@@ -293,7 +289,7 @@
 //   background-position: center;
 //   background-repeat: no-repeat;
 //   background-color: rgb(39, 46, 52);
-  
+
 //   // & .container {
 //   //   display: flex;
 //   //   justify-content: space-between;
