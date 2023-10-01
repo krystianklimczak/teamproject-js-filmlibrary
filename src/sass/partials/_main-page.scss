@@ -63,6 +63,9 @@
   }
   &__title {
     text-transform: uppercase;
+    &--dark-mode {
+      color: $text-color-light;
+    }
   }
   &__button {
     background-color: transparent;
@@ -95,6 +98,9 @@
   &__genre,
   &__year {
     color: $text-color-additional-primary;
+  }
+  &--dark-mode {
+    box-shadow: rgba(253, 251, 251, 0.25) 0px 2px 10px 0px;
   }
 }
 @keyframes animate {
@@ -185,15 +191,14 @@
 .icon-sun,
 .icon-moon--visible,
 .icon-sun--visible {
-  display: block;
+  display: inline;
   fill: $text-color-light;
-  fill: red;
   width: 23px;
   height: 23px;
 }
 .dark-mode-button {
-  margin-top: 15px;
-  margin-left: 40px;
+  //margin-top: 15px;
+  //margin-left: 40px;
   background-color: transparent;
   border: none;
   width: fit-content;

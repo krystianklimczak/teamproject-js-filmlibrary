@@ -4,6 +4,8 @@ const body = document.querySelector('body');
 const footerText = document.querySelector('.footer__item');
 const footerBackground = document.querySelector('.footer');
 const footerBtn = document.querySelector('.footer__button');
+const error404Background = document.querySelector('.error-404');
+const error404Text = document.querySelectorAll('.error-404__headline>span');
 
 function saveThemeToLocalStorage(key, value) {
   try {
@@ -18,7 +20,16 @@ export function checkAndChangeTheme() {
   const filmPosterTitles = document.querySelectorAll('.film-poster__title');
   const paginationBtns = document.querySelectorAll('.pagination-section>button');
   const currentPage = document.querySelector('.current-page');
+  const filmPoster = document.querySelectorAll('.film-poster');
 
+  const modalFilmCard = document.querySelectorAll('.modal-film');
+  const modalFilmTitle = document.querySelectorAll('.film-info__title');
+  const modalFilmStats = document.querySelectorAll('.film-info__stats>span');
+  const modalFilmAbout = document.querySelectorAll('.film-info__about');
+  const modalFilmDEscr = document.querySelectorAll('.film-info__descr');
+  const movieModalBtns = document.querySelectorAll('.movie-button-box>button');
+  const movieModalBtnClose = document.querySelector('.modal-film__btn-close-icon');
+  console.log(modalFilmTitle);
   try {
     const themeFromLocalStorage = localStorage.getItem('theme');
     const parsedThemeFromLocalStorage = JSON.parse(themeFromLocalStorage);
@@ -41,12 +52,22 @@ export function checkAndChangeTheme() {
 
     body.classList.add('body--dark');
     filmPosterTitles.forEach(element => element.classList.add('film-poster__title--dark-mode'));
-    paginationBtns.forEach(element => {
-      element.classList.add('pagination-button--dark-mode');
-    });
+    paginationBtns.forEach(element => element.classList.add('pagination-button--dark-mode'));
     footerText.classList.add('footer__item--dark-mode');
     footerBackground.classList.add('footer--dark-mode');
     footerBtn.classList.add('footer__button--dark-mode');
+    error404Background.classList.add('error-404--dark-mode');
+    error404Text.forEach(element => element.classList.add('error-404-text--dark-mode'));
+    filmPoster.forEach(element => element.classList.add('film-poster--dark-mode'));
+    modalFilmCard.forEach(element => element.classList.add('modal-film--dark-mode'));
+
+    modalFilmTitle.forEach(element => element.classList.add('modal-film-text--dark-mode'));
+    modalFilmStats.forEach(element => element.classList.add('modal-film-text--dark-mode'));
+    modalFilmAbout.forEach(element => element.classList.add('modal-film-text--dark-mode'));
+    modalFilmDEscr.forEach(element => element.classList.add('modal-film-text--dark-mode'));
+    movieModalBtns.forEach(element => element.classList.add('modal-film-button--dark-mode'));
+    movieModalBtnClose.classList.add('modal-film__btn-close-icon--dark-mode');
+
     if (currentPage !== null) {
       currentPage.classList.remove('pagination-button--dark-mode');
       currentPage.classList.add('current-page--dark-mode');
@@ -59,15 +80,22 @@ export function checkAndChangeTheme() {
     localStorage.removeItem('theme');
 
     body.classList.remove('body--dark');
-    filmPosterTitles.forEach(element => {
-      element.classList.remove('film-poster__title--dark-mode');
-    });
-    paginationBtns.forEach(element => {
-      element.classList.remove('pagination-button--dark-mode');
-    });
+    filmPosterTitles.forEach(element => element.classList.remove('film-poster__title--dark-mode'));
+    paginationBtns.forEach(element => element.classList.remove('pagination-button--dark-mode'));
     footerText.classList.remove('footer__item--dark-mode');
     footerBackground.classList.remove('footer--dark-mode');
     footerBtn.classList.remove('footer__button--dark-mode');
+    error404Background.classList.remove('error-404--dark-mode');
+    error404Text.forEach(element => element.classList.remove('error-404-text--dark-mode'));
+    filmPoster.forEach(element => element.classList.remove('film-poster--dark-mode'));
+    modalFilmCard.forEach(element => element.classList.remove('modal-film--dark-mode'));
+    modalFilmTitle.forEach(element => element.classList.remove('modal-film-text--dark-mode'));
+    modalFilmStats.forEach(element => element.classList.remove('modal-film-text--dark-mode'));
+    modalFilmAbout.forEach(element => element.classList.remove('modal-film-text--dark-mode'));
+    modalFilmDEscr.forEach(element => element.classList.remove('modal-film-text--dark-mode'));
+    movieModalBtns.forEach(element => element.classList.remove('modal-film-button--dark-mode'));
+    movieModalBtnClose.classList.remove('modal-film__btn-close-icon--dark-mode');
+
     if (currentPage !== null) {
       currentPage.classList.remove('pagination-button--dark-mode');
       currentPage.classList.remove('current-page--dark-mode');

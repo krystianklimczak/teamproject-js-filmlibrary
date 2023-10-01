@@ -144,6 +144,12 @@
   position: sticky;
   bottom: 0;
   display: flex;
+  &--dark-mode {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  &__item--dark-mode {
+    color: $text-color-light;
+  }
 
   @media screen and (min-width: $breakpoint-tablet) {
     font-size: $font-size-footer;
@@ -166,6 +172,11 @@
 
     margin-left: 5px;
     color: $text-color-additional-secondary;
+    &--dark-mode {
+      color: $text-color-light;
+      background-color: rgba(0, 0, 0, 0.7);
+      border: none;
+    }
   }
 
   &__button:hover,
