@@ -6,6 +6,7 @@ const footerBackground = document.querySelector('.footer');
 const footerBtn = document.querySelector('.footer__button');
 const error404Background = document.querySelector('.error-404');
 const error404Text = document.querySelectorAll('.error-404__headline>span');
+const modalFilmCard = document.querySelectorAll('.modal-film');
 
 function saveThemeToLocalStorage(key, value) {
   try {
@@ -22,7 +23,6 @@ export function checkAndChangeTheme() {
   const currentPage = document.querySelector('.current-page');
   const filmPoster = document.querySelectorAll('.film-poster');
 
-  const modalFilmCard = document.querySelectorAll('.modal-film');
   const modalFilmTitle = document.querySelectorAll('.film-info__title');
   const modalFilmStats = document.querySelectorAll('.film-info__stats>span');
   const modalFilmAbout = document.querySelectorAll('.film-info__about');
