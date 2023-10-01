@@ -38,13 +38,15 @@ export const fetchTrailer = async key => {
 
 //FETCHING FUNCTION
 export async function fetchApi(url, searchParameters) {
-  // spinnerBox.classList.remove('spinner-box--hidden');
+  spinnerBox.classList.remove('spinner-box--hidden');
   const searchParams = new URLSearchParams(searchParameters);
   try {
     const response = await axios.get(`${url}?${searchParams}`);
-    const data = await response.data;
-    // spinnerBox.classList.add('spinner-box--hidden');
-    return data;
+    // const data = await response.data;
+    console.log('fetchApi zwraca response');
+    console.log(response);
+    spinnerBox.classList.add('spinner-box--hidden');
+    return response;
   } catch (error) {
     console.log(error);
   }

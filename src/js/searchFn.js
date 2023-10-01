@@ -34,10 +34,11 @@ export function listeners() {
 
 async function searchByQ(url, params) {
   try {
-    const data = await fetchApi(url, params);
+    const response = await fetchApi(url, params);
+    const data = await response.data;
     const results = await data.results;
 
-    return drawFilmBox(results), pushPagination(url, params), checkBrowersWidth(url, params);
+    return drawFilmBox(results), pushPagination(url, params, data), checkBrowersWidth(url, params);
   } catch (error) {
     console.log(error);
   }

@@ -2,6 +2,7 @@ import { fetchApi } from './filmApi';
 import { getTrailerKey, showTrailer } from './trailer';
 import { drawModal } from './main';
 
+const spinnerBox = document.querySelector('.spinner-box');
 const moviesWatched = JSON.parse(localStorage.getItem('movies-watched')) || [];
 const mainContainer = document.querySelector('.main-section');
 const queueBtn = document.querySelector('.queue');
@@ -35,7 +36,8 @@ async function getMovieDetails(id) {
   };
   try {
     const response = await fetchApi(url, searchParams);
-    pushMovie(response);
+    const data = await response.data;
+    pushMovie(data);
     mainContainer.append(...posterArray);
   } catch (err) {
     console.log(err.message);
@@ -48,6 +50,7 @@ function drawMovies(moviesToDraw) {
 }
 
 export function checkLibraryMovies() {
+  spinnerBox.classList.add('spinner-box--hidden');
   drawMovies(moviesWatched);
 }
 
