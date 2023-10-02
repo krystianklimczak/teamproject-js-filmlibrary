@@ -15,6 +15,9 @@
 //
 .close-icon {
   height: 30px;
+  &--dark-mode {
+    fill: $text-color-light;
+  }
 }
 
 .close-icon:focus,
@@ -68,6 +71,9 @@
     font-size: 1.75rem;
     margin-top: 2px;
     color: $text-color-additional-secondary;
+    &--dark-mode {
+      color: $text-color-light;
+    }
   }
   &__team {
     font-weight: $font-weight-bold;
@@ -203,6 +209,9 @@
     //   font-size: 1.5rem;
     //   margin-top: 10px;
     // }
+    &--dark-mode {
+      color: $text-color-light;
+    }
   }
   &__role {
     font-weight: $font-weight-bold;
@@ -224,4 +233,8 @@
 
 .is-hidden {
   display: none; // please add this class to 'commons.scss', unify the name and remove it from 'scss' partials
+}
+
+.squad-svg--dark-mode {
+  filter: drop-shadow(0 0 0.1rem $footer-color-background);
 }
