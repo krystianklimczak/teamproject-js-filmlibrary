@@ -29,7 +29,6 @@ watchedBtn.addEventListener('click', drawWatched);
 export function drawWatched() {
   emptyLibrary.classList.add('is-hidden');
   myLibrary.classList.remove('is-hidden');
-  posterArray = [];
   mainContainer.innerHTML = '';
   const moviesWatched = JSON.parse(localStorage.getItem('movies-watched')) || [];
   if (moviesWatched.length === 0) {
