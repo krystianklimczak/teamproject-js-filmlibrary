@@ -23,6 +23,7 @@
   box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
   @include transition-properties(transform);
 
   @media screen and (min-width: $breakpoint-tablet) {
