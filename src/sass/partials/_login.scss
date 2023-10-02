@@ -1,6 +1,5 @@
 .form-box{
     position: relative;
-    margin-right: 20px;
     width: 400px;
     height: 450px;
     background: transparent;
@@ -12,8 +11,11 @@
     align-items: center;
     position: fixed;
     display: flex;
+    margin: auto;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-property: opacity, background-color, visibility;
