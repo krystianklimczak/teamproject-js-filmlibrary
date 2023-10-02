@@ -1,5 +1,4 @@
 .close-btn {
-  // same as above - it should be in 'commons.scss'
   position: sticky;
   display: flex;
   justify-content: center;
@@ -66,28 +65,28 @@
   font-weight: $font-weight-regular;
 
   &__cmc {
-    font-size: 0.75rem;
+    font-size: 1.75rem;
     margin-top: 2px;
     color: $text-color-additional-secondary;
   }
   &__team {
     font-weight: $font-weight-bold;
     text-transform: uppercase;
-    font-size: 2rem;
+    font-size: 3.5rem;
     margin-top: 10px;
-    @media screen and (min-width: $breakpoint-tablet) {
-      font-weight: $font-weight-bold;
-      text-transform: uppercase;
-      font-size: 2.5rem;
-      margin-top: 10px;
-    }
+    // @media screen and (min-width: $breakpoint-tablet) {
+    //   font-weight: $font-weight-bold;
+    //   text-transform: uppercase;
+    //   font-size: 3.5rem;
+    //   margin-top: 10px;
+    // }
     &--dark-mode {
       text-shadow: $footer-color-background 0.1px 0px 2px;
     }
   }
   &__dev {
     font-weight: $font-weight-bold;
-    font-size: 1rem;
+    font-size: 1.75rem;
     margin-top: 2px;
     color: rgb(8, 175, 152);
   }
@@ -196,26 +195,26 @@
     font-weight: $font-weight-bold;
     color: $footer-color-text;
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin-top: 10px;
-    @media screen and (min-width: $breakpoint-tablet) {
-      font-weight: $font-weight-bold;
-      text-transform: uppercase;
-      font-size: 1rem;
-      margin-top: 10px;
-    }
+    // @media screen and (min-width: $breakpoint-tablet) {
+    //   font-weight: $font-weight-bold;
+    //   text-transform: uppercase;
+    //   font-size: 1.5rem;
+    //   margin-top: 10px;
+    // }
   }
   &__role {
     font-weight: $font-weight-bold;
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin-top: 10px;
     color: rgb(8, 175, 152);
-    @media screen and (min-width: $breakpoint-tablet) {
-      font-weight: $font-weight-bold;
-      font-size: 1rem;
-      margin-top: 10px;
-      color: rgb(8, 175, 152);
-    }
+    // @media screen and (min-width: $breakpoint-tablet) {
+    //   font-weight: $font-weight-bold;
+    //   font-size: 1.5rem;
+    //   margin-top: 10px;
+    //   color: rgb(8, 175, 152);
+    // }
   }
 }
 
