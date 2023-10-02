@@ -3,6 +3,8 @@ import { drawFilmBox } from './main';
 import { fetchApi } from './filmApi';
 import { pushPagination } from './pagination';
 import { checkBrowersWidth } from './pagination';
+import { checkAndChangeTheme } from './dark-mode';
+import Notiflix from 'notiflix';
 
 const form = document.querySelector('.search-form');
 const input = document.querySelector('.search-form__input');
@@ -18,7 +20,11 @@ export function listeners() {
       page: 1,
       query: `${input.value}`,
     };
-    searchByQ(url, searchParams);
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+    searchByQ(url, searchParams, input.value);
   });
   svgBtn.addEventListener('click', e => {
     const url = `https://api.themoviedb.org/3/search/movie`;
@@ -28,16 +34,35 @@ export function listeners() {
       page: 1,
       query: `${input.value}`,
     };
-    searchByQ(url, searchParams);
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+    searchByQ(url, searchParams, input.value);
   });
+  checkAndChangeTheme();
 }
 
-async function searchByQ(url, params) {
+const errorPoster = document.querySelector('.error-404');
+const posterContainer = document.querySelector('.main-section');
+async function searchByQ(url, params, input) {
   try {
-    const data = await fetchApi(url, params);
+    const response = await fetchApi(url, params);
+    const data = await response.data;
     const results = await data.results;
+    if (data.total_results === 0) {
+      Notiflix.Notify.failure(`Sorry, no matches found for your search query`);
+      // THERE WILL BE LOGIC OF EMPTY SITE
+      errorPoster.classList.remove('is-hidden');
+      posterContainer.classList.add('is-hidden');
+      return;
+      // drawFilmBox(results), pushPagination(url, params, data), checkBrowersWidth(url, params)
+    }
+    Notiflix.Notify.success(`Hurraa we found ${data.total_results} movies for "${input}"`);
+    errorPoster.classList.add('is-hidden');
+    posterContainer.classList.remove('is-hidden');
 
-    return drawFilmBox(results), pushPagination(url, params), checkBrowersWidth(url, params);
+    return drawFilmBox(results), pushPagination(url, params, data), checkBrowersWidth(url, params);
   } catch (error) {
     console.log(error);
   }

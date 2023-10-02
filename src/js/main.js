@@ -4,6 +4,7 @@ import { pushPagination } from './pagination';
 import { fetchApi } from './filmApi';
 import { checkBrowersWidth } from './pagination';
 import { addBtnsListeners, checkLocalStorage } from './local-storage';
+import { checkAndChangeTheme } from './dark-mode';
 
 export const mainContainer = document.querySelector('.main-section');
 let allGenres = [];
@@ -15,11 +16,6 @@ fetchGenres()
 //Function for drawing first 20 popular films
 
 export async function makeFilmsBox() {
-  // const data = await axiosSecondFetchFn()
-  //   .then(data => {
-  //     drawFilmBox(data.results);
-  //   })
-  //   .catch(error => console.log(error));
   const url = `https://api.themoviedb.org/3/movie/popular`;
   const searchParams = {
     api_key: '95f474a01cc4252905d63c7d958d5749',
@@ -28,11 +24,14 @@ export async function makeFilmsBox() {
   };
 
   try {
-    const data = await fetchApi(url, searchParams);
+    const response = await fetchApi(url, searchParams);
+    const data = await response.data;
     const results = await data.results;
 
     return (
-      drawFilmBox(results), pushPagination(url, searchParams), checkBrowersWidth(url, searchParams)
+      drawFilmBox(results),
+      pushPagination(url, searchParams, data),
+      checkBrowersWidth(url, searchParams)
     );
   } catch (error) {
     console.log(error);
@@ -57,7 +56,7 @@ export function drawFilmBox(films, isNotMobile = true) {
       });
     }
 
-    const filmPoster = document.createElement('div');
+    const filmPoster = document.createElement('li');
     filmPoster.classList.add('film-poster');
     filmPoster.addEventListener('click', e => {
       if (e.target.localName !== 'svg' && e.target.localName !== 'button') {
@@ -107,6 +106,7 @@ export function drawFilmBox(films, isNotMobile = true) {
 }
 
 export function drawModal(key) {
+  document.body.style.overflow = 'hidden';
   const modalFilmCard = document.querySelector('.modal-film__card');
   modalFilmCard.innerHTML = '';
   function drawFilmDetails(data) {
@@ -168,6 +168,7 @@ export function drawModal(key) {
     window.addEventListener('keydown', closeModalEsc);
     function closeModalEsc(ev) {
       if (ev.key === 'Escape') {
+        document.body.style.overflow = 'auto';
         backdropModalFilm.classList.add('is-hidden');
         modalFilm.classList.add('is-hidden');
         window.removeEventListener('keydown', closeModalEsc);
@@ -175,14 +176,17 @@ export function drawModal(key) {
     }
     backdropModalFilm.addEventListener('click', closeModal);
     function closeModal() {
+      document.body.style.overflow = 'auto';
       backdropModalFilm.classList.add('is-hidden');
       modalFilm.classList.add('is-hidden');
       backdropModalFilm.removeEventListener('click', closeModal);
       modalFilmBtnClose.removeEventListener('click', closeModal);
+      window.removeEventListener('keydown', closeModalEsc);
     }
 
     const modalFilmBtnClose = document.querySelector('.modal-film__btn-close');
     modalFilmBtnClose.addEventListener('click', closeModal);
+    checkAndChangeTheme();
   }
 
   async function getMovieDetails(key) {
@@ -192,7 +196,8 @@ export function drawModal(key) {
       language: 'en-US',
     };
     try {
-      const data = await fetchApi(filmUrl, searchFilmParams);
+      const response = await fetchApi(filmUrl, searchFilmParams);
+      const data = await response.data;
       return drawFilmDetails(data);
     } catch (error) {
       console.log(error);
@@ -200,6 +205,5 @@ export function drawModal(key) {
   }
 
   getMovieDetails(key);
-
   // modalFilmCard.insertAdjacentHTML('beforeend', key);
 }

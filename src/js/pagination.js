@@ -1,6 +1,7 @@
 import { drawFilmBox } from './main';
 import { mainContainer } from './main';
 import { fetchApi } from './filmApi';
+import { checkAndChangeTheme } from './dark-mode';
 
 // PAGINATION STRING
 const pagination = `<div class="container pagination-section">
@@ -30,10 +31,11 @@ const pagination = `<div class="container pagination-section">
 // UPDATING PAGES FN
 async function updatePages(url, searchPara) {
   try {
-    const data = await fetchApi(url, searchPara);
+    const response = await fetchApi(url, searchPara);
+    const data = await response.data;
     const results = await data.results;
     drawFilmBox(results);
-    pushPagination(url, searchPara);
+    pushPagination(url, searchPara, data);
     window.scroll({
       top: 0,
       behavior: 'smooth',
@@ -44,12 +46,12 @@ async function updatePages(url, searchPara) {
 }
 
 // MAIN PAGINATION FN
-export function pushPagination(url, searchParams) {
+export function pushPagination(url, searchParams, data) {
   // DRAW PAGINATION ON MAIN SECTION
   mainContainer.insertAdjacentHTML('beforeend', pagination);
   const paginationURL = url;
   let paginationSearchParams = searchParams;
-  let currentPage = paginationSearchParams.page;
+  let currentPage = data.page;
 
   // QUERY SELECTORS
   const currentPageBtn = document.querySelector('.current-page');
@@ -73,9 +75,10 @@ export function pushPagination(url, searchParams) {
   // ASYNC FN TO CHECING PAGE
   async function checkPage() {
     try {
-      const response = await fetchApi(paginationURL, paginationSearchParams);
-      const totalPages = await response.total_pages;
-      const totalResults = await response.total_results;
+      // const response = await fetchApi(paginationURL, paginationSearchParams);
+      // const data = await response.data;
+      const totalPages = await data.total_pages;
+      const totalResults = await data.total_results;
 
       let lastPage;
       lastPage = totalPages;
@@ -215,12 +218,14 @@ export function pushPagination(url, searchParams) {
           dotsRight.classList.add('hidden');
           break;
       }
+
       if (totalResults === 0) {
         currentPageBtn.classList.add('hidden');
       }
     } catch (error) {
       console.log(error);
     }
+    checkAndChangeTheme();
   }
 
   // RUN CHECKING...
@@ -286,7 +291,6 @@ export function pushPagination(url, searchParams) {
 export function checkBrowersWidth(url, searchParams) {
   function isBottomOfTheSite() {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      console.log('dojechałeś do końca strony');
       searchParams.page++;
       handler(url, searchParams);
 
@@ -303,27 +307,21 @@ export function checkBrowersWidth(url, searchParams) {
     }
   }
   if (window.innerWidth < 768) {
-    console.log('przeglądarka mobilna');
     document.addEventListener('scroll', isBottomOfTheSite);
   }
 }
 
 async function handler(url, searchParams) {
   try {
-    const data = await fetchApi(url, searchParams);
+    const response = await fetchApi(url, searchParams);
+    const data = response.data;
     const results = await data.results;
     if (searchParams.page > data.total_pages || searchParams.page > 500) {
-      console.log(`osiągnięto ostatnią stronę`);
       return;
     }
-    console.log(
-      `rysowana jest kolejna strona ${searchParams.page} / ${
-        data.total_pages <= 500 ? data.total_pages : 500
-      }`,
-    );
-    console.log('kolejna strona została narysowana');
+
     return drawFilmBox(results, false);
   } catch (error) {
-    console.log(error);
+    return console.log(error);
   }
 }

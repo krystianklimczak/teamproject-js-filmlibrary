@@ -11,11 +11,9 @@
   function openModal() {
     refs.modalSqad.classList.toggle('is-hidden');
     document.body.style.overflow = 'hidden';
-    // refs.modalSqad.style.display = 'block';
   }
   function closeModal() {
     refs.modalSqad.classList.toggle('is-hidden');
     document.body.style.overflow = 'auto';
-    // refs.modalSqad.style.display = 'none';
   }
 })();
