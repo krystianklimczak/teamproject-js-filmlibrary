@@ -13,6 +13,7 @@ const modalSquadNameCMC = document.querySelector('.squad-name__cmc');
 const squadNameSVG = document.querySelector('.squad-name>svg');
 const squadNameTeam = document.querySelector('.squad-name__team');
 const modalSquadCloseIcon = document.querySelector('.close-icon');
+const modalTrailerBorder = document.querySelector('.modal-trailer');
 
 function saveThemeToLocalStorage(key, value) {
   try {
@@ -79,6 +80,7 @@ export function checkAndChangeTheme() {
     squadNameSVG.classList.add('squad-svg--dark-mode');
     squadNameTeam.classList.add('squad-name__team--dark-mode');
     modalSquadCloseIcon.classList.add('close-icon--dark-mode');
+    modalTrailerBorder.classList.add('modal-trailer--dark-mode');
 
     if (currentPage !== null) {
       currentPage.classList.remove('pagination-button--dark-mode');
@@ -113,6 +115,7 @@ export function checkAndChangeTheme() {
     squadNameSVG.classList.remove('squad-svg--dark-mode');
     squadNameTeam.classList.remove('squad-name__team--dark-mode');
     modalSquadCloseIcon.classList.remove('close-icon--dark-mode');
+    modalTrailerBorder.classList.remove('modal-trailer--dark-mode');
 
     if (currentPage !== null) {
       currentPage.classList.remove('pagination-button--dark-mode');
