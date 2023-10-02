@@ -40,6 +40,7 @@ export function showTrailer(key) {
 }
 
 function closeTrailer() {
+  trailer.innerHTML = '';
   backdrop.classList.add('is-hidden');
   trailer.classList.add('is-hidden');
   backdrop.innerHTML = '';
@@ -50,6 +51,7 @@ function closeTrailer() {
 }
 function handler(e) {
   if (e.key === 'Escape') {
+    trailer.innerHTML = '';
     backdrop.classList.add('is-hidden');
     trailer.classList.add('is-hidden');
     backdrop.innerHTML = '';
