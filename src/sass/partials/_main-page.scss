@@ -98,6 +98,36 @@
       }
     }
   }
+
+  .dark-mode-svg {
+    fill: white;
+    @include transition-properties(transform);
+    &:hover,
+    :focus {
+      & path {
+        fill: white;
+        fill-opacity: 1;
+        stroke: white;
+        stroke-width: 1;
+        stroke-dashoffset: 0;
+        stroke-dasharray: 3000;
+
+        animation: animatedark 7s ease-in-out;
+      }
+    }
+  }
+
+  @keyframes animatedark {
+    0% {
+      stroke-dashoffset: 3000;
+      fill: none;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      fill: white;
+    }
+  }
+
   &__genre,
   &__year {
     color: $text-color-additional-primary;
