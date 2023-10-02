@@ -8,7 +8,7 @@ export async function getTrailerKey(id) {
 
     return trailerKey;
   } catch (error) {
-    console.log(error);
+    return Notiflix.Notify.failure('Ups! No video has been found.');
   }
 }
 const backdrop = document.querySelector('.modal-backdrop');
@@ -17,8 +17,9 @@ const trailer = document.querySelector('.modal-trailer');
 export function showTrailer(key) {
   // `<iframe width="560" height="315" src="https://www.youtube.com/embed/${key}?si=NP4x3PPUZd7lNCFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
   if (!key) {
-    return Notiflix.Notify.failure('Ups! No video has been found.');
+    return;
   }
+
   //const trailer = document.createElement('div');
   //trailer.classList.add('modal-trailer');
   trailer.innerHTML = '';
@@ -41,6 +42,7 @@ export function showTrailer(key) {
   document.addEventListener('keydown', handler);
   document.body.style.overflow = 'hidden';
 }
+
 function closeTrailer() {
   backdrop.classList.add('is-hidden');
   trailer.classList.add('is-hidden');
