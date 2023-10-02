@@ -3,7 +3,9 @@ import './js/modal-squad';
 import './js/sticky-menu';
 import './js/arrow-up';
 import { checkLibraryMovies } from './js/my-library';
+import { checkAndChangeTheme } from './js/dark-mode';
 
+checkAndChangeTheme();
 const navigation = document.querySelectorAll('.navigation__item');
 const myLibrary = document.querySelector('.my-library');
 const header = document.querySelector('.header');

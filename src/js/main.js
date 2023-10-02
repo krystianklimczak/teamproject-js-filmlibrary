@@ -4,6 +4,7 @@ import { pushPagination } from './pagination';
 import { fetchApi } from './filmApi';
 import { checkBrowersWidth } from './pagination';
 import { addBtnsListeners, checkLocalStorage } from './local-storage';
+import { checkAndChangeTheme } from './dark-mode';
 
 export const mainContainer = document.querySelector('.main-section');
 let allGenres = [];
@@ -105,6 +106,7 @@ export function drawFilmBox(films, isNotMobile = true) {
 }
 
 export function drawModal(key) {
+  document.body.style.overflow = 'hidden';
   const modalFilmCard = document.querySelector('.modal-film__card');
   modalFilmCard.innerHTML = '';
   function drawFilmDetails(data) {
@@ -166,6 +168,7 @@ export function drawModal(key) {
     window.addEventListener('keydown', closeModalEsc);
     function closeModalEsc(ev) {
       if (ev.key === 'Escape') {
+        document.body.style.overflow = 'auto';
         backdropModalFilm.classList.add('is-hidden');
         modalFilm.classList.add('is-hidden');
         window.removeEventListener('keydown', closeModalEsc);
@@ -173,14 +176,17 @@ export function drawModal(key) {
     }
     backdropModalFilm.addEventListener('click', closeModal);
     function closeModal() {
+      document.body.style.overflow = 'auto';
       backdropModalFilm.classList.add('is-hidden');
       modalFilm.classList.add('is-hidden');
       backdropModalFilm.removeEventListener('click', closeModal);
       modalFilmBtnClose.removeEventListener('click', closeModal);
+      window.removeEventListener('keydown', closeModalEsc);
     }
 
     const modalFilmBtnClose = document.querySelector('.modal-film__btn-close');
     modalFilmBtnClose.addEventListener('click', closeModal);
+    checkAndChangeTheme();
   }
 
   async function getMovieDetails(key) {
@@ -199,6 +205,5 @@ export function drawModal(key) {
   }
 
   getMovieDetails(key);
-
   // modalFilmCard.insertAdjacentHTML('beforeend', key);
 }
