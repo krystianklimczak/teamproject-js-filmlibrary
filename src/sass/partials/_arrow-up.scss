@@ -9,8 +9,7 @@
   opacity: 0.9;
   line-height: 0;
 
-  transform: translateY(0);
-  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  @include transition-properties(transform);
 
   @media screen and (min-width: $breakpoint-tablet) {
     right: 60px;
@@ -32,5 +31,5 @@
 }
 
 .arrow--hidden {
-transform: translateY(200);
+  transform: translateY(200);
 }
