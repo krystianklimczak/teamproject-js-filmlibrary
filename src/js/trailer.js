@@ -40,6 +40,8 @@ export function showTrailer(key) {
 }
 
 function closeTrailer() {
+  const trailerCloseBtn = document.querySelector('.modal-trailer__button');
+  trailerCloseBtn.removeEventListener('click', closeTrailer);
   trailer.innerHTML = '';
   backdrop.classList.add('is-hidden');
   trailer.classList.add('is-hidden');
@@ -47,10 +49,11 @@ function closeTrailer() {
   document.body.style.overflow = 'auto';
   backdrop.removeEventListener('click', closeTrailer);
   document.removeEventListener('keydown', handler);
-  trailerCloseBtn.removeEventListener('click', closeTrailer);
 }
 function handler(e) {
   if (e.key === 'Escape') {
+    const trailerCloseBtn = document.querySelector('.modal-trailer__button');
+    trailerCloseBtn.removeEventListener('click', closeTrailer);
     trailer.innerHTML = '';
     backdrop.classList.add('is-hidden');
     trailer.classList.add('is-hidden');
@@ -58,6 +61,5 @@ function handler(e) {
     document.body.style.overflow = 'auto';
     backdrop.removeEventListener('click', closeTrailer);
     document.removeEventListener('keydown', handler);
-    trailerCloseBtn.removeEventListener('click', closeTrailer);
   }
 }
