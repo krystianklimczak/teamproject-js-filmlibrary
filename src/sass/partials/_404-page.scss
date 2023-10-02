@@ -1,0 +1,93 @@
+.error-404 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 5rem;
+
+  // background
+  background: linear-gradient(
+    -45deg,
+    rgb(245, 238, 203),
+    rgb(247, 245, 229),
+    rgb(246, 245, 234),
+    rgb(247, 245, 216)
+  );
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-size: auto;
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+  height: 100%;
+  max-width: 100%;
+
+  &--dark-mode {
+    background: $website-color-secondary;
+  }
+
+  //   keyframes
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  // h2
+  &__headline {
+    font-size: 8vh;
+    line-height: 1.5;
+    color: $website-main-color;
+
+    @media only screen and (min-width: 30em) {
+      font-size: 10vh;
+    }
+    @media only screen and (min-width: 80em) {
+      font-size: 14vh;
+    }
+
+    span {
+      display: block;
+      color: $text-color-additional-secondary;
+      font-size: 4vh;
+      line-height: 1.2;
+
+      @media only screen and (min-width: 30em) {
+        font-size: 5vh;
+      }
+      @media only screen and (min-width: 80em) {
+        font-size: 8vh;
+      }
+    }
+    .small-text {
+      padding-top: 2rem;
+      font-size: 2rem;
+      line-height: 1.5;
+
+      @media only screen and (min-width: 80em) {
+        font-size: 3vh;
+      }
+    }
+    & > .error-404-text--dark-mode {
+      color: $text-color-light;
+    }
+  }
+
+  // img
+  &__image {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.is-hidden {
+  display: none;
+}
