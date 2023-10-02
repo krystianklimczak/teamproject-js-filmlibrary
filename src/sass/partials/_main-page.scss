@@ -193,14 +193,14 @@
 .icon-sun,
 .icon-moon--visible,
 .icon-sun--visible {
+  opacity: 1;
+  animation: fadeInOut 0.3s ease-in-out;
   display: inline;
   fill: $text-color-light;
   width: 23px;
   height: 23px;
 }
 .dark-mode-button {
-  //margin-top: 15px;
-  //margin-left: 40px;
   background-color: transparent;
   border: none;
   width: fit-content;
@@ -209,9 +209,19 @@
 
 .icon-moon--hidden,
 .icon-sun--hidden {
+  opacity: 0;
   display: none;
 }
 
 .body--dark {
   background-color: $website-color-secondary;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
