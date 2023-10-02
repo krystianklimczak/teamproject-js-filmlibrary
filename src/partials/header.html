@@ -1,5 +1,4 @@
 <header class="header">
-
   <a href="./index.html" class="logo">
     <svg width="24" height="24" class="logo__svg">
       <use href="./images/symbol-defs.svg#icon-film"></use>
@@ -7,7 +6,11 @@
     <p>Filmoteka</p>
   </a>
   <div class="library">
-    <button type="button" class="watched library__button library__button--current is-hidden" id="watched">
+    <button
+      type="button"
+      class="watched library__button library__button--current is-hidden"
+      id="watched"
+    >
       watched
     </button>
     <button type="button" class="queue library__button is-hidden" id="queue">queue</button>
@@ -25,20 +28,17 @@
       <li id="home" class="navigation__item is-active"><a href="./index.html">home</a></li>
       <li class="navigation__item"><a href="./my-library.html">my library</a></li>
       <li class="navigation__item open-modal is-hidden"><a href="#">Logout</a></li>
-      <li class="navigation__item open-modal is-hidden" data-open="modal1">
-        <a href="#">Login</a>
+      <li class="navigation__item">
+        <a href="#" login-open>Login</a>
       </li>
-      <li class="navigation__item open-modal is-hidden" data-open="modal2">
+      <li class="navigation__item login-open is-hidden" data-open="modal2">
         <a href="#">Sign up</a>
       </li>
     </ul>
   </nav>
-
 </header>
 <section class="banner"></section>
 <section class="banner-library is-hidden"></section>
-
-
 
 <!-- end of my header -->
 
