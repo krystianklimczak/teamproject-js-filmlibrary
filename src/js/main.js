@@ -69,9 +69,12 @@ export function drawFilmBox(films, isNotMobile = true) {
     if (film.poster_path === null) {
       film.poster_path = `/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg`;
     }
+    const cuttedDescr = film.overview.split(' ').slice(0, 30).join(' ') + '...';
     filmPoster.insertAdjacentHTML(
       'afterbegin',
-      `<img class="film-poster__photo" src="https://image.tmdb.org/t/p/original${film.poster_path}" alt="${film.title}" loading="lazy"/>`,
+      `<div class="film-poster__img-box"><div class="film-poster__overflow">
+${cuttedDescr}
+    </div><img class="film-poster__photo" src="https://image.tmdb.org/t/p/original${film.poster_path}" alt="${film.title}" loading="lazy"/></div>`,
     );
     const filmPosterDescription = document.createElement('div');
     filmPosterDescription.classList.add('film-poster__description');
