@@ -132,9 +132,12 @@
     }
   }
 
-  &__genre,
+  &__genre {
+    color: $text-color-additional-primary;
+  }
   &__year {
     color: $text-color-additional-primary;
+    font-weight: 800;
   }
 
   &--dark-mode {
