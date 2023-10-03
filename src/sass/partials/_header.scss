@@ -1,7 +1,7 @@
 .header {
   @media screen and (min-width: $breakpoint-mobile) {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
   }
   position: fixed;
@@ -40,7 +40,7 @@
       transition: 0.6s;
       display: none;
 
-      @media screen and (min-width: $breakpoint-tablet) {
+      @media screen and (min-width: $breakpoint-desktop) {
         display: block;
       }
     }
@@ -170,11 +170,10 @@
   }
   @media screen and (min-width: $breakpoint-tablet) {
     background-image: url(../images/main-background-tablet@x3.jpg);
-    height: 15vh;
   }
   @media screen and (min-width: $breakpoint-desktop) {
     background-image: url(../images/main-background-desktop@x3.jpg);
-    height: 20vh;
+    
   }
   background-size: cover;
   background-position: center;
