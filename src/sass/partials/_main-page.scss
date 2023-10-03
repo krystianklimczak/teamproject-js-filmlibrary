@@ -76,6 +76,10 @@
     border: none;
     width: fit-content;
     height: fit-content;
+    padding-left: 10px;
+    @media screen and (min-width: 334px) {
+      padding: 0;
+    }
     &:focus,
     :hover {
       outline: none;
@@ -128,16 +132,11 @@
     }
   }
 
-  &__genre {
-    color: $text-color-additional-primary;
-  }
+  &__genre,
   &__year {
     color: $text-color-additional-primary;
-    padding-right: 10px;
-    @media screen and (min-width: 334px) {
-      padding: 0;
-    }
   }
+
   &--dark-mode {
     box-shadow: rgba(253, 251, 251, 0.25) 0px 2px 10px 0px;
   }
