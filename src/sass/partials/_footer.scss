@@ -69,9 +69,9 @@
 
   &__cmc {
     margin-top: 7px;
-    font-size: 1.05rem;
+    font-size: 1.7rem;
     margin-left: 6px;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
     color: $text-color-additional-secondary;
     &--dark-mode {
       color: $text-color-light;
@@ -80,27 +80,29 @@
   &__team {
     font-weight: $font-weight-bold;
     text-transform: uppercase;
-    font-size: 2.8rem;
+    font-size: 6rem;
     margin-top: 5px;
     margin-bottom: 0.5rem;
+    color: $text-color-dark;
     @media screen and (min-width: $breakpoint-tablet) {
-      font-weight: $font-weight-bold;
+      
       text-transform: uppercase;
-      font-size: 5rem;
+      font-size: 7rem;
       margin-bottom: 2.1rem;
+      
+
     }
     &--dark-mode {
       text-shadow: $footer-color-background 0.1px 0px 2px;
     }
   }
   &__dev {
-    font-weight: 500;
-    font-size: 1.2rem;
+    font-weight: 600;
+    font-size: 3rem;
    
     color: rgb(8, 175, 152);
     @media screen and (min-width: $breakpoint-tablet) {
-      font-weight: $font-weight-bold;
-      font-size: 2rem;
+      font-size: 3rem;
       color: rgb(8, 175, 152);
     }
   }
@@ -127,7 +129,7 @@
 .squad__item {
   display: flex;
   flex-direction: column;
-  padding-top: 1rem;
+  padding-top: 3rem;
   margin: auto;
 
 
@@ -147,10 +149,9 @@
 
 .squad__photo {
   border-radius: 50%;
-  margin: 2rem;
+  margin: 2.5rem;
   box-shadow: 10px 10px 20px 1px rgba(0,0,0, 0.4);
-  background-color: $footer-color-text;
-  
+ 
 }
 
 .footer {
@@ -227,7 +228,7 @@
     font-weight: $font-weight-bold;
     color: $footer-color-text;
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: 2rem;
     margin-bottom: 5px;
     // @media screen and (min-width: $breakpoint-tablet) {
     //   font-weight: $font-weight-bold;
@@ -240,8 +241,8 @@
     }
   }
   &__role {
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 500;
+    font-size: 1.6rem;
     color: rgb(8, 175, 152);
     // @media screen and (min-width: $breakpoint-tablet) {
     //   font-weight: $font-weight-bold;
@@ -279,7 +280,7 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 30rem;
-    margin-top: -15rem;
+    margin-top: -20rem;
     max-width: 1280px;
   }
 }
