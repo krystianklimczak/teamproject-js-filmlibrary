@@ -11,7 +11,7 @@ $font-primary: 'Roboto', sans-serif;
 $font-weight-medium: 500;
 $font-weight-regular: 400;
 $font-weight-bold: 700;
-$website-main-color: rgb(255, 107, 8);
+$website-main-color: rgb(202, 86, 9);
 $website-color-secondary: rgb(39, 46, 52);
 
 //text colors
@@ -36,6 +36,7 @@ $font-size-footer: 1.6rem;
 $footer-color-background: rgb(247, 247, 247); //#f7f7f7
 $footer-color-text: $text-color-additional-secondary; //#545454
 $font-size-footer-mobile: 1.4rem;
+$breakpoint-modal-squad-width: 1777px;
 
 //hover and focus colors
 $hover-color-primary: rgb(255, 107, 8);

@@ -308,6 +308,8 @@ export function checkBrowersWidth(url, searchParams) {
   }
   if (window.innerWidth < 768) {
     document.addEventListener('scroll', isBottomOfTheSite);
+    const paginationBtn = document.querySelector('.pagination-section');
+    paginationBtn.style.display = 'none';
   }
 }
 

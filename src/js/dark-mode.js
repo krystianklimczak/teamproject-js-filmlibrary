@@ -7,6 +7,13 @@ const footerBtn = document.querySelector('.footer__button');
 const error404Background = document.querySelector('.error-404');
 const error404Text = document.querySelectorAll('.error-404__headline>span');
 const modalFilmCard = document.querySelectorAll('.modal-film');
+const modalSquad = document.querySelector('.modal-squad-info');
+const modalSquadNames = document.querySelectorAll('.dev-info__name');
+const modalSquadNameCMC = document.querySelector('.squad-name__cmc');
+const squadNameSVG = document.querySelector('.squad-name>svg');
+const squadNameTeam = document.querySelector('.squad-name__team');
+const modalSquadCloseIcon = document.querySelector('.close-icon');
+const modalTrailerBorder = document.querySelector('.modal-trailer');
 
 function saveThemeToLocalStorage(key, value) {
   try {
@@ -29,7 +36,8 @@ export function checkAndChangeTheme() {
   const modalFilmDEscr = document.querySelectorAll('.film-info__descr');
   const movieModalBtns = document.querySelectorAll('.movie-button-box>button');
   const movieModalBtnClose = document.querySelector('.modal-film__btn-close-icon');
-  console.log(modalFilmTitle);
+  const filmPosterBtn = document.querySelectorAll('.film-poster__button>svg');
+
   try {
     const themeFromLocalStorage = localStorage.getItem('theme');
     const parsedThemeFromLocalStorage = JSON.parse(themeFromLocalStorage);
@@ -67,6 +75,14 @@ export function checkAndChangeTheme() {
     modalFilmDEscr.forEach(element => element.classList.add('modal-film-text--dark-mode'));
     movieModalBtns.forEach(element => element.classList.add('modal-film-button--dark-mode'));
     movieModalBtnClose.classList.add('modal-film__btn-close-icon--dark-mode');
+    modalSquad.classList.add('modal-squad-info--dark-mode');
+    modalSquadNames.forEach(element => element.classList.add('dev-info__name--dark-mode'));
+    modalSquadNameCMC.classList.add('squad-name__cmc--dark-mode');
+    squadNameSVG.classList.add('squad-svg--dark-mode');
+    squadNameTeam.classList.add('squad-name__team--dark-mode');
+    modalSquadCloseIcon.classList.add('close-icon--dark-mode');
+    modalTrailerBorder.classList.add('modal-trailer--dark-mode');
+    filmPosterBtn.forEach(element => element.classList.add('dark-mode-svg'));
 
     if (currentPage !== null) {
       currentPage.classList.remove('pagination-button--dark-mode');
@@ -95,6 +111,14 @@ export function checkAndChangeTheme() {
     modalFilmDEscr.forEach(element => element.classList.remove('modal-film-text--dark-mode'));
     movieModalBtns.forEach(element => element.classList.remove('modal-film-button--dark-mode'));
     movieModalBtnClose.classList.remove('modal-film__btn-close-icon--dark-mode');
+    modalSquad.classList.remove('modal-squad-info--dark-mode');
+    modalSquadNames.forEach(element => element.classList.remove('dev-info__name--dark-mode'));
+    modalSquadNameCMC.classList.remove('squad-name__cmc--dark-mode');
+    squadNameSVG.classList.remove('squad-svg--dark-mode');
+    squadNameTeam.classList.remove('squad-name__team--dark-mode');
+    modalSquadCloseIcon.classList.remove('close-icon--dark-mode');
+    modalTrailerBorder.classList.remove('modal-trailer--dark-mode');
+    filmPosterBtn.forEach(element => element.classList.remove('dark-mode-svg'));
 
     if (currentPage !== null) {
       currentPage.classList.remove('pagination-button--dark-mode');

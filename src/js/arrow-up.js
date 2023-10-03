@@ -6,3 +6,7 @@ arrow.addEventListener('click', () => {
     behavior: 'smooth',
   });
 });
+
+window.addEventListener('scroll', () => {
+  arrow.classList.toggle('arrow--hidden', window.scrollY < 35);
+});

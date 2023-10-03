@@ -5,6 +5,7 @@ import { fetchApi } from './filmApi';
 import { checkBrowersWidth } from './pagination';
 import { addBtnsListeners, checkLocalStorage } from './local-storage';
 import { checkAndChangeTheme } from './dark-mode';
+import { updateQueWatch } from './my-library';
 
 export const mainContainer = document.querySelector('.main-section');
 let allGenres = [];
@@ -160,6 +161,7 @@ export function drawModal(key) {
 
     addBtnsListeners(key);
     checkLocalStorage(key);
+    updateQueWatch();
 
     const backdropModalFilm = document.querySelector('.backdrop-modal-film');
     const modalFilm = document.querySelector('.modal-film');

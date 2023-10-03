@@ -9,6 +9,8 @@
   opacity: 0.9;
   line-height: 0;
 
+  @include transition-properties(transform);
+
   @media screen and (min-width: $breakpoint-tablet) {
     right: 60px;
     bottom: 100px;
@@ -26,4 +28,8 @@
       padding: 12px;
     }
   }
+}
+
+.arrow--hidden {
+  transform: translateY(200);
 }

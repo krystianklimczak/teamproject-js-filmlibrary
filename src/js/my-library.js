@@ -3,19 +3,18 @@ import { getTrailerKey, showTrailer } from './trailer';
 import { drawModal } from './main';
 
 const spinnerBox = document.querySelector('.spinner-box');
-const moviesWatched = JSON.parse(localStorage.getItem('movies-watched')) || [];
+
 const mainContainer = document.querySelector('.main-section');
 const queueBtn = document.querySelector('.queue');
 const watchedBtn = document.querySelector('.watched');
 const emptyLibrary = document.querySelector('.error-library');
 const myLibrary = document.querySelector('.my-library');
-let posterArray = [];
 
 queueBtn.addEventListener('click', drawQueue);
-function drawQueue() {
+export function drawQueue() {
   emptyLibrary.classList.add('is-hidden');
   myLibrary.classList.remove('is-hidden');
-  posterArray = [];
+  // posterArray = [];
   mainContainer.innerHTML = '';
   const moviesQueue = JSON.parse(localStorage.getItem('movies-queue')) || [];
   if (moviesQueue.length === 0) {
@@ -27,10 +26,9 @@ function drawQueue() {
   watchedBtn.addEventListener('click', drawWatched);
 }
 watchedBtn.addEventListener('click', drawWatched);
-function drawWatched() {
+export function drawWatched() {
   emptyLibrary.classList.add('is-hidden');
   myLibrary.classList.remove('is-hidden');
-  posterArray = [];
   mainContainer.innerHTML = '';
   const moviesWatched = JSON.parse(localStorage.getItem('movies-watched')) || [];
   if (moviesWatched.length === 0) {
@@ -52,19 +50,21 @@ async function getMovieDetails(id) {
     const response = await fetchApi(url, searchParams);
     const data = await response.data;
     pushMovie(data);
-    mainContainer.append(...posterArray);
   } catch (err) {
     console.log(err.message);
   }
 }
+// let posterArray = [];
 function drawMovies(moviesToDraw) {
   moviesToDraw.forEach(id => {
     getMovieDetails(id);
   });
+  // console.log(`dodaje do listy ${posterArray}`);
 }
 
 export function checkLibraryMovies() {
   spinnerBox.classList.add('spinner-box--hidden');
+  const moviesWatched = JSON.parse(localStorage.getItem('movies-watched')) || [];
   if (moviesWatched.length === 0) {
     emptyLibrary.classList.remove('is-hidden');
     myLibrary.classList.add('is-hidden');
@@ -117,5 +117,23 @@ function pushMovie(response) {
         </div>`,
   );
   filmPoster.insertAdjacentElement('beforeend', filmPosterDescription);
-  posterArray.push(filmPoster);
+  // posterArray.push(filmPoster);
+  mainContainer.append(filmPoster);
+}
+
+export function updateQueWatch() {
+  const addWatched = document.querySelector('.modal-film__btns-addToWatched');
+  const addQueue = document.querySelector('.modal-film__btns-addToQueue');
+  const watchedBtn = document.querySelector('.watched');
+  const queueBtn = document.querySelector('.queue');
+  const myLibrary = document.querySelector('.header-library');
+  if (myLibrary) {
+    if (watchedBtn.classList.contains('library__button--current')) {
+      addWatched.addEventListener('click', drawWatched);
+    }
+
+    if (queueBtn.classList.contains('library__button--current')) {
+      addQueue.addEventListener('click', drawQueue);
+    }
+  }
 }
