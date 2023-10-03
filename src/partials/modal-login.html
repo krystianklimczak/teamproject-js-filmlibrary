@@ -1,28 +1,28 @@
-<div class="form-box is-hidden" login-container="">
-  <!-- <button type="button" class="close-btn" login-close="">
-    <svg class="close-icon">
+<div class="form-box is-hidden" login-container>
+  <button type="button" class="form-box__btn" login-close>
+    <svg class="" width="24" height="24">
       <use href="./images/icons.svg#icon-close"></use>
     </svg>
-  </button> -->
+  </button>
   <div class="form-value">
-    <form>
+    <form class="form-login">
       <h2>Login</h2>
       <div class="inputbox">
-        <ion-icon name="mail-outline"></ion-icon>
-        <input type="email" required />
-        <label for="">Email</label>
+        <!-- <ion-icon name="mail-outline"></ion-icon> -->
+        <input type="email" required id="form-login__email" />
+        <label for="form-login__email">Email</label>
       </div>
       <div class="inputbox">
-        <ion-icon name="lock-closed-outline"></ion-icon>
-        <input type="password" required />
-        <label for="">Password</label>
+        <!-- <ion-icon name="lock-closed-outline"></ion-icon> -->
+        <input type="password" required id="form-login__password" />
+        <label for="form-login__password">Password</label>
       </div>
-      <div class="forget">
+      <!-- <div class="forget">
         <label for=""><input type="checkbox" />Remember Me <a href="#">Forgot Password?</a></label>
-      </div>
+      </div> -->
       <button class="button-login">Log in</button>
       <div class="register">
-        <p>Don't have an account? <a href="#">Register</a></p>
+        <p>Don't have an account? <a href="#" class="register">Register</a></p>
       </div>
     </form>
   </div>

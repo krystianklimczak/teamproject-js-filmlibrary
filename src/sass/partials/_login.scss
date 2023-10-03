@@ -21,7 +21,14 @@
     transition-property: opacity, background-color, visibility;
     transition-duration: 250ms;
     z-index: 1000;
-
+    &__btn {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        background: transparent;
+        border: none;
+        fill: $text-color-light;
+    }
 }
 h2{
     font-size: 2em;
