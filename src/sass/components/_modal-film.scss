@@ -54,6 +54,7 @@
     flex-wrap: wrap;
     padding: 48px 20px 40px 20px;
     @media screen and (min-width: $breakpoint-tablet) {
+      flex-wrap: nowrap;
       gap: 68px;
       height: max-content;
       align-items: center;
