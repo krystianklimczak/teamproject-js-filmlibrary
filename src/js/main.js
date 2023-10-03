@@ -70,7 +70,6 @@ export function drawFilmBox(films, isNotMobile = true) {
       film.poster_path = `/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg`;
     }
     const cuttedDescr = film.overview.split(' ').slice(0, 30).join(' ') + '...';
-    console.log(cuttedDescr);
     filmPoster.insertAdjacentHTML(
       'afterbegin',
       `<div class="film-poster__img-box"><div class="film-poster__overflow">
