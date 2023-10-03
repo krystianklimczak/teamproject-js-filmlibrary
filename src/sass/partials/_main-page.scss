@@ -132,9 +132,12 @@
     }
   }
 
-  &__genre,
-  &__year {
+  &__genre {
     color: $text-color-additional-primary;
+  }
+  &__year {
+    color: rgb(255, 107, 8);
+    font-weight: 800;
   }
 
   &--dark-mode {
