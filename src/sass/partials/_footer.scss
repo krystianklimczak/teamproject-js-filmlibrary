@@ -134,7 +134,7 @@
   overflow: hidden;
 
   &:hover .dev-links {
-    transform: translateY(0);
+    transform: scale(100%);
     background-color: rgb(255, 107, 8, 0.4);
   }
 
@@ -167,7 +167,7 @@
 
   transition-property: fill, color, background-color, border-color, transform, box-shadow;
   transition-duration: 250ms;
-  transform: translateY(100%);
+  transform: scale(0%);
 
   position: absolute;
   top: 42;
