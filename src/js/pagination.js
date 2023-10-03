@@ -1,6 +1,7 @@
 import { drawFilmBox } from './main';
 import { mainContainer } from './main';
 import { fetchApi } from './filmApi';
+import { checkAndChangeTheme } from './dark-mode';
 
 // PAGINATION STRING
 const pagination = `<div class="container pagination-section">
@@ -217,12 +218,14 @@ export function pushPagination(url, searchParams, data) {
           dotsRight.classList.add('hidden');
           break;
       }
+
       if (totalResults === 0) {
         currentPageBtn.classList.add('hidden');
       }
     } catch (error) {
       console.log(error);
     }
+    checkAndChangeTheme();
   }
 
   // RUN CHECKING...
@@ -288,7 +291,6 @@ export function pushPagination(url, searchParams, data) {
 export function checkBrowersWidth(url, searchParams) {
   function isBottomOfTheSite() {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      console.log('dojechałeś do końca strony');
       searchParams.page++;
       handler(url, searchParams);
 
@@ -305,8 +307,9 @@ export function checkBrowersWidth(url, searchParams) {
     }
   }
   if (window.innerWidth < 768) {
-    console.log('przeglądarka mobilna');
     document.addEventListener('scroll', isBottomOfTheSite);
+    const paginationBtn = document.querySelector('.pagination-section');
+    paginationBtn.style.display = 'none';
   }
 }
 
@@ -316,17 +319,11 @@ async function handler(url, searchParams) {
     const data = response.data;
     const results = await data.results;
     if (searchParams.page > data.total_pages || searchParams.page > 500) {
-      console.log(`osiągnięto ostatnią stronę`);
       return;
     }
-    console.log(
-      `rysowana jest kolejna strona ${searchParams.page} / ${
-        data.total_pages <= 500 ? data.total_pages : 500
-      }`,
-    );
-    console.log('kolejna strona została narysowana');
+
     return drawFilmBox(results, false);
   } catch (error) {
-    console.log(error);
+    return console.log(error);
   }
 }

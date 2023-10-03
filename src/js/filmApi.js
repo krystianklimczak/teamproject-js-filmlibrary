@@ -1,4 +1,6 @@
 import axios from 'axios';
+import Notiflix from 'notiflix';
+
 const spinnerBox = document.querySelector('.spinner-box');
 // KEY FOR OUR API REQUESTS
 const API_KEY = '95f474a01cc4252905d63c7d958d5749';
@@ -16,7 +18,7 @@ export const fetchGenres = async () => {
     // spinnerBox.classList.add('spinner-box--hidden');
     return genres;
   } catch (error) {
-    console.error(error.message);
+    return Notiflix.Notify.failure(`${error.message}`);
   }
 };
 
@@ -32,7 +34,7 @@ export const fetchTrailer = async key => {
     // spinnerBox.classList.add('spinner-box--hidden');
     return response;
   } catch (error) {
-    console.log(error);
+    return Notiflix.Notify.failure(`${error.message}`);
   }
 };
 
@@ -42,12 +44,10 @@ export async function fetchApi(url, searchParameters) {
   const searchParams = new URLSearchParams(searchParameters);
   try {
     const response = await axios.get(`${url}?${searchParams}`);
-    // const data = await response.data;
-    console.log('fetchApi zwraca response');
-    console.log(response);
     spinnerBox.classList.add('spinner-box--hidden');
     return response;
   } catch (error) {
-    console.log(error);
+    spinnerBox.classList.add('spinner-box--hidden');
+    return Notiflix.Notify.failure(`${error.message}`);
   }
 }

@@ -1,8 +1,18 @@
+// general typography
+html {
+  font-size: 62.5%; //default browser 16px,  here 10px, 10/16 = 0.625
+  scroll-behavior: smooth;
+}
+body {
+  font-size: 1.6rem;
+}
+
 $font-primary: 'Roboto', sans-serif;
 $font-weight-medium: 500;
 $font-weight-regular: 400;
 $font-weight-bold: 700;
-$website-main-color: rgb(255, 107, 8);
+$website-main-color: rgb(202, 86, 9);
+$website-color-secondary: rgb(39, 46, 52);
 
 //text colors
 $text-color-light: rgb(255, 255, 255);
@@ -13,19 +23,20 @@ $text-color-additional-secondary: rgb(84, 84, 84);
 //font sizes
 
 //descriptions, header menu, buttons text etc
-$font-size-small: 12px;
+$font-size-small: 1.2rem;
 //h2
-$font-size-medium: 20px;
+$font-size-medium: 2rem;
 //h1
-$font-size-large: 30px;
+$font-size-large: 3rem;
 //*others
-$font-size-header-search: 14px;
-$font-size-footer: 16px;
+$font-size-header-search: 1.4rem;
+$font-size-footer: 1.6rem;
 
 //footer
 $footer-color-background: rgb(247, 247, 247); //#f7f7f7
 $footer-color-text: $text-color-additional-secondary; //#545454
-$font-size-footer-mobile: 14px;
+$font-size-footer-mobile: 1.4rem;
+$breakpoint-modal-squad-width: 1777px;
 
 //hover and focus colors
 $hover-color-primary: rgb(255, 107, 8);
@@ -39,10 +50,10 @@ $additional-color: rgb(255, 0, 27);
 $background-image-sticky: linear-gradient(#ff001bb3, #000000b3);
 
 //breakpoints
-$breakpoint-mobile: 480px;
-$breakpoint-tablet: 768px;
-$breakpoint-desktop: 1280px;
-
+$breakpoint-mobile: 30em; // 480px
+$breakpoint-tablet: 48em; //768px
+$breakpoint-desktop: 80em; //1280px
+$breakpoint-desktop-large: 120em; //1920px
 //transition
 @mixin transition-properties($transition-property) {
   transition-property: $transition-property;

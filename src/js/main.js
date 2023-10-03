@@ -4,6 +4,8 @@ import { pushPagination } from './pagination';
 import { fetchApi } from './filmApi';
 import { checkBrowersWidth } from './pagination';
 import { addBtnsListeners, checkLocalStorage } from './local-storage';
+import { checkAndChangeTheme } from './dark-mode';
+import { updateQueWatch } from './my-library';
 
 export const mainContainer = document.querySelector('.main-section');
 let allGenres = [];
@@ -15,11 +17,6 @@ fetchGenres()
 //Function for drawing first 20 popular films
 
 export async function makeFilmsBox() {
-  // const data = await axiosSecondFetchFn()
-  //   .then(data => {
-  //     drawFilmBox(data.results);
-  //   })
-  //   .catch(error => console.log(error));
   const url = `https://api.themoviedb.org/3/movie/popular`;
   const searchParams = {
     api_key: '95f474a01cc4252905d63c7d958d5749',
@@ -110,6 +107,7 @@ export function drawFilmBox(films, isNotMobile = true) {
 }
 
 export function drawModal(key) {
+  document.body.style.overflow = 'hidden';
   const modalFilmCard = document.querySelector('.modal-film__card');
   modalFilmCard.innerHTML = '';
   function drawFilmDetails(data) {
@@ -121,7 +119,14 @@ export function drawModal(key) {
     });
 
     const movieImgBox = document.createElement('div');
-    movieImgBox.innerHTML = `<img class="film-info__poster" src="https://image.tmdb.org/t/p/original${data.backdrop_path}" alt="${data.title}"/>`;
+
+    if (data.backdrop_path === null) {
+      data.backdrop_path = `/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg`;
+    }
+    movieImgBox.insertAdjacentHTML(
+      'afterbegin',
+      `<img class="film-info__poster" src="https://image.tmdb.org/t/p/original${data.backdrop_path}" alt="${data.title}"/>`,
+    );
 
     const movieTitle = document.createElement('div');
     movieTitle.setAttribute('class', 'film-info__title');
@@ -158,11 +163,14 @@ export function drawModal(key) {
     movieButtonBox.innerHTML = `<button type="button" class="modal-film__btns-addToWatched add-watched" value="${key}">Add to watched</button>
       <button type="button" class="modal-film__btns-addToQueue add-queue" value="${key}">Add to queue</button>`;
 
-    movieInfos.push(movieImgBox, movieTitle, movieDetailsBox, movieAbout, movieButtonBox);
+    const movieInfoBox = document.createElement('div');
+    movieInfoBox.append(movieTitle, movieDetailsBox, movieAbout, movieButtonBox);
+    movieInfos.push(movieImgBox, movieInfoBox);
     modalFilmCard.append(...movieInfos);
 
     addBtnsListeners(key);
     checkLocalStorage(key);
+    updateQueWatch();
 
     const backdropModalFilm = document.querySelector('.backdrop-modal-film');
     const modalFilm = document.querySelector('.modal-film');
@@ -171,6 +179,7 @@ export function drawModal(key) {
     window.addEventListener('keydown', closeModalEsc);
     function closeModalEsc(ev) {
       if (ev.key === 'Escape') {
+        document.body.style.overflow = 'auto';
         backdropModalFilm.classList.add('is-hidden');
         modalFilm.classList.add('is-hidden');
         window.removeEventListener('keydown', closeModalEsc);
@@ -178,14 +187,17 @@ export function drawModal(key) {
     }
     backdropModalFilm.addEventListener('click', closeModal);
     function closeModal() {
+      document.body.style.overflow = 'auto';
       backdropModalFilm.classList.add('is-hidden');
       modalFilm.classList.add('is-hidden');
       backdropModalFilm.removeEventListener('click', closeModal);
       modalFilmBtnClose.removeEventListener('click', closeModal);
+      window.removeEventListener('keydown', closeModalEsc);
     }
 
     const modalFilmBtnClose = document.querySelector('.modal-film__btn-close');
     modalFilmBtnClose.addEventListener('click', closeModal);
+    checkAndChangeTheme();
   }
 
   async function getMovieDetails(key) {
@@ -204,6 +216,5 @@ export function drawModal(key) {
   }
 
   getMovieDetails(key);
-
   // modalFilmCard.insertAdjacentHTML('beforeend', key);
 }

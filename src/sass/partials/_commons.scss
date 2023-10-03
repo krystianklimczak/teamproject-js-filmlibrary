@@ -25,3 +25,20 @@ img {
 button {
   cursor: pointer;
 }
+
+::-webkit-scrollbar {
+  width: 13px;
+}
+
+::-webkit-scrollbar-track {
+  background: $website-color-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $hover-color-secondary;
+  border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $website-main-color;
+}

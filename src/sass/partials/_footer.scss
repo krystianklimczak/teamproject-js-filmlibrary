@@ -1,5 +1,4 @@
 .close-btn {
-  // same as above - it should be in 'commons.scss'
   position: sticky;
   display: flex;
   justify-content: center;
@@ -16,6 +15,9 @@
 //
 .close-icon {
   height: 30px;
+  &--dark-mode {
+    fill: $text-color-light;
+  }
 }
 
 .close-icon:focus,
@@ -48,6 +50,14 @@
   top: 50%;
   left: 50%;
   transform: translate(calc(-50%), calc(-50%));
+  // @media screen and (min-width: $breakpoint-modal-squad-width) {
+  //   min-width: unset;
+  //   width: 1599px;
+  // }
+  &--dark-mode {
+    background-color: $website-color-secondary;
+    box-shadow: rgba(253, 251, 251, 0.25) 0px 2px 10px 0px;
+  }
 }
 
 .squad-name {
@@ -63,6 +73,9 @@
     margin-left: 6px;
     margin-bottom: 2rem;
     color: $text-color-additional-secondary;
+    &--dark-mode {
+      color: $text-color-light;
+    }
   }
   &__team {
     font-weight: $font-weight-bold;
@@ -75,6 +88,9 @@
       text-transform: uppercase;
       font-size: 5rem;
       margin-bottom: 2.1rem;
+    }
+    &--dark-mode {
+      text-shadow: $footer-color-background 0.1px 0px 2px;
     }
   }
   &__dev {
@@ -141,14 +157,29 @@
   font-family: $font-primary;
   font-size: $font-size-footer-mobile;
   font-weight: $font-weight-regular;
-  background-color: $footer-color-background;
+  background-color: white;
+  // background-color: $footer-color-background;
   color: $text-color-additional-secondary;
   text-align: center;
   opacity: 0.95;
   padding: 10px;
-  position: sticky;
-  bottom: 0;
   display: flex;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  &--dark-mode {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  &__item--dark-mode {
+    color: $text-color-light;
+  }
+  &--dark-mode {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  &__item--dark-mode {
+    color: $text-color-light;
+  }
 
   @media screen and (min-width: $breakpoint-tablet) {
     font-size: $font-size-footer;
@@ -166,11 +197,18 @@
   }
 
   &__button {
-    border: 0;
+    border: none;
     border-bottom: 1px solid $text-color-additional-secondary;
+    background-color: rgba(0, 0, 0, 0);
 
     margin-left: 5px;
     color: $text-color-additional-secondary;
+    &--dark-mode {
+      color: $text-color-light;
+      // background-color: rgba(0, 0, 0, 0);
+      // border: none;
+      border-bottom: 1px solid $text-color-light;
+    }
   }
 
   &__button:hover,
@@ -191,26 +229,26 @@
     text-transform: uppercase;
     font-size: 1.2rem;
     margin-bottom: 5px;
-  
-    @media screen and (min-width: $breakpoint-tablet) {
-      font-weight: $font-weight-bold;
-      text-transform: uppercase;
-      font-size: 1.2rem;
-      
+    // @media screen and (min-width: $breakpoint-tablet) {
+    //   font-weight: $font-weight-bold;
+    //   text-transform: uppercase;
+    //   font-size: 1rem;
+    //   margin-top: 10px;
+    // }
+    &--dark-mode {
+      color: $text-color-light;
     }
   }
   &__role {
-   
-    font-size: 1rem;
     font-weight: 600;
-    
+    font-size: 1rem;
     color: rgb(8, 175, 152);
-    @media screen and (min-width: $breakpoint-tablet) {
-      
-      font-size: 1rem;
-    
-      color: rgb(8, 175, 152);
-    }
+    // @media screen and (min-width: $breakpoint-tablet) {
+    //   font-weight: $font-weight-bold;
+    //   font-size: 1rem;
+    //   margin-top: 10px;
+    //   color: rgb(8, 175, 152);
+    // }
   }
 }
 
@@ -220,6 +258,10 @@
 
 .is-hidden {
   display: none; // please add this class to 'commons.scss', unify the name and remove it from 'scss' partials
+}
+
+.squad-svg--dark-mode {
+  filter: drop-shadow(0 0 0.1rem $footer-color-background);
 }
 
 // styles modal ania
