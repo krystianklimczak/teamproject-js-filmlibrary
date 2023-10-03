@@ -115,19 +115,19 @@
   }
 
   .film-poster__img-box {
+    @include transition-properties(transform);
     overflow: hidden;
     position: relative;
     margin: 0;
-    max-width: 300px;
+    //max-width: 300px;
     &:hover .film-poster__overflow {
       transform: translateY(0%);
-      background: rgba(33, 150, 243, 0.9);
-      //font-size: getFont(m);
-      //color: getColor('white');
+      background: rgba(0, 0, 0, 0.9);
+      color: $text-color-light;
       line-height: 1.55rem;
       letter-spacing: 0.03em;
       visibility: visible;
-      //transition: $transition;
+      //transition: @include transition-properties(transform);
       height: 100%;
     }
   }
