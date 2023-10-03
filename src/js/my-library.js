@@ -1,6 +1,7 @@
 import { fetchApi } from './filmApi';
 import { getTrailerKey, showTrailer } from './trailer';
 import { drawModal } from './main';
+import { checkAndChangeTheme } from './dark-mode';
 
 const spinnerBox = document.querySelector('.spinner-box');
 
@@ -119,6 +120,7 @@ function pushMovie(response) {
   filmPoster.insertAdjacentElement('beforeend', filmPosterDescription);
   // posterArray.push(filmPoster);
   mainContainer.append(filmPoster);
+  checkAndChangeTheme();
 }
 
 export function updateQueWatch() {
