@@ -172,15 +172,16 @@
   }
 
   &__button {
-    border: 0;
+    border: none;
     border-bottom: 1px solid $text-color-additional-secondary;
+    background-color: rgba(0, 0, 0, 0);
 
     margin-left: 5px;
     color: $text-color-additional-secondary;
     &--dark-mode {
       color: $text-color-light;
-      background-color: rgba(0, 0, 0, 0);
-      border: none;
+      // background-color: rgba(0, 0, 0, 0);
+      // border: none;
       border-bottom: 1px solid $text-color-light;
     }
   }
