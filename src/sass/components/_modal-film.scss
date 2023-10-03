@@ -55,20 +55,22 @@
     flex-wrap: wrap;
     padding: 48px 20px 40px 20px;
     @media screen and (min-width: $breakpoint-tablet) {
-      //max-width: 704px;
-      flex-direction: column;
-      height: 552px;
+      gap: 68px;
+      height: max-content;
       & > div:nth-child(1) {
-        flex-grow: 3;
-        height: 500px;
-        width: 45%;
+        max-width: 264px;
         @media screen and (min-width: $breakpoint-desktop) {
-          width: 50%;
+          max-width: 375px;
         }
       }
-      & > div:nth-child(1n + 2) {
-        margin-left: 50px;
+      & > div:nth-child(2) {
+        @media screen and (min-width: $breakpoint-desktop) {
+          max-width: 375px;
+        }
       }
+    }
+    @media screen and (min-width: $breakpoint-desktop) {
+      gap: 16px;
     }
   }
 }
@@ -79,15 +81,12 @@
   }
 
   &__poster {
-    width: 100%;
     object-fit: cover;
-    //max-width: 400px;
     min-height: 357px;
     border-radius: 5px;
     background-color: rgb(140, 140, 140);
-
     @media screen and (min-width: $breakpoint-tablet) {
-      margin-top: 40px;
+      //margin-top: 40px;
       max-width: 264px;
       min-height: 373px;
       margin-right: 68px;
@@ -158,11 +157,11 @@
       display: inline-flex;
       flex-direction: column;
       height: max-content;
-      width: 160px;
+      width: 150px;
       overflow-y: hidden;
       @media screen and (min-width: $breakpoint-tablet) {
-        width: 120px;
-        display: inline;
+        width: 250px;
+        // display: inline;
       }
     }
     &-votes {
@@ -177,7 +176,7 @@
     }
 
     &-container {
-      height: 100%;
+      height: max-content;
       width: 100%;
       @media screen and (min-width: $breakpoint-tablet) {
         max-width: 340px;
