@@ -58,59 +58,63 @@
   font-weight: $font-weight-regular;
 
   &__cmc {
-    font-size: 0.75rem;
-    margin-top: 2px;
+    margin-top: 7px;
+    font-size: 1.05rem;
+    margin-left: 6px;
+    margin-bottom: 2rem;
     color: $text-color-additional-secondary;
   }
   &__team {
     font-weight: $font-weight-bold;
     text-transform: uppercase;
-    font-size: 1.25rem;
-    margin-top: 10px;
+    font-size: 2.8rem;
+    margin-top: 5px;
+    margin-bottom: 0.5rem;
     @media screen and (min-width: $breakpoint-tablet) {
       font-weight: $font-weight-bold;
       text-transform: uppercase;
-      font-size: 2.5rem;
-      margin-top: 10px;
+      font-size: 5rem;
+      margin-bottom: 2.1rem;
     }
   }
   &__dev {
-    font-weight: $font-weight-bold;
-    font-size: 0.75rem;
-    margin-top: 2px;
+    font-weight: 500;
+    font-size: 1.2rem;
+   
     color: rgb(8, 175, 152);
     @media screen and (min-width: $breakpoint-tablet) {
       font-weight: $font-weight-bold;
-      font-size: 1rem;
-      margin-top: 2px;
+      font-size: 2rem;
       color: rgb(8, 175, 152);
     }
   }
 }
 
-.squad-list {
-  display: flex;
-  justify-content: center;
-  flex-flow: wrap;
+// .squad-list {
+//   display: flex;
+//   justify-content: center;
+//   flex-flow: wrap;
 
-  @media screen and (min-width: $breakpoint-tablet) {
-    justify-content: space-evenly;
-    align-items: center;
-    flex-flow: wrap;
-  }
+//   @media screen and (min-width: $breakpoint-tablet) {
+//     justify-content: space-evenly;
+//     align-items: center;
+//     flex-flow: wrap;
+//   }
 
-  @media screen and (min-width: $breakpoint-desktop) {
-    justify-content: space-evenly;
-    align-items: center;
-    flex-flow: wrap;
-  }
-}
+//   @media screen and (min-width: $breakpoint-desktop) {
+//     justify-content: space-evenly;
+//     align-items: center;
+//     flex-flow: wrap;
+//   }
+// }
 
 .squad__item {
   display: flex;
   flex-direction: column;
-  flex-basis: 200px;
-  margin: 30px;
+  padding-top: 1rem;
+  margin: auto;
+
+
 
   // @media screen and (min-width: $breakpoint-tablet) {
   //   flex-basis: 200px;
@@ -127,9 +131,10 @@
 
 .squad__photo {
   border-radius: 50%;
-  margin: 5px;
-  box-shadow: 0 0 20px 5px $footer-color-text;
+  margin: 2rem;
+  box-shadow: 10px 10px 20px 1px rgba(0,0,0, 0.4);
   background-color: $footer-color-text;
+  
 }
 
 .footer {
@@ -184,24 +189,26 @@
     font-weight: $font-weight-bold;
     color: $footer-color-text;
     text-transform: uppercase;
-    font-size: 1rem;
-    margin-top: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  
     @media screen and (min-width: $breakpoint-tablet) {
       font-weight: $font-weight-bold;
       text-transform: uppercase;
-      font-size: 1rem;
-      margin-top: 10px;
+      font-size: 1.2rem;
+      
     }
   }
   &__role {
-    font-weight: $font-weight-bold;
+   
     font-size: 1rem;
-    margin-top: 10px;
+    font-weight: 600;
+    
     color: rgb(8, 175, 152);
     @media screen and (min-width: $breakpoint-tablet) {
-      font-weight: $font-weight-bold;
+      
       font-size: 1rem;
-      margin-top: 10px;
+    
       color: rgb(8, 175, 152);
     }
   }
@@ -213,4 +220,38 @@
 
 .is-hidden {
   display: none; // please add this class to 'commons.scss', unify the name and remove it from 'scss' partials
+}
+
+// styles modal ania
+.top-flex {
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+  }
+  @media screen and (min-width: 1280px) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30rem;
+    margin-top: -15rem;
+  }
+}
+.squad-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px; 
+   &__item {
+    padding: 3rem;
+   }
+   @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+   }
+   @media screen and (min-width: 1280px) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+   }
+  
 }
