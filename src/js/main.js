@@ -156,7 +156,9 @@ export function drawModal(key) {
     movieButtonBox.innerHTML = `<button type="button" class="modal-film__btns-addToWatched add-watched" value="${key}">Add to watched</button>
       <button type="button" class="modal-film__btns-addToQueue add-queue" value="${key}">Add to queue</button>`;
 
-    movieInfos.push(movieImgBox, movieTitle, movieDetailsBox, movieAbout, movieButtonBox);
+    const movieInfoBox = document.createElement('div');
+    movieInfoBox.append(movieTitle, movieDetailsBox, movieAbout, movieButtonBox);
+    movieInfos.push(movieImgBox, movieInfoBox);
     modalFilmCard.append(...movieInfos);
 
     addBtnsListeners(key);

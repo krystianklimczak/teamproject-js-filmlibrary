@@ -55,7 +55,7 @@
     flex-wrap: wrap;
     padding: 48px 20px 40px 20px;
     @media screen and (min-width: $breakpoint-tablet) {
-      max-width: 704px;
+      //max-width: 704px;
       flex-direction: column;
       height: 552px;
       & > div:nth-child(1) {
