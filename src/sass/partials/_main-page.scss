@@ -39,6 +39,17 @@
     }
   }
 
+  &__overflow {
+    height: 100%;
+    left: 0;
+    padding: 49px 45px 49px 24px;
+    position: absolute;
+    top: 0;
+    transform: translateY(100%);
+    visibility: hidden;
+    width: 100%;
+  }
+
   &__photo {
     border-radius: 5px;
     max-width: 100%;
@@ -103,6 +114,23 @@
     }
   }
 
+  .film-poster__img-box {
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    max-width: 300px;
+    &:hover .film-poster__overflow {
+      transform: translateY(0%);
+      background: rgba(33, 150, 243, 0.9);
+      //font-size: getFont(m);
+      //color: getColor('white');
+      line-height: 1.55rem;
+      letter-spacing: 0.03em;
+      visibility: visible;
+      //transition: $transition;
+      height: 100%;
+    }
+  }
   .dark-mode-svg {
     fill: white;
     @include transition-properties(transform);

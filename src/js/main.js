@@ -71,7 +71,9 @@ export function drawFilmBox(films, isNotMobile = true) {
     }
     filmPoster.insertAdjacentHTML(
       'afterbegin',
-      `<img class="film-poster__photo" src="https://image.tmdb.org/t/p/original${film.poster_path}" alt="${film.title}" loading="lazy"/>`,
+      `<div class="film-poster__img-box"><div class="film-poster__overflow">
+      This defines the default behavior for how flex items are laid out along the cross axis on the current line. Think of it as the justify-content version for the cross-axis (perpendicular to the main-axis).
+    </div><img class="film-poster__photo" src="https://image.tmdb.org/t/p/original${film.poster_path}" alt="${film.title}" loading="lazy"/></div>`,
     );
     const filmPosterDescription = document.createElement('div');
     filmPosterDescription.classList.add('film-poster__description');
