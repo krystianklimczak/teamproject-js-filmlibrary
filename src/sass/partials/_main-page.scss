@@ -128,9 +128,15 @@
     }
   }
 
-  &__genre,
+  &__genre {
+    color: $text-color-additional-primary;
+  }
   &__year {
     color: $text-color-additional-primary;
+    padding-right: 10px;
+    @media screen and (min-width: 334px) {
+      padding: 0;
+    }
   }
   &--dark-mode {
     box-shadow: rgba(253, 251, 251, 0.25) 0px 2px 10px 0px;
