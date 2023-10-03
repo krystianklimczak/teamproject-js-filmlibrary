@@ -22,9 +22,9 @@
 
 .modal-film {
   animation: fadeInOut 0.3s ease-in-out;
-  overflow-y: scroll;
   padding: 0;
   position: fixed;
+  overflow-y: scroll;
   top: 50%;
   left: 50%;
   width: calc(100vw - 40px);
@@ -46,7 +46,6 @@
     overflow-y: hidden;
   }
   @media screen and (min-width: $breakpoint-desktop) {
-    height: 558px;
     max-width: 806px;
   }
 
@@ -57,13 +56,17 @@
     @media screen and (min-width: $breakpoint-tablet) {
       gap: 68px;
       height: max-content;
+      align-items: center;
       & > div:nth-child(1) {
         max-width: 264px;
-        @media screen and (min-width: $breakpoint-desktop) {
+        @media screen and (min-width: $breakpoint-tablet) {
           max-width: 375px;
         }
       }
       & > div:nth-child(2) {
+        @media screen and (min-width: $breakpoint-tablet) {
+          max-width: 353px;
+        }
         @media screen and (min-width: $breakpoint-desktop) {
           max-width: 375px;
         }
@@ -86,16 +89,12 @@
     border-radius: 5px;
     background-color: rgb(140, 140, 140);
     @media screen and (min-width: $breakpoint-tablet) {
-      //margin-top: 40px;
       max-width: 264px;
       min-height: 373px;
-      margin-right: 68px;
     }
-
     @media screen and (min-width: $breakpoint-desktop) {
       max-width: 375px;
       min-height: 375px;
-      margin-right: 16px;
     }
   }
 
@@ -161,7 +160,6 @@
       overflow-y: hidden;
       @media screen and (min-width: $breakpoint-tablet) {
         width: 250px;
-        // display: inline;
       }
     }
     &-votes {

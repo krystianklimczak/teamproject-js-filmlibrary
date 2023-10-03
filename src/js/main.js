@@ -119,7 +119,14 @@ export function drawModal(key) {
     });
 
     const movieImgBox = document.createElement('div');
-    movieImgBox.innerHTML = `<img class="film-info__poster" src="https://image.tmdb.org/t/p/original${data.backdrop_path}" alt="${data.title}"/>`;
+
+    if (data.backdrop_path === null) {
+      data.backdrop_path = `/uc4RAVW1T3T29h6OQdr7zu4Blui.jpg`;
+    }
+    movieImgBox.insertAdjacentHTML(
+      'afterbegin',
+      `<img class="film-info__poster" src="https://image.tmdb.org/t/p/original${data.backdrop_path}" alt="${data.title}"/>`,
+    );
 
     const movieTitle = document.createElement('div');
     movieTitle.setAttribute('class', 'film-info__title');
