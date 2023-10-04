@@ -85,12 +85,9 @@
     margin-bottom: 0.5rem;
     color: $text-color-dark;
     @media screen and (min-width: $breakpoint-tablet) {
-      
       text-transform: uppercase;
       font-size: 7rem;
       margin-bottom: 2.1rem;
-      
-
     }
     &--dark-mode {
       text-shadow: $footer-color-background 0.1px 0px 2px;
@@ -99,7 +96,7 @@
   &__dev {
     font-weight: 600;
     font-size: 3rem;
-   
+
     color: rgb(8, 175, 152);
     @media screen and (min-width: $breakpoint-tablet) {
       font-size: 3rem;
@@ -132,8 +129,6 @@
   padding-top: 3rem;
   margin: auto;
 
-
-
   // @media screen and (min-width: $breakpoint-tablet) {
   //   flex-basis: 200px;
   //   margin: 30px;
@@ -150,8 +145,7 @@
 .squad__photo {
   border-radius: 50%;
   margin: 2.5rem;
-  box-shadow: 10px 10px 20px 1px rgba(0,0,0, 0.4);
- 
+  box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.4);
 }
 
 .footer {
@@ -186,8 +180,8 @@
     font-size: $font-size-footer;
     opacity: 1;
     padding: 30px;
-    position: relative;
-    bottom: auto;
+    //position: relative;
+    bottom: 0;
   }
 
   & > p {
@@ -288,20 +282,19 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-column-gap: 0px;
-  grid-row-gap: 0px; 
-   &__item {
+  grid-row-gap: 0px;
+  &__item {
     padding: 3rem;
-   }
-   @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
     max-width: 768px;
     margin: auto;
-   }
-   @media screen and (min-width: 1280px) {
+  }
+  @media screen and (min-width: 1280px) {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     max-width: 1280px;
-   }
-  
+  }
 }
