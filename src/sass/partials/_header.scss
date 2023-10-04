@@ -159,7 +159,7 @@
 .banner {
   position: relative;
   width: 100%;
-  height: 11vh;
+  height: 13vh;
   background-image: url(../images/main-background-mobile@x3.jpg);
   @media screen and (min-width: $breakpoint-tablet) {
     background-image: url(../images/main-background-tablet@x3.jpg);
@@ -177,7 +177,7 @@
 .banner-library {
   position: relative;
   width: 100%;
-  height: 11vh;
+  height: 13vh;
   background-image: url(../images/library-background-mobile@3x.jpg);
   @media screen and (min-width: $breakpoint-mobile) { 
   }
