@@ -128,6 +128,14 @@
   flex-direction: column;
   padding-top: 3rem;
   margin: auto;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+
+  &:hover .dev-links {
+    transform: scale(100%);
+    background-color: rgb(255, 107, 8, 0.4);
+  }
 
   // @media screen and (min-width: $breakpoint-tablet) {
   //   flex-basis: 200px;
@@ -147,7 +155,24 @@
   margin: 2.5rem;
   box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.4);
 }
+.dev-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  column-gap: 10px;
 
+  transition-property: fill, color, background-color, border-color, transform, box-shadow;
+  transition-duration: 250ms;
+  transform: scale(0%);
+
+  position: absolute;
+  top: 42;
+  left: 19;
+  width: 201px;
+  height: 201px;
+}
 .footer {
   font-family: $font-primary;
   font-size: $font-size-footer-mobile;
