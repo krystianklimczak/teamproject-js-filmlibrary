@@ -61,6 +61,7 @@ h2{
     font-size: 1em;
     pointer-events: none;
     transition: .5s;
+    
 }
 input:focus ~ label,
 input:focus ~ label, input:not(:placeholder-shown) ~ label {
