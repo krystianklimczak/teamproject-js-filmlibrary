@@ -1,7 +1,7 @@
 .error-library {
   height: 100%;
   @media screen and (min-width: $breakpoint-tablet) {
-    height: 77vh;
+    height: fit-content;
   }
   @media screen and (min-width: $breakpoint-desktop) {
     height: 73vh;
