@@ -1,3 +1,13 @@
+.error-library {
+  height: 100%;
+  @media screen and (min-width: $breakpoint-tablet) {
+    height: 77vh;
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
+    height: 73vh;
+  }
+}
+
 .error-404 {
   display: flex;
   flex-wrap: wrap;
