@@ -153,15 +153,6 @@
   box-shadow: 10px 10px 20px 1px rgba(0,0,0, 0.4);
   position: relative;
   &--overlay {
-    & svg {
-      fill: $text-color-light;
-      @include transition-properties(transform);
-      transform: translateY(300%);
-      scale: 0;
-      &:hover, :focus {
-        fill: $hover-color-primary;
-      }
-    }
     @include transition-properties(opacity);
     overflow: hidden;
     width: 100%;
@@ -178,11 +169,18 @@
     transform: translate(-50%, -50%);
     opacity: 0;    
   }
+  & svg {
+    @include transition-properties(transform);
+    fill: $text-color-light;
+    transform: translateY(300%);
+    &:hover, :focus {
+      fill: $hover-color-primary;
+    }
+  }
   &:hover .squad__photo--overlay {
     opacity: 1;
     & svg {
       transform: translateY(0);
-      scale: 1;
     }
   }     
   
