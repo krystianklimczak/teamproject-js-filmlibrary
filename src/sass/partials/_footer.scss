@@ -108,12 +108,12 @@
     font-size: 1.6rem;
     font-weight: 500;
     color: rgba(0, 0, 0, .5); 
-
-    &:hover {
-      color: $website-main-color;
-    }
+    transition: 0.6s;
     &--dark-mode {
       color: $text-color-light;
+    }
+    &:hover {
+      color: $website-main-color;
     }
   }
 }
@@ -161,22 +161,21 @@
       transform: translateY(0);
     }
   }     
-  
- 
 }
 
 .footer {
   font-family: $font-primary;
   font-size: $font-size-footer-mobile;
   font-weight: $font-weight-regular;
-  background-color: white;
+  background-color: rgba(102, 102, 103, 0.1);
   color: $text-color-additional-secondary;
   text-align: center;
   opacity: 0.95;
   padding: 10px;
   display: flex;
-  position: sticky;
+  position: absolute;
   width: 100%;
+  right: 0;
   left: 0;
   bottom: 0;
   &--dark-mode {
@@ -265,7 +264,7 @@
 }
 
 // styles modal ania
-.top-flex {
+.leaders {
   display: flex;
   flex-direction: column;
   max-width: 100%;
