@@ -205,10 +205,9 @@
     margin-top: -3rem;
   }
   @media screen and (min-width: 60em) {
-    margin-top: 3%;
+    margin-top: 3rem;
   }
   
- 
   &__button {
     padding: 4px 15px 2px 15px;
     text-transform: uppercase;
@@ -220,7 +219,7 @@
     font-size: $font-size-small;
     font-weight: $font-weight-medium;
     line-height: 1.33;
-    @media screen and (min-width: $breakpoint-tablet) {
+    @media screen and (min-width: $breakpoint-desktop) {
       padding: 14px 36px 12px 36px;
     }
     &--current {
