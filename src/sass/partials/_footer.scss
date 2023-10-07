@@ -41,7 +41,7 @@
 
 .modal-squad-info {
   border-radius: 5px;
-  background-color: $footer-color-background; // almost white
+  background-color: $footer-color-background; 
   max-height: 90%;
   min-width: 90%;
   overflow: auto;
@@ -71,80 +71,58 @@
     margin-top: 7px;
     font-size: 1.7rem;
     margin-left: 6px;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     color: $text-color-additional-secondary;
     &--dark-mode {
       color: $text-color-light;
     }
   }
+ 
   &__team {
     font-weight: $font-weight-bold;
     text-transform: uppercase;
     font-size: 4rem;
-    margin-top: 5px;
+    margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     color: $text-color-dark;
     @media screen and (min-width: $breakpoint-tablet) {
-      
       text-transform: uppercase;
       font-size: 6rem;
       margin-bottom: 2.1rem;
-      
-
     }
     &--dark-mode {
       text-shadow: $footer-color-background 0.1px 0px 2px;
     }
   }
   &__dev {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 2.5rem;
-   
+    margin-bottom: 1rem;
     color: rgb(8, 175, 152);
     @media screen and (min-width: $breakpoint-tablet) {
       font-size: 3rem;
       color: rgb(8, 175, 152);
     }
   }
+  &__pres {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, .5); 
+
+    &:hover {
+      color: $website-main-color;
+    }
+    &--dark-mode {
+      color: $text-color-light;
+    }
+  }
 }
-
-// .squad-list {
-//   display: flex;
-//   justify-content: center;
-//   flex-flow: wrap;
-
-//   @media screen and (min-width: $breakpoint-tablet) {
-//     justify-content: space-evenly;
-//     align-items: center;
-//     flex-flow: wrap;
-//   }
-
-//   @media screen and (min-width: $breakpoint-desktop) {
-//     justify-content: space-evenly;
-//     align-items: center;
-//     flex-flow: wrap;
-//   }
-// }
 
 .squad__item {
   display: flex;
   flex-direction: column;
-  padding-top: 3rem;
+  padding-top: 2.5rem;
   margin: auto;
-
-
-
-  // @media screen and (min-width: $breakpoint-tablet) {
-  //   flex-basis: 200px;
-  //   margin: 30px;
-  // }
-
-  // Above & below maybe required in the near future
-
-  // @media screen and (min-width: $breakpoint-desktop) {
-  //   flex-basis: 200px;
-  //   margin: 30px;
-  // }
 }
 
 .squad__photo {
@@ -192,7 +170,6 @@
   font-size: $font-size-footer-mobile;
   font-weight: $font-weight-regular;
   background-color: white;
-  // background-color: $footer-color-background;
   color: $text-color-additional-secondary;
   text-align: center;
   opacity: 0.95;
@@ -263,12 +240,7 @@
     text-transform: uppercase;
     font-size: 2rem;
     margin-bottom: 5px;
-    // @media screen and (min-width: $breakpoint-tablet) {
-    //   font-weight: $font-weight-bold;
-    //   text-transform: uppercase;
-    //   font-size: 1rem;
-    //   margin-top: 10px;
-    // }
+   
     &--dark-mode {
       color: $text-color-light;
     }
@@ -277,12 +249,6 @@
     font-weight: 500;
     font-size: 1.6rem;
     color: rgb(8, 175, 152);
-    // @media screen and (min-width: $breakpoint-tablet) {
-    //   font-weight: $font-weight-bold;
-    //   font-size: 1rem;
-    //   margin-top: 10px;
-    //   color: rgb(8, 175, 152);
-    // }
   }
 }
 
@@ -291,7 +257,7 @@
 }
 
 .is-hidden {
-  display: none; // please add this class to 'commons.scss', unify the name and remove it from 'scss' partials
+  display: none; 
 }
 
 .squad-svg--dark-mode {
@@ -303,17 +269,17 @@
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $breakpoint-tablet) {
     max-width: 768px;
     margin: auto;
     flex-direction: row;
     justify-content: center;
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: $breakpoint-desktop) {
     flex-direction: row;
     justify-content: space-between;
     gap: 30rem;
-    margin-top: -20rem;
+    margin-top: -25rem;
     max-width: 1280px;
   }
 }
@@ -325,13 +291,13 @@
    &__item {
     padding: 3rem;
    }
-   @media screen and (min-width: 768px) {
+   @media screen and (min-width: $breakpoint-tablet) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
     max-width: 768px;
     margin: auto;
    }
-   @media screen and (min-width: 1280px) {
+   @media screen and (min-width: $breakpoint-desktop) {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     max-width: 1280px;
