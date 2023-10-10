@@ -1,20 +1,14 @@
 .header {
-  @media screen and (min-width: $breakpoint-mobile) {
+  @media screen and (min-width: 60em) {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
   }
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  transition: 0.6s;
-  z-index: 1;
-  padding: 2rem 3rem;
-
+ 
   & .logo {
+    @media screen and (min-width: $breakpoint-tablet) {
+      max-width: 100%;
+    }
     position: relative;
     font-size: 2rem;
     font-weight: 600;
@@ -25,10 +19,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    max-width: 24px;
-    @media screen and (min-width: $breakpoint-tablet) {
-      max-width: 100%;
-    }
+   
     & p {
       color: #fff;
       text-align: center;
@@ -40,7 +31,7 @@
       transition: 0.6s;
       display: none;
 
-      @media screen and (min-width: $breakpoint-desktop) {
+      @media screen and (min-width: $breakpoint-mobile) {
         display: block;
       }
     }
@@ -61,6 +52,16 @@
       padding: 3rem 2rem;
     }
   }
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: 0.6s;
+  z-index: 1;
+  padding: 2rem 3rem;
 }
 
 .navigation {
@@ -85,7 +86,7 @@
       list-style: none;
     }
     & #home {
-      @media screen and (min-width: $breakpoint-tablet) {
+      @media screen and (min-width: $breakpoint-mobile) {
         display: block;
       }
     }
@@ -106,18 +107,14 @@
 
 .search-form {
   @media screen and (min-width: $breakpoint-mobile) {
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 1rem;
-    width: 28rem;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  @media screen and (min-width: $breakpoint-tablet) {
-    padding-bottom: 0;
-    margin-top: 0;
-  }
+    margin-left: 45%;
+}
+@media screen and (min-width: 60em) {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 2.8rem;
+
+}
   @media screen and (min-width: $breakpoint-desktop) {
     width: 40rem;
   }
@@ -163,17 +160,14 @@
 .banner {
   position: relative;
   width: 100%;
-  height: 15vh;
+  height: 13vh;
   background-image: url(../images/main-background-mobile@x3.jpg);
-  @media screen and (min-width: $breakpoint-mobile) {
-    height: 10vh;
-  }
+  
   @media screen and (min-width: $breakpoint-tablet) {
     background-image: url(../images/main-background-tablet@x3.jpg);
   }
   @media screen and (min-width: $breakpoint-desktop) {
     background-image: url(../images/main-background-desktop@x3.jpg);
-    
   }
   background-size: cover;
   background-position: center;
@@ -185,18 +179,14 @@
 .banner-library {
   position: relative;
   width: 100%;
-  height: 15vh;
+  height: 13vh;
   background-image: url(../images/library-background-mobile@3x.jpg);
-  @media screen and (min-width: $breakpoint-mobile) {
-    height: 10vh;
-  }
+ 
   @media screen and (min-width: $breakpoint-tablet) {
     background-image: url(../images/library-background-tablet@3x.jpg);
-    height: 15vh;
   }
   @media screen and (min-width: $breakpoint-desktop) {
-    background-image: url(../images/library-background-desktop@3x.jpg);
-    height: 20vh;
+    background-image: url(../images/library-background-desktop@3x.jpg); 
   }
   background-size: cover;
   background-position: center;
@@ -204,16 +194,7 @@
   background-color: rgb(39, 46, 52);
 }
 
-// .banner-library {
-//   background-image: url(../images/library-background-mobile@3x.jpg);
-//   @media screen and (min-width: $breakpoint-tablet) {
-//     background-image: url(../images/library-background-tablet@3x.jpg);
-//   }
-//   @media screen and (min-width: $breakpoint-desktop) {
-//     background-image: url(../images/library-background-desktop@3x.jpg);
-//   }
-//   padding-bottom: 6.2rem;
-// }
+
 .library {
   display: flex;
   justify-content: flex-end;
@@ -221,9 +202,12 @@
   margin-top: -2.4rem;
   margin-bottom: 3rem;
   @media screen and (min-width: $breakpoint-mobile) {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-top: -3rem;
   }
+  @media screen and (min-width: 60em) {
+    margin-top: 3rem;
+  }
+  
   &__button {
     padding: 4px 15px 2px 15px;
     text-transform: uppercase;
@@ -235,7 +219,7 @@
     font-size: $font-size-small;
     font-weight: $font-weight-medium;
     line-height: 1.33;
-    @media screen and (min-width: $breakpoint-tablet) {
+    @media screen and (min-width: $breakpoint-desktop) {
       padding: 14px 36px 12px 36px;
     }
     &--current {
@@ -262,178 +246,3 @@
 .is-hidden {
   display: none;
 }
-
-// end of my styles
-
-// .header-library {
-//   background-image: url(../images/library-background-mobile@3x.jpg);
-//   @media screen and (min-width: $breakpoint-tablet) {
-//     background-image: url(../images/library-background-tablet@3x.jpg);
-//   }
-//   @media screen and (min-width: $breakpoint-desktop) {
-//     background-image: url(../images/library-background-desktop@3x.jpg);
-//   }
-//   padding-bottom: 6.2rem;
-// }
-
-// previous styles
-
-// .header {
-//  padding: 4rem 3.2rem;
-//   background-image: url(../images/main-background-mobile@x3.jpg);
-//   @media screen and (min-width: $breakpoint-tablet) {
-//     background-image: url(../images/main-background-tablet@x3.jpg);
-//   }
-//   @media screen and (min-width: $breakpoint-desktop) {
-//     background-image: url(../images/main-background-desktop@x3.jpg);
-//   }
-//   background-size: cover;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-color: rgb(39, 46, 52);
-
-//   // & .container {
-//   //   display: flex;
-//   //   justify-content: space-between;
-//   //   align-items: center;
-//   // }
-//   // display: flex;
-//   // flex-direction: column;
-//   // gap: 3rem;
-
-// }
-
-// .logo {
-//   fill: $text-color-light;
-//   display: flex;
-//   align-items: center;
-//   gap: 8px;
-//   & p {
-//     color: #fff;
-//     text-align: center;
-//     font-family: Roboto;
-//     font-size: 30px;
-//     font-style: normal;
-//     font-weight: 500;
-//     line-height: normal;
-//     display: none;
-
-//     @media screen and (min-width: $breakpoint-tablet) {
-//       display: block;
-//     }
-//   }
-//   &:hover,
-//   :focus {
-//     fill: $website-main-color;
-//     & p {
-//       color: $website-main-color;
-//     }
-//   }
-// }
-
-// .navigation {
-//   &__list {
-//     display: flex;
-//     gap: 40px;
-//     text-transform: uppercase;
-//     color: $text-color-light;
-//     font-family: Roboto;
-//     font-size: $font-size-small;
-//     font-weight: $font-weight-medium;
-//     & a {
-//       color: $text-color-light;
-//       &:hover,
-//       :focus {
-//         color: $website-main-color;
-//       }
-//     }
-//   }
-// }
-
-// .search-form {
-//   display: flex;
-//   justify-content: center;
-//   position: relative;
-//   padding-bottom: 2rem;
-//   padding-top: 6rem;
-//   &__label {
-//     max-width: 280px;
-//     width: 100%;
-//     display: flex;
-//     align-items: center;
-//     border-bottom: 1px solid $text-color-light;
-//     @media screen and (min-width: $breakpoint-tablet) {
-//       max-width: 336px;
-//     }
-//   }
-//   &__svg {
-//     fill: $text-color-light;
-//     cursor: pointer;
-//   }
-//   &__input {
-//     width: 100%;
-//     background-color: transparent;
-//     border: none;
-//     padding-bottom: 1px;
-//     padding-left: 1px;
-//     color: $text-color-light;
-//     &::placeholder {
-//       color: $text-color-light;
-//     }
-//     &:focus,
-//     :active {
-//       outline: none;
-//     }
-//   }
-// }
-
-// .header-library {
-//   background-image: url(../images/library-background-mobile@3x.jpg);
-//   @media screen and (min-width: $breakpoint-tablet) {
-//     background-image: url(../images/library-background-tablet@3x.jpg);
-//   }
-//   @media screen and (min-width: $breakpoint-desktop) {
-//     background-image: url(../images/library-background-desktop@3x.jpg);
-//   }
-//   padding-bottom: 6.2rem;
-// }
-// .library {
-//   display: flex;
-//   justify-content: center;
-//   gap: 20px;
-//   &__button {
-//     padding: 14px 36px 12px 36px;
-//     text-transform: uppercase;
-//     background-color: transparent;
-//     border-radius: 5px;
-//     border: 1px solid $text-color-light;
-//     color: $text-color-light;
-//     font-family: Roboto;
-//     font-size: $font-size-small;
-//     font-weight: $font-weight-medium;
-//     line-height: 1.33;
-//     &--current {
-//       background: $website-main-color;
-//       box-shadow: 0px 8px 43px 0px rgba(255, 107, 1, 0.6);
-//       border: 1px solid $website-main-color;
-//     }
-//   }
-// }
-
-// .is-active {
-//   position: relative;
-//   &::after {
-//     content: '';
-//     background-color: $website-main-color;
-//     width: 100%;
-//     height: 3px;
-//     display: inline-block;
-//     position: absolute;
-//     bottom: -2;
-//     left: 0;
-//   }
-// }
-
-// .is-hidden {
-//   display: none;
-// }

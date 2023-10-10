@@ -2,6 +2,8 @@
 html {
   font-size: 62.5%; //default browser 16px,  here 10px, 10/16 = 0.625
   scroll-behavior: smooth;
+  position: relative;
+  min-height: 100%;
 }
 body {
   font-size: 1.6rem;
