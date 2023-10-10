@@ -41,7 +41,7 @@
 
 .modal-squad-info {
   border-radius: 5px;
-  background-color: $footer-color-background; 
+  background-color: $footer-color-background;
   max-height: 90%;
   min-width: 90%;
   overflow: auto;
@@ -77,7 +77,7 @@
       color: $text-color-light;
     }
   }
- 
+
   &__team {
     font-weight: $font-weight-bold;
     text-transform: uppercase;
@@ -107,7 +107,7 @@
   &__pres {
     font-size: 1.6rem;
     font-weight: 500;
-    color: rgba(0, 0, 0, .5); 
+    color: rgba(0, 0, 0, 0.5);
     transition: 0.6s;
     &--dark-mode {
       color: $text-color-light;
@@ -128,7 +128,7 @@
 .squad__photo {
   border-radius: 50%;
   margin: 2.5rem;
-  box-shadow: 10px 10px 20px 1px rgba(0,0,0, 0.4);
+  box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.4);
   position: relative;
   &--overlay {
     @include transition-properties(opacity);
@@ -140,18 +140,20 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
+    outline: 1px solid rgba(0, 0, 0, 0.7);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0;    
+    opacity: 0;
   }
   & svg {
     @include transition-properties(transform);
     fill: $text-color-light;
     transform: translateY(300%);
-    &:hover, :focus {
+    &:hover,
+    :focus {
       fill: $hover-color-primary;
     }
   }
@@ -160,7 +162,7 @@
     & svg {
       transform: translateY(0);
     }
-  }     
+  }
 }
 
 .footer {
@@ -239,7 +241,7 @@
     text-transform: uppercase;
     font-size: 2rem;
     margin-bottom: 5px;
-   
+
     &--dark-mode {
       color: $text-color-light;
     }
@@ -256,7 +258,7 @@
 }
 
 .is-hidden {
-  display: none; 
+  display: none;
 }
 
 .squad-svg--dark-mode {
@@ -286,20 +288,19 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-column-gap: 0px;
-  grid-row-gap: 0px; 
-   &__item {
+  grid-row-gap: 0px;
+  &__item {
     padding: 3rem;
-   }
-   @media screen and (min-width: $breakpoint-tablet) {
+  }
+  @media screen and (min-width: $breakpoint-tablet) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
     max-width: 768px;
     margin: auto;
-   }
-   @media screen and (min-width: $breakpoint-desktop) {
+  }
+  @media screen and (min-width: $breakpoint-desktop) {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     max-width: 1280px;
-   }
-  
+  }
 }
