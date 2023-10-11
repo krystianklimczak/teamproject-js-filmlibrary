@@ -293,20 +293,19 @@ export function checkBrowersWidth(url, searchParams) {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       searchParams.page++;
       handler(url, searchParams);
-
-      const form = document.querySelector('.search-form');
-      const svgBtn = document.querySelector('.search-form__svg');
-
-      form.addEventListener('submit', e => {
-        e.preventDefault();
-        document.removeEventListener('scroll', isBottomOfTheSite);
-      });
-      svgBtn.addEventListener('click', () => {
-        document.removeEventListener('scroll', isBottomOfTheSite);
-      });
     }
   }
   if (window.innerWidth < 768) {
+    const form = document.querySelector('.search-form');
+    const svgBtn = document.querySelector('.search-form__svg');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      document.removeEventListener('scroll', isBottomOfTheSite);
+    });
+    svgBtn.addEventListener('click', () => {
+      document.removeEventListener('scroll', isBottomOfTheSite);
+    });
     document.addEventListener('scroll', isBottomOfTheSite);
     const paginationBtn = document.querySelector('.pagination-section');
     paginationBtn.style.display = 'none';
