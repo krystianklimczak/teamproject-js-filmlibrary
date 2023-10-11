@@ -2,6 +2,7 @@ import './sass/main.scss';
 import './js/modal-squad';
 import './js/sticky-menu';
 import './js/arrow-up';
+import './js/footer';
 import { checkLibraryMovies } from './js/my-library';
 import { checkAndChangeTheme } from './js/dark-mode';
 
