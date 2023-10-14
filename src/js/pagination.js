@@ -321,7 +321,6 @@ async function handler(url, searchParams) {
     if (searchParams.page > data.total_pages || searchParams.page > 500) {
       return;
     }
-
     return drawFilmBox(results, false);
   } catch (error) {
     return console.log(error);
