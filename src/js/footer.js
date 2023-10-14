@@ -19,3 +19,4 @@ function addScrollEvent(e) {
 }
 
 mediaQuery.addEventListener('change', addScrollEvent);
+addScrollEvent(mediaQuery);
