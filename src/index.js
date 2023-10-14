@@ -7,6 +7,7 @@ import './js/sticky-menu';
 import './js/modal-login';
 import './js/modal-signup';
 import './js/log-out';
+import './js/footer';
 
 makeFilmsBox();
 listeners();

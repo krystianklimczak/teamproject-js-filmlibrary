@@ -169,17 +169,18 @@
   font-family: $font-primary;
   font-size: $font-size-footer-mobile;
   font-weight: $font-weight-regular;
-  background-color: rgba(102, 102, 103, 0.1);
+  background-color: $footer-color-background;
   color: $text-color-additional-secondary;
   text-align: center;
   opacity: 0.95;
   padding: 10px;
   display: flex;
-  position: absolute;
+  position: sticky;
   width: 100%;
   right: 0;
   left: 0;
   bottom: 0;
+  @include transition-properties(bottom);
   &--dark-mode {
     background-color: rgba(0, 0, 0, 0.7);
   }
