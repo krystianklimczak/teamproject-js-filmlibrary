@@ -290,6 +290,7 @@ export function pushPagination(url, searchParams, data) {
 
 export function checkBrowersWidth(url, searchParams) {
   function isBottomOfTheSite() {
+    checkAndChangeTheme();
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       searchParams.page++;
       handler(url, searchParams);
