@@ -290,6 +290,7 @@ export function pushPagination(url, searchParams, data) {
 
 export function checkBrowersWidth(url, searchParams) {
   function isBottomOfTheSite() {
+    checkAndChangeTheme();
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       searchParams.page++;
       handler(url, searchParams);
@@ -320,7 +321,6 @@ async function handler(url, searchParams) {
     if (searchParams.page > data.total_pages || searchParams.page > 500) {
       return;
     }
-
     return drawFilmBox(results, false);
   } catch (error) {
     return console.log(error);
